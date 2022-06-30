@@ -17,14 +17,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       body: ListView(
         children: [
-          ProfileSlider(),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              'Profile',
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontSize: 28, fontWeight: FontWeight.w900),
+            ),
+          ),
+          Row(
+            children: [
+              ProfileSlider(),
+              IconButton(
+                onPressed: () =>
+                    Navigator.pushNamed(context, AddCreditScreen.routeName),
+                icon: Icon(
+                  Icons.credit_card,
+                ),
+                color: Theme.of(context).colorScheme.secondary,
+                iconSize: 44,
+              ),
+            ],
+          ),
           CreditsInfo(),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushNamed(context, AddCreditScreen.routeName),
-        child: Icon(Icons.credit_card),
       ),
     );
   }

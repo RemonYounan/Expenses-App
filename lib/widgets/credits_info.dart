@@ -14,7 +14,9 @@ class _CreditsInfoState extends State<CreditsInfo> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Column(
+      child: ListView(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,7 +68,8 @@ class _CreditsInfoState extends State<CreditsInfo> {
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: credits.creditCards.length,
-                      itemBuilder: (_, i) => CreditItem(credits.creditCards[i],i) ,
+                      itemBuilder: (_, i) =>
+                          CreditItem(credits.creditCards[i], i),
                     ),
             ),
           ),

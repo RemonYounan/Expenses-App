@@ -6,7 +6,6 @@ class CreditItem extends StatefulWidget {
   CreditItem(this.credit, this.index, {Key? key}) : super(key: key);
   final CreditCard credit;
   final int index;
-
   @override
   State<CreditItem> createState() => _CreditItemState();
 }

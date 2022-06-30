@@ -65,49 +65,52 @@ class BalanceScreen extends StatelessWidget {
         Card(
           color: Theme.of(context).cardColor,
           clipBehavior: Clip.antiAlias,
-          child: ListView(shrinkWrap: true, children: [
-            Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text(
-                    'Recent transactions',
-                    style: TextStyle(fontSize: 24, color: Colors.white),
-                  ),
-                ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'View all',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            GridView(
-              // primary: false,
+          child: ListView(
               shrinkWrap: true,
-              // physics: NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 120,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-              ),
-              padding: const EdgeInsets.all(10),
-              children: CATEGORIES_DATA
-                  .map(
-                    (e) => CategoriGridItem(
-                      e['title'] as String,
-                      e['icon'] as IconData,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Recent transactions',
+                        style: TextStyle(fontSize: 24, color: Colors.white),
+                      ),
                     ),
-                  )
-                  .toList(),
-            ),
-          ]),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'View all',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                GridView(
+                  // primary: false,
+                  shrinkWrap: true,
+                  // physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 120,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                  ),
+                  padding: const EdgeInsets.all(10),
+                  children: CATEGORIES_DATA
+                      .map(
+                        (e) => CategoriGridItem(
+                          e['title'] as String,
+                          e['icon'] as IconData,
+                        ),
+                      )
+                      .toList(),
+                ),
+              ]),
         ),
       ],
     );
