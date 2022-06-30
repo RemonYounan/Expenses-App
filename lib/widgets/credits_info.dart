@@ -18,60 +18,46 @@ class _CreditsInfoState extends State<CreditsInfo> {
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Card information',
-                  style: Theme.of(context).textTheme.titleLarge,
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              TextButton(
-                child: Text(
-                  'Edit',
-                  style: TextStyle(fontSize: 18),
-                ),
-                onPressed: () {},
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Cards information',
+              style: Theme.of(context).textTheme.titleLarge,
+              textAlign: TextAlign.center,
+            ),
           ),
           FutureBuilder(
             future: Provider.of<CreditCards>(context, listen: false)
                 .getCreditCards(),
-            builder: (ctx, snapshot) =>
-                //  snapshot.connectionState ==
-                //         ConnectionState.waiting
-                // //     ? const Center(
-                //         child: CircularProgressIndicator(),
-                //       )
-                //     :
-                Consumer<CreditCards>(
-              child: SizedBox(
-                height: 140,
-                child: Center(
-                  child: Text(
-                    'There is no credit cards.',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium!
-                        .copyWith(fontSize: 22),
-                  ),
-                ),
-              ),
-              builder: (ctx, credits, ch) => credits.creditCards.isEmpty
-                  ? ch!
-                  : ListView.builder(
-                      primary: false,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: credits.creditCards.length,
-                      itemBuilder: (_, i) =>
-                          CreditItem(credits.creditCards[i], i),
+            builder: (ctx, snapshot) => snapshot.connectionState ==
+                    ConnectionState.waiting
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Consumer<CreditCards>(
+                    child: SizedBox(
+                      height: 140,
+                      child: Center(
+                        child: Text(
+                          'There is no credit cards.',
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(fontSize: 22),
+                        ),
+                      ),
                     ),
-            ),
+                    builder: (ctx, credits, ch) => credits.creditCards.isEmpty
+                        ? ch!
+                        : ListView.builder(
+                            primary: false,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: credits.creditCards.length,
+                            itemBuilder: (_, i) =>
+                                CreditItem(credits.creditCards[i], i),
+                          ),
+                  ),
           ),
         ],
       ),

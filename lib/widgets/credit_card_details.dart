@@ -45,22 +45,24 @@ class CreditCardDetails extends StatelessWidget {
           } else if (i == 2) {
             value = number.toString();
           } else if (i == 3) {
-            value = pin.toString();
+            value = '****';
           } else if (i == 4) {
             value = expiryDate;
           } else if (i == 5) {
-            value = cvv.toString();
+            value = "***";
           }
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: Text(title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(fontSize: 18)),
+                child: Text(
+                  title,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(fontSize: 18),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10),
