@@ -43,116 +43,134 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          // shrinkWrap: true,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text(
-                'Add Credit Card',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontSize: 26,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            CustomFormField(
-              'User Name',
-              Icons.text_fields_rounded,
-              TextInputType.name,
-              TextInputAction.next,
-              false,
-              (value) {
-                if (value!.isEmpty) {
-                  return 'Enter a valid username';
-                }
-              },
-              (value) => name = value,
-            ),
-            CustomFormField(
-              'Credit Number',
-              Icons.numbers,
-              TextInputType.number,
-              TextInputAction.next,
-              false,
-              (value) {
-                if (value!.length != 16 || value.isEmpty) {
-                  return 'Enter a valid credit number';
-                }
-              },
-              (value) => number = int.parse(value!),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
+      body: SafeArea(
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              // shrinkWrap: true,
               children: [
-                Expanded(
-                  child: CustomFormField(
-                    'Expiry Month',
-                    Icons.date_range,
-                    TextInputType.datetime,
-                    TextInputAction.next,
-                    false,
-                    (value) {
-                      if (value!.isEmpty) {
-                        return 'Enter valid month';
-                      }
-                    },
-                    (value) => exMonth = int.parse(value!),
-                  ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: Icon(Icons.arrow_back_rounded),
+                      color: Colors.white,
+                      iconSize: 25,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        'Add Credit Card',
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              fontSize: 26,
+                            ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: CustomFormField(
-                    'Expiry Year',
-                    Icons.date_range,
-                    TextInputType.datetime,
-                    TextInputAction.next,
-                    false,
-                    (value) {
-                      if (value!.isEmpty) {
-                        return 'Enter valid year';
-                      }
-                    },
-                    (value) => exYear = int.parse(value!),
+                CustomFormField(
+                  'User Name',
+                  Icons.text_fields_rounded,
+                  TextInputType.name,
+                  TextInputAction.next,
+                  false,
+                  (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter a valid username';
+                    }
+                  },
+                  (value) => name = value,
+                ),
+                CustomFormField(
+                  'Credit Number',
+                  Icons.numbers,
+                  TextInputType.number,
+                  TextInputAction.next,
+                  false,
+                  (value) {
+                    if (value!.length != 16 || value.isEmpty) {
+                      return 'Enter a valid credit number';
+                    }
+                  },
+                  (value) => number = int.parse(value!),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(
+                      child: CustomFormField(
+                        'Expiry Month',
+                        Icons.date_range,
+                        TextInputType.datetime,
+                        TextInputAction.next,
+                        false,
+                        (value) {
+                          if (value!.isEmpty) {
+                            return 'Enter valid month';
+                          }
+                        },
+                        (value) => exMonth = int.parse(value!),
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomFormField(
+                        'Expiry Year',
+                        Icons.date_range,
+                        TextInputType.datetime,
+                        TextInputAction.next,
+                        false,
+                        (value) {
+                          if (value!.isEmpty) {
+                            return 'Enter valid year';
+                          }
+                        },
+                        (value) => exYear = int.parse(value!),
+                      ),
+                    ),
+                  ],
+                ),
+                CustomFormField(
+                  'PIN',
+                  Icons.password_rounded,
+                  TextInputType.number,
+                  TextInputAction.next,
+                  true,
+                  (value) {
+                    if (value!.length != 4) {
+                      return 'Enter a valid PIN';
+                    }
+                  },
+                  (value) => pin = int.parse(value!),
+                ),
+                CustomFormField(
+                  'CVV',
+                  Icons.password_rounded,
+                  TextInputType.number,
+                  TextInputAction.done,
+                  true,
+                  (value) {
+                    if (value!.length != 3) {
+                      return 'Enter a valid CVV';
+                    }
+                  },
+                  (value) => cvv = int.parse(value!),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                        // fixedSize: Size(40, 40),
+                        textStyle: Theme.of(context).textTheme.titleMedium),
+                    onPressed: _Submit,
+                    icon: Icon(Icons.add),
+                    label: const Text('Add Credit'),
                   ),
                 ),
               ],
             ),
-            CustomFormField(
-              'PIN',
-              Icons.password_rounded,
-              TextInputType.number,
-              TextInputAction.next,
-              true,
-              (value) {
-                if (value!.length != 4) {
-                  return 'Enter a valid PIN';
-                }
-              },
-              (value) => pin = int.parse(value!),
-            ),
-            CustomFormField(
-              'CVV',
-              Icons.password_rounded,
-              TextInputType.number,
-              TextInputAction.done,
-              true,
-              (value) {
-                if (value!.length != 3) {
-                  return 'Enter a valid CVV';
-                }
-              },
-              (value) => cvv = int.parse(value!),
-            ),
-            ElevatedButton.icon(
-              style:
-                  ButtonStyle(fixedSize: MaterialStateProperty.all(Size.zero)),
-              onPressed: _Submit,
-              icon: Icon(Icons.add),
-              label: Text('Add Credit'),
-            ),
-          ],
+          ),
         ),
       ),
     );
