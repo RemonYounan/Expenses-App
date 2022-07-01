@@ -1,10 +1,10 @@
 class CardInfo {
   static List<String> cardLabels = [
     'Card Type',
-    'Cardholder Name',
-    'Card Number',
+    'Cardholder name',
+    'Card number',
     'PIN',
-    'Expiry Date',
+    'Expiry date',
     'CVV',
   ];
 

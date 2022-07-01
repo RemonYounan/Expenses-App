@@ -18,7 +18,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
   String? name;
   int? number;
   var exMonth = '1';
-  var exYear = DateTime.now().year.toString();
+  var exYear = '22';
   int? pin;
   int? cvv;
 
@@ -249,6 +249,10 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(12),
                               border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
@@ -257,7 +261,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .titleMedium!
                                 .copyWith(
                                     fontSize: 22, fontWeight: FontWeight.bold),
-                            value: DateTime.now().year.toString(),
+                            value: '22',
                             items: yearDropdownItems,
                             onChanged: (String? value) {
                               setState(() {

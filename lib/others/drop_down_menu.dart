@@ -13,7 +13,7 @@ List<DropdownMenuItem<String>> get monthDropdownItems {
 
 List<DropdownMenuItem<String>> get yearDropdownItems {
   List<DropdownMenuItem<String>> yearMenuItems = [];
-  for (var i = DateTime.now().year; i < 2050; i++) {
+  for (var i = 22; i < 50; i++) {
     yearMenuItems.add(DropdownMenuItem(
       child: Text('$i'),
       value: '$i',
