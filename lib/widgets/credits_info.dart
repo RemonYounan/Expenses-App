@@ -21,7 +21,7 @@ class _CreditsInfoState extends State<CreditsInfo> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Cards information',
+              'Credit cards information',
               style: Theme.of(context).textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),

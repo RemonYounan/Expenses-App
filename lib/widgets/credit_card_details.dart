@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/others/card_data.dart';
 
 class CreditCardDetails extends StatelessWidget {
   CreditCardDetails({
@@ -23,41 +24,13 @@ class CreditCardDetails extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemCount: 6,
         itemBuilder: (_, i) {
-          late String title;
-          if (i == 0) {
-            title = 'Card Type';
-          } else if (i == 1) {
-            title = 'Cardholder Name';
-          } else if (i == 2) {
-            title = 'Card Number';
-          } else if (i == 3) {
-            title = 'PIN';
-          } else if (i == 4) {
-            title = 'Expiry Date';
-          } else if (i == 5) {
-            title = 'CVV';
-          }
-          var value;
-          if (i == 0) {
-            value = type;
-          } else if (i == 1) {
-            value = name;
-          } else if (i == 2) {
-            value = number.toString();
-          } else if (i == 3) {
-            value = '****';
-          } else if (i == 4) {
-            value = expiryDate;
-          } else if (i == 5) {
-            value = "***";
-          }
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  title,
+                  CardInfo.cardLabels[i],
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
@@ -67,7 +40,8 @@ class CreditCardDetails extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  value,
+                  CardInfo()
+                      .CardData(i, type, name, number, pin, expiryDate, cvv),
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!

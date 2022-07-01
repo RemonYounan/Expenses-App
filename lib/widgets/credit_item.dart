@@ -25,7 +25,7 @@ class _CreditItemState extends State<CreditItem> {
                 Padding(
                   padding: const EdgeInsets.all(4),
                   child: Text(
-                    'Card ${widget.index + 1}:',
+                    'Credit ${widget.index + 1} :',
                     style: Theme.of(context).textTheme.titleLarge,
                     textAlign: TextAlign.left,
                   ),

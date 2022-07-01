@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
 import 'package:personal_expenses/widgets/custom_form_filed.dart';
@@ -48,7 +46,6 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
           key: _formKey,
           child: SingleChildScrollView(
             child: Column(
-              // shrinkWrap: true,
               children: [
                 Row(
                   children: [
