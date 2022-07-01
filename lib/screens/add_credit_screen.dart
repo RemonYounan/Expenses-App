@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/others/drop_down_menu.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
 import 'package:personal_expenses/widgets/custom_form_filed.dart';
 import 'package:provider/provider.dart';
@@ -12,11 +13,12 @@ class AddCreditScreen extends StatefulWidget {
 }
 
 class _AddCreditScreenState extends State<AddCreditScreen> {
+  String type = 'Select one';
   final _formKey = GlobalKey<FormState>();
   String? name;
   int? number;
-  int? exMonth;
-  int? exYear;
+  var exMonth = '1';
+  var exYear = DateTime.now().year.toString();
   int? pin;
   int? cvv;
 
@@ -26,7 +28,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
       final credit = Provider.of<CreditCards>(context, listen: false);
       final _expiryDate = '$exMonth/$exYear';
       credit.AddCreditCard(
-        'Master Card',
+        type,
         name,
         number,
         pin,
@@ -47,25 +49,98 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back_rounded),
-                      color: Colors.white,
-                      iconSize: 25,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: Icon(Icons.arrow_back_rounded),
+                        color: Colors.white,
+                        iconSize: 25,
+                      ),
+                      Text(
                         'Add Credit Card',
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
                               fontSize: 26,
                             ),
                         textAlign: TextAlign.center,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Credit type :',
+                        style:
+                            Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontSize: 19,
+                                ),
+                      ),
+                      const Spacer(),
+                      SizedBox(
+                        width: 220,
+                        child: DropdownButtonFormField(
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(fontSize: 16),
+                            value: type,
+                            hint: Text(
+                              'Selecte one',
+                            ),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2,
+                                ),
+                              ),
+                              // enabledBorder: OutlineInputBorder(
+                              //   borderRadius: BorderRadius.circular(15),
+                              //   borderSide: BorderSide(
+                              //     color: Theme.of(context).primaryColor,
+                              //     width: 2,
+                              //   ),
+                              // ),
+                              iconColor:
+                                  Theme.of(context).colorScheme.secondary,
+                            ),
+                            dropdownColor: Theme.of(context).cardColor,
+                            items: [
+                              DropdownMenuItem(
+                                value: 'Select one',
+                                child: Text(
+                                  'Selecte one',
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: 'Master Card',
+                                child: Text(
+                                  'Master Card',
+                                ),
+                              ),
+                              DropdownMenuItem(
+                                value: 'Visa',
+                                child: Text(
+                                  'Visa',
+                                ),
+                              ),
+                            ],
+                            validator: (value) =>
+                                value == 'Select one' ? 'Select type' : null,
+                            onChanged: (String? value) {
+                              setState(() {
+                                type = value!;
+                              });
+                            }),
+                      ),
+                    ],
+                  ),
                 ),
                 CustomFormField(
                   'User Name',
@@ -77,6 +152,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                     if (value!.isEmpty) {
                       return 'Enter a valid username';
                     }
+                    return null;
                   },
                   (value) => name = value,
                 ),
@@ -90,43 +166,109 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                     if (value!.length != 16 || value.isEmpty) {
                       return 'Enter a valid credit number';
                     }
+                    return null;
                   },
                   (value) => number = int.parse(value!),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      child: CustomFormField(
-                        'Expiry Month',
-                        Icons.date_range,
-                        TextInputType.datetime,
-                        TextInputAction.next,
-                        false,
-                        (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter valid month';
-                          }
-                        },
-                        (value) => exMonth = int.parse(value!),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.date_range,
+                            color: Theme.of(context).colorScheme.secondary),
+                        SizedBox(
+                          width: 140,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              'Expiry Month',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(fontSize: 18),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 140,
+                          child: DropdownButtonFormField(
+                            dropdownColor: Theme.of(context).cardColor,
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.all(12),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                    fontSize: 22, fontWeight: FontWeight.bold),
+                            value: '1',
+                            items: monthDropdownItems,
+                            onChanged: (String? value) {
+                              setState(() {
+                                exMonth = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      child: CustomFormField(
-                        'Expiry Year',
-                        Icons.date_range,
-                        TextInputType.datetime,
-                        TextInputAction.next,
-                        false,
-                        (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter valid year';
-                          }
-                        },
-                        (value) => exYear = int.parse(value!),
-                      ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.date_range,
+                            color: Theme.of(context).colorScheme.secondary),
+                        SizedBox(
+                          width: 140,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Text(
+                              'Expiry Year',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(fontSize: 18),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 140,
+                          child: DropdownButtonFormField(
+                            dropdownColor: Theme.of(context).cardColor,
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.all(12),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                    fontSize: 22, fontWeight: FontWeight.bold),
+                            value: DateTime.now().year.toString(),
+                            items: yearDropdownItems,
+                            onChanged: (String? value) {
+                              setState(() {
+                                exYear = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
                 CustomFormField(
                   'PIN',
@@ -138,6 +280,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                     if (value!.length != 4) {
                       return 'Enter a valid PIN';
                     }
+                    return null;
                   },
                   (value) => pin = int.parse(value!),
                 ),
@@ -151,6 +294,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                     if (value!.length != 3) {
                       return 'Enter a valid CVV';
                     }
+                    return null;
                   },
                   (value) => cvv = int.parse(value!),
                 ),

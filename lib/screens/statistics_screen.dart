@@ -64,16 +64,19 @@ class StatisticsScreen extends StatelessWidget {
                             .copyWith(fontSize: 28),
                         textAlign: TextAlign.center,
                       ),
-                      Text(
-                        'This month total income',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(fontSize: 24, color: Colors.grey),
-                        textAlign: TextAlign.center,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'This month total income',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(fontSize: 24, color: Colors.grey),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                       SizedBox(height: 200, child: const IncomeChart()),
-                      SizedBox(height: 200, child: const IncomeSources()),
+                      // SizedBox(height: 200, child: const IncomeSources()),
                     ],
                   ),
                   const TransacrionList(),
