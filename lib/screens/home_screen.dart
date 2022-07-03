@@ -7,6 +7,7 @@ import 'package:personal_expenses/widgets/transaction_list.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
+  static const routeName = '/home-screen';
   NumberFormat numFormat = NumberFormat.decimalPattern('en_us');
 
   @override

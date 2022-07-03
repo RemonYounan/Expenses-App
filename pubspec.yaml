@@ -39,6 +39,7 @@ dependencies:
   sqflite:
   carousel_slider: ^4.1.1
   awesome_card: ^1.1.7
+  shared_preferences: ^2.0.15
   
 
 
@@ -73,8 +74,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - assets/undraw_stars_re_6je7.svg
+  assets:
+    - assets/welcome.svg
+    - assets/welcome.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
