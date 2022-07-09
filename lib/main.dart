@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            fontFamily: 'BRHendrix',
+            fontFamily: 'SourceSansPro',
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.blue,
               accentColor: Colors.amber,

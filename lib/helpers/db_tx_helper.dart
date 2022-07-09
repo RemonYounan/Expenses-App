@@ -10,7 +10,7 @@ class DBTxHelper {
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-            'CREATE TABLE UserTransactions(id TEXT PRIMARY KEY, title TEXT, amount REAL, date TEXT)');
+            'CREATE TABLE UserTransactions(id TEXT PRIMARY KEY, category TEXT, title TEXT, amount REAL, date TEXT)');
       },
     );
   }
@@ -42,5 +42,11 @@ class DBTxHelper {
     await db.transaction((txn) async {
       await txn.delete('UserTransactions', where: 'id = ?', whereArgs: [id]);
     });
+  }
+
+  static Future<void> deleteTable() async {
+    final db = await DBTxHelper.database();
+    await db.execute("DROP TABLE IF EXISTS UserTransactions");
+    print('table deleted');
   }
 }

@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:personal_expenses/screens/add_credit_screen.dart';
 import 'package:personal_expenses/screens/balance_screen.dart';
 import 'package:personal_expenses/screens/profile_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:personal_expenses/screens/home_screen.dart';
 import 'package:personal_expenses/screens/statistics_screen.dart';
 import 'package:personal_expenses/widgets/add_transaction.dart';
-import '../providers/transactions.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -36,14 +34,6 @@ class _MainScreenState extends State<MainScreen> {
       ProfileScreen(),
     ];
 
-    void _addTx(String title, double amount, DateTime date) {
-      final transaction = Provider.of<Transactions>(context, listen: false);
-      transaction.AddTransaction(
-        title,
-        amount,
-        date,
-      );
-    }
 
     void _addNewTransaction() {
       showModalBottomSheet(
@@ -52,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Theme.of(context).primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         builder: (_) {
-          return AddTransaction(_addTx);
+          return AddTransaction();
         },
       );
     }

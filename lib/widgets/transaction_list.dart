@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/others/transaction_icon.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import '../providers/transactions.dart';
@@ -20,7 +21,15 @@ class TransacrionList extends StatelessWidget {
               child: SizedBox(
                 height: 140,
                 child: Center(
-                  child: Text(
+                  child:
+                      // IconButton(
+                      //   icon: Icon(Icons.add),
+                      //   onPressed: () {
+                      //     Provider.of<Transactions>(context, listen: false)
+                      //         .deleteTable();
+                      //   },
+                      // )
+                      Text(
                     'There is no transactions.',
                     style: Theme.of(context)
                         .textTheme
@@ -45,9 +54,12 @@ class TransacrionList extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             // tileColor: Colors.deepPurpleAccent,
-                            leading: const CircleAvatar(
-                              child: Icon(Icons.attach_money_rounded,
-                                  color: Colors.amber, size: 30),
+                            leading: CircleAvatar(
+                              child: Icon(
+                                  TransactionIcon.getIcon(transactions
+                                      .transactions[index].category!),
+                                  color: Colors.amber,
+                                  size: 30),
                               // backgroundColor: Colors.white,
                               radius: 30,
                             ),
@@ -98,8 +110,11 @@ class TransacrionList extends StatelessWidget {
                                     ),
                                     PopupMenuItem(
                                       value: 1,
-                                      onTap: () =>
-                                          print('delete pressed form onTap'),
+                                      onTap: () => Provider.of<Transactions>(
+                                              context,
+                                              listen: false)
+                                          .deleteTx(transactions
+                                              .transactions[index].id!),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,

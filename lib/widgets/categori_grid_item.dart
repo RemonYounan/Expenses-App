@@ -8,31 +8,38 @@ class CategoriGridItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridTile(
-      child: Card(
-        elevation: 20,
-        color: Theme.of(context).primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              color: Colors.blue,
-              size: 50,
-            ),
-            Text(
-              title,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            Text(
-              '-\$40',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: Colors.grey),
-            )
-          ],
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        radius: 20,
+        onTap: () {
+          
+        },
+        child: Card(
+          elevation: 20,
+          color: Theme.of(context).primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Column(
+            children: [
+              Icon(
+                icon,
+                color: Colors.blue,
+                size: 50,
+              ),
+              Text(
+                title,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                '-\$40',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(color: Colors.grey),
+              )
+            ],
+          ),
         ),
       ),
     );

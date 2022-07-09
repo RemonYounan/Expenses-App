@@ -9,11 +9,13 @@ class Transactions with ChangeNotifier {
     return _transactions;
   }
 
-  void AddTransaction(String title, double amount, DateTime date) async {
+  void AddTransaction(
+      String category, String title, double amount, DateTime date) async {
     final idDateTime = DateTime.now().toString();
     _transactions.add(
       UserTransaction(
         id: idDateTime,
+        category: category,
         title: title,
         amount: amount,
         date: date,
@@ -23,6 +25,7 @@ class Transactions with ChangeNotifier {
     try {
       await DBTxHelper.insert('UserTransactions', {
         'id': idDateTime,
+        'category': category,
         'title': title,
         'amount': amount,
         'date': date.toIso8601String(),
@@ -39,6 +42,7 @@ class Transactions with ChangeNotifier {
         (item) {
           return UserTransaction(
             id: item['id'].toString(),
+            category: item['category'],
             title: item['title'],
             amount: item['amount'],
             date: DateTime.parse(item['date'] as String),
@@ -55,5 +59,9 @@ class Transactions with ChangeNotifier {
     _transactions.removeWhere((element) => element.id == id);
     await DBTxHelper.deleteTx(id);
     notifyListeners();
+  }
+
+  void deleteTable() async {
+    await DBTxHelper.deleteTable();
   }
 }

@@ -73,12 +73,19 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: [
-                      Text(
-                        'Credit type :',
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  fontSize: 19,
-                                ),
+                      Icon(
+                        Icons.credit_card_outlined,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Credit type :',
+                          style:
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    fontSize: 19,
+                                  ),
+                        ),
                       ),
                       const Spacer(),
                       SizedBox(

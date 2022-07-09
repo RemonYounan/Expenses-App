@@ -101,10 +101,12 @@ flutter:
           weight: 700
         - asset: assets/fonts/SourceSansPro-Italic.ttf
           style: italic
-    - family: BRHendrix
-      fonts:
-        - asset: assets/fonts/BRHendrix-Bold.otf
-          weight: 700
+    # - family: BRHendrix
+    #   fonts:
+    #     - asset: assets/fonts/BRHendrix-Regular.otf
+    #     - asset: assets/fonts/BRHendrix-Black.otf
+        # - asset: assets/fonts/BRHendrix-Bold.otf
+          # weight: 700
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

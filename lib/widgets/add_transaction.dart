@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:personal_expenses/providers/transactions.dart';
+import 'package:provider/provider.dart';
 
 class AddTransaction extends StatefulWidget {
   @override
   State<AddTransaction> createState() => _AddTransactionState();
-  final Function(String title, double amount, DateTime date) _addTx;
 
-  const AddTransaction(this._addTx, {Key? key}) : super(key: key);
+  const AddTransaction({Key? key}) : super(key: key);
 }
 
 class _AddTransactionState extends State<AddTransaction> {
   final _formKey = GlobalKey<FormState>();
   final icondropdown = '0';
+  String category = 'Other';
   String? title;
   double? amount;
   var _pickedDate;
@@ -19,8 +21,8 @@ class _AddTransactionState extends State<AddTransaction> {
   void _submitData() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      widget._addTx(title!, amount!, _pickedDate);
-      print('added');
+      Provider.of<Transactions>(context, listen: false)
+          .AddTransaction(category, title!, amount!, _pickedDate);
       Navigator.of(context).pop();
     }
   }
@@ -69,13 +71,64 @@ class _AddTransactionState extends State<AddTransaction> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: Text(
-                      'Icon :',
-                      textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.titleLarge,
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.category_rounded,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: Text(
+                      'Category :',
+                      textAlign: TextAlign.start,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 40,
+                  ),
+                  SizedBox(
+                    width: 160,
+                    child: DropdownButtonFormField(
+                      dropdownColor: Theme.of(context).cardColor,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(8),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      items: [
+                        DropdownMenuItem(
+                          child: Text('Travel'),
+                          value: 'Travel',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('Food'),
+                          value: 'Food',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('Health'),
+                          value: 'Health',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('Sports'),
+                          value: 'Sports',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('Electricity'),
+                          value: 'Electricity',
+                        ),
+                        DropdownMenuItem(
+                          child: Text('Other'),
+                          value: 'Other',
+                        ),
+                      ],
+                      value: category,
+                      onChanged: (String? value) => category = value!,
+                      // onSaved: (String? value) => categorie = value!,
+                    ),
+                  )
                 ],
               ),
               Padding(
@@ -83,6 +136,10 @@ class _AddTransactionState extends State<AddTransaction> {
                 child: TextFormField(
                   key: const ValueKey('Title'),
                   decoration: InputDecoration(
+                    icon: Icon(
+                      Icons.title_rounded,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
                     labelText: 'Title',
                     labelStyle: Theme.of(context).textTheme.titleMedium,
                   ),
@@ -101,6 +158,10 @@ class _AddTransactionState extends State<AddTransaction> {
                 child: TextFormField(
                   key: const ValueKey('Amount'),
                   decoration: InputDecoration(
+                    icon: Icon(
+                      Icons.local_atm_outlined,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
                     labelText: 'Amount',
                     labelStyle: Theme.of(context).textTheme.titleMedium,
                   ),
@@ -116,21 +177,34 @@ class _AddTransactionState extends State<AddTransaction> {
                 ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(
-                    _pickedDate == null
-                        ? 'No date choosen.'
-                        : 'Date: ${DateFormat.yMd().format(_pickedDate)}',
-                    style: Theme.of(context).textTheme.titleMedium,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.date_range,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
                   ),
-                  TextButton(
-                    onPressed: _datePicker,
+                  Expanded(
+                    flex: 2,
                     child: Text(
-                      'Choose date',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 18),
+                      _pickedDate == null
+                          ? 'No date choosen.'
+                          : 'Date: ${DateFormat.yMd().format(_pickedDate)}',
+                      style: Theme.of(context).textTheme.titleMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: TextButton(
+                      onPressed: _datePicker,
+                      child: Text(
+                        'Choose date',
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontSize: 18),
+                      ),
                     ),
                   ),
                 ],
@@ -153,88 +227,3 @@ class _AddTransactionState extends State<AddTransaction> {
     );
   }
 }
-
-// SingleChildScrollView(
-//       child: Padding(
-//         padding: EdgeInsets.only(
-//             top: 8,
-//             left: 8,
-//             right: 8,
-//             bottom: MediaQuery.of(context).viewInsets.bottom),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.all(10.0),
-//               child: Text(
-//                 'Add New Transaction',
-//                 softWrap: true,
-//                 style: Theme.of(context).textTheme.headlineMedium,
-//                 textAlign: TextAlign.center,
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(6.0),
-//               child: Text(
-//                 'Icon',
-//                 textAlign: TextAlign.start,
-//                 style: Theme.of(context).textTheme.titleLarge,
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(6.0),
-//               child: TextField(
-//                 key: const ValueKey('Title'),
-//                 decoration: InputDecoration(
-//                   labelText: 'Title',
-//                   labelStyle: Theme.of(context).textTheme.titleMedium,
-//                 ),
-//                 controller: _titleControler,
-//                 textInputAction: TextInputAction.next,
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(6.0),
-//               child: TextField(
-//                 key: const ValueKey('Title'),
-//                 decoration: InputDecoration(
-//                   labelText: 'Amount',
-//                   labelStyle: Theme.of(context).textTheme.titleMedium,
-//                 ),
-//                 controller: _amountControler,
-//                 keyboardType: TextInputType.number,
-//                 textInputAction: TextInputAction.done,
-//               ),
-//             ),
-//             Container(
-//               padding: const EdgeInsets.all(10),
-//               height: 70,
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 children: [
-//                   Text(
-//                     _pickedDate == null
-//                      //   ? 'No date choosen.'
-//                         : 'Date: ${DateFormat.yMd().format(_pickedDate)}',
-//                     style: Theme.of(context).textTheme.titleMedium,
-//                   ),
-//                   TextButton(
-//                     onPressed: _datePicker,
-//                     child: const Text('Choose date'),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.all(12),
-//               child: ElevatedButton(
-//                 onPressed: _submitData,
-//                 child: const Text(
-//                   'Add Transaction',
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
