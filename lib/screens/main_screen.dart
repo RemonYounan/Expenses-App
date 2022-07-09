@@ -1,4 +1,6 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/screens/add_credit_screen.dart';
 import 'package:personal_expenses/screens/balance_screen.dart';
 import 'package:personal_expenses/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
@@ -58,43 +60,44 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        // backgroundColor: const Color.fromRGBO(15, 32, 39, 1),
-        backgroundColor: Theme.of(context).primaryColor,
-        selectedItemColor: Theme.of(context).accentColor,
-        unselectedItemColor: Colors.white,
-        iconSize: 30,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet_outlined),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.stacked_bar_chart),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+          backgroundColor: Theme.of(context).primaryColor,
+          activeColor: Theme.of(context).colorScheme.secondary,
+          inactiveColor: Colors.white54,
+          borderColor: Theme.of(context).cardColor,
+          backgroundGradient: LinearGradient(colors: [
+            Theme.of(context).cardColor,
+            Theme.of(context).cardColor,
+          ]),
+          // gapWidth: 50,
+          notchSmoothness: NotchSmoothness.smoothEdge,
+          hideAnimationCurve: Curves.easeIn,
+          rightCornerRadius: 0,
+          blurEffect: true,
+          notchMargin: 10,
+          gapLocation: GapLocation.end,
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          activeIndex: _selectedIndex,
+          iconSize: 30,
+          icons: [
+            Icons.home_filled,
+            Icons.account_balance_wallet_outlined,
+            Icons.stacked_bar_chart,
+            Icons.person
+          ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _selectedIndex == 3
+            ? () {
+                Navigator.pushNamed(context, AddCreditScreen.routeName);
+              }
+            : _addNewTransaction,
+        child: Icon(_selectedIndex == 3 ? Icons.credit_card : Icons.add),
       ),
-      floatingActionButton: _selectedIndex == 3
-          ? null
-          : FloatingActionButton(
-              onPressed: _addNewTransaction,
-              child: const Icon(Icons.add),
-            ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
 }

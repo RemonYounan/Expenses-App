@@ -59,14 +59,14 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            fontFamily: 'SourceSansPro',
+            fontFamily: 'BRHendrix',
             colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.blue,
               accentColor: Colors.amber,
             ),
             primaryColor: const Color.fromRGBO(32, 58, 67, 1),
           ),
-          home: value.checkIsFirst ? WelcomeScreen() : MainScreen(),
+          home: WelcomeScreen(),
           routes: {
             MainScreen.routeName: (context) => MainScreen(),
             HomeScreen.routeName: (context) => HomeScreen(),

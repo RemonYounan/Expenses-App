@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
               child: Icon(Icons.account_circle),
             ),
             title: const Text(
-              'Welcome...',
+              'Welcome person',
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         Text(
-          '\$${numFormat.format(5000)}',
+          '\$${numFormat.format(4000)}',
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 22,

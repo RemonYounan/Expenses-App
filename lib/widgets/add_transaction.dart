@@ -10,21 +10,19 @@ class AddTransaction extends StatefulWidget {
 }
 
 class _AddTransactionState extends State<AddTransaction> {
-  final _titleControler = TextEditingController();
-  final _amountControler = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final icondropdown = '0';
+  String? title;
+  double? amount;
   var _pickedDate;
 
   void _submitData() {
-    if (_amountControler.text.isEmpty) {
-      return;
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      widget._addTx(title!, amount!, _pickedDate);
+      print('added');
+      Navigator.of(context).pop();
     }
-    final title = _titleControler.text;
-    final amount = double.parse(_amountControler.text);
-    if (title.isEmpty || amount == 0 || _pickedDate == null) {
-      return;
-    }
-    widget._addTx(title, amount, _pickedDate);
-    Navigator.of(context).pop();
   }
 
   void _datePicker() {
@@ -48,54 +46,76 @@ class _AddTransactionState extends State<AddTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.only(
-            top: 10,
-            left: 10,
-            right: 10,
-            bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: Column(
-          // mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                'Add New Transaction',
-                softWrap: true,
-                style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: TextField(
-                key: const ValueKey('Title'),
-                decoration: InputDecoration(
-                  labelText: 'Title',
-                  labelStyle: Theme.of(context).textTheme.titleMedium,
+    return Padding(
+      padding: EdgeInsets.only(
+          top: 8,
+          left: 8,
+          right: 8,
+          bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  'Add New Transaction',
+                  softWrap: true,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                  textAlign: TextAlign.center,
                 ),
-                controller: _titleControler,
-                textInputAction: TextInputAction.next,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: TextField(
-                key: const ValueKey('Title'),
-                decoration: InputDecoration(
-                  labelText: 'Amount',
-                  labelStyle: Theme.of(context).textTheme.titleMedium,
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: Text(
+                      'Icon :',
+                      textAlign: TextAlign.start,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: TextFormField(
+                  key: const ValueKey('Title'),
+                  decoration: InputDecoration(
+                    labelText: 'Title',
+                    labelStyle: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  textInputAction: TextInputAction.next,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter Title';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => title = value,
                 ),
-                controller: _amountControler,
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.done,
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              height: 70,
-              child: Row(
+              Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: TextFormField(
+                  key: const ValueKey('Amount'),
+                  decoration: InputDecoration(
+                    labelText: 'Amount',
+                    labelStyle: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  keyboardType: TextInputType.number,
+                  textInputAction: TextInputAction.next,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter Amount';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => amount = double.parse(value!),
+                ),
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
@@ -106,20 +126,115 @@ class _AddTransactionState extends State<AddTransaction> {
                   ),
                   TextButton(
                     onPressed: _datePicker,
-                    child: const Text('Choose date'),
+                    child: Text(
+                      'Choose date',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 18),
+                    ),
                   ),
                 ],
               ),
-            ),
-            ElevatedButton(
-              onPressed: _submitData,
-              child: const Text(
-                'Add Transaction',
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: _submitData,
+                child: const Text(
+                  'Add Transaction',
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
+// SingleChildScrollView(
+//       child: Padding(
+//         padding: EdgeInsets.only(
+//             top: 8,
+//             left: 8,
+//             right: 8,
+//             bottom: MediaQuery.of(context).viewInsets.bottom),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(10.0),
+//               child: Text(
+//                 'Add New Transaction',
+//                 softWrap: true,
+//                 style: Theme.of(context).textTheme.headlineMedium,
+//                 textAlign: TextAlign.center,
+//               ),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(6.0),
+//               child: Text(
+//                 'Icon',
+//                 textAlign: TextAlign.start,
+//                 style: Theme.of(context).textTheme.titleLarge,
+//               ),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(6.0),
+//               child: TextField(
+//                 key: const ValueKey('Title'),
+//                 decoration: InputDecoration(
+//                   labelText: 'Title',
+//                   labelStyle: Theme.of(context).textTheme.titleMedium,
+//                 ),
+//                 controller: _titleControler,
+//                 textInputAction: TextInputAction.next,
+//               ),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(6.0),
+//               child: TextField(
+//                 key: const ValueKey('Title'),
+//                 decoration: InputDecoration(
+//                   labelText: 'Amount',
+//                   labelStyle: Theme.of(context).textTheme.titleMedium,
+//                 ),
+//                 controller: _amountControler,
+//                 keyboardType: TextInputType.number,
+//                 textInputAction: TextInputAction.done,
+//               ),
+//             ),
+//             Container(
+//               padding: const EdgeInsets.all(10),
+//               height: 70,
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                 children: [
+//                   Text(
+//                     _pickedDate == null
+//                      //   ? 'No date choosen.'
+//                         : 'Date: ${DateFormat.yMd().format(_pickedDate)}',
+//                     style: Theme.of(context).textTheme.titleMedium,
+//                   ),
+//                   TextButton(
+//                     onPressed: _datePicker,
+//                     child: const Text('Choose date'),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(12),
+//               child: ElevatedButton(
+//                 onPressed: _submitData,
+//                 child: const Text(
+//                   'Add Transaction',
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );

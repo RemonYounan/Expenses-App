@@ -100,13 +100,6 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                   width: 2,
                                 ),
                               ),
-                              // enabledBorder: OutlineInputBorder(
-                              //   borderRadius: BorderRadius.circular(15),
-                              //   borderSide: BorderSide(
-                              //     color: Theme.of(context).primaryColor,
-                              //     width: 2,
-                              //   ),
-                              // ),
                               iconColor:
                                   Theme.of(context).colorScheme.secondary,
                             ),
@@ -207,7 +200,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .titleMedium!
                                 .copyWith(
                                     fontSize: 22, fontWeight: FontWeight.bold),
-                            value: '1',
+                            value: exMonth,
                             items: monthDropdownItems,
                             onChanged: (String? value) {
                               setState(() {
@@ -261,7 +254,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .titleMedium!
                                 .copyWith(
                                     fontSize: 22, fontWeight: FontWeight.bold),
-                            value: '22',
+                            value: exYear,
                             items: yearDropdownItems,
                             onChanged: (String? value) {
                               setState(() {
