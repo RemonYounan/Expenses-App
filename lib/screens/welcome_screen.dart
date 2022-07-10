@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:personal_expenses/providers/welcom_prefs.dart';
 import 'package:personal_expenses/screens/main_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -62,22 +61,28 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     color: Theme.of(context).cardColor),
                 // color: Theme.of(context).cardColor,
-                child: TextButton(
-                  clipBehavior: Clip.antiAlias,
-                  style: TextButton.styleFrom(),
-                  onPressed: () {
-                    Provider.of<WelcomePrefs>(context, listen: false)
-                        .RemoveFirst();
-                    Navigator.pushReplacementNamed(
-                        context, MainScreen.routeName);
-                  },
-                  child: Text(
-                    'Start Now',
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .secondary
-                            .withOpacity(.8)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    bottomLeft: Radius.circular(50),
+                  ),
+                  child: TextButton(
+                    clipBehavior: Clip.antiAlias,
+                    style: TextButton.styleFrom(),
+                    onPressed: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      prefs.setBool('showHome', true);
+                      Navigator.pushReplacementNamed(
+                          context, MainScreen.routeName);
+                    },
+                    child: Text(
+                      'Start Now',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .secondary
+                              .withOpacity(.8)),
+                    ),
                   ),
                 ),
               ),

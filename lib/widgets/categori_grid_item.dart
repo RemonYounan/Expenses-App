@@ -10,10 +10,7 @@ class CategoriGridItem extends StatelessWidget {
     return GridTile(
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        radius: 20,
-        onTap: () {
-          
-        },
+        onTap: () {},
         child: Card(
           elevation: 20,
           color: Theme.of(context).primaryColor,

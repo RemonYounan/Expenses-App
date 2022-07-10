@@ -17,29 +17,23 @@ class BalanceScreen extends StatelessWidget {
       // physics: NeverScrollableScrollPhysics(),
       children: [
         Padding(
-          padding: const EdgeInsets.all(4),
+          padding: const EdgeInsets.only(right: 4),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.filter_list_rounded),
-                  color: Theme.of(context).colorScheme.secondary,
-                  iconSize: 30,
-                ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.filter_list_rounded),
+                color: Theme.of(context).colorScheme.secondary,
+                iconSize: 28,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, NotificationsScreen.routeName);
-                  },
-                  icon: const Icon(Icons.notifications),
-                  color: Theme.of(context).colorScheme.secondary,
-                  iconSize: 30,
-                ),
+              IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, NotificationsScreen.routeName);
+                },
+                icon: const Icon(Icons.notifications),
+                color: Theme.of(context).colorScheme.secondary,
+                iconSize: 28,
               ),
             ],
           ),
@@ -52,15 +46,12 @@ class BalanceScreen extends StatelessWidget {
               ),
           textAlign: TextAlign.center,
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            '\$${numFormat.format(4000)}',
-            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontSize: 32,
-                ),
-            textAlign: TextAlign.center,
-          ),
+        Text(
+          '\$${numFormat.format(4000)}',
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontSize: 32,
+              ),
+          textAlign: TextAlign.center,
         ),
         const CreditCardCarouse(),
         Card(
@@ -73,23 +64,23 @@ class BalanceScreen extends StatelessWidget {
                 Row(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 10, top: 10),
                       child: Text(
                         'Categories',
                         style: TextStyle(fontSize: 24, color: Colors.white),
                       ),
                     ),
                     const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'View all',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(right: 10),
+                    //   child: TextButton(
+                    //     onPressed: () {},
+                    //     child: const Text(
+                    //       'View all',
+                    //       style: TextStyle(fontSize: 20),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
                 GridView(

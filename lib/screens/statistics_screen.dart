@@ -29,13 +29,13 @@ class StatisticsScreen extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             ClipRRect(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
+              borderRadius: BorderRadius.circular(20),
               child: TabBar(
                 padding: const EdgeInsets.all(15),
                 labelStyle:
                     const TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
                 indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16), // Creates border
+                    borderRadius: BorderRadius.circular(20), // Creates border
                     color: Colors.deepPurpleAccent),
                 tabs: const [
                   Tab(
