@@ -34,7 +34,6 @@ class _MainScreenState extends State<MainScreen> {
       ProfileScreen(),
     ];
 
-
     void _addNewTransaction() {
       showModalBottomSheet(
         context: context,
@@ -58,6 +57,8 @@ class _MainScreenState extends State<MainScreen> {
           backgroundGradient: LinearGradient(colors: [
             Theme.of(context).cardColor,
             Theme.of(context).cardColor,
+            // Theme.of(context).cardTheme.color!,
+            // Theme.of(context).cardTheme.color!,
           ]),
           // gapWidth: 50,
           notchSmoothness: NotchSmoothness.smoothEdge,

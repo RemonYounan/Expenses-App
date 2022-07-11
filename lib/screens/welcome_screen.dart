@@ -8,86 +8,96 @@ class WelcomeScreen extends StatelessWidget {
     MediaQueryData mediaQuery = MediaQuery.of(context);
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
+      body: Stack(
         children: [
-          Image.asset(
-            'assets/welcome.png',
-            fit: BoxFit.cover,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.only(bottomRight: Radius.circular(50))),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Save your \ntime & less \nExpense',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontSize: 55,
-                      color: Colors.green.shade300,
-                    ),
-              ),
+          Positioned.fill(
+            child: Image.asset(
+              'assets/screenshot_1.png',
+              fit: BoxFit.cover,
             ),
           ),
-          const Spacer(),
-          Row(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: mediaQuery.size.width * .5,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    color: Theme.of(context).primaryColor),
-                // color: Theme.of(context).cardColor,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Skip',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: Colors.grey),
-                  ),
+              SizedBox(
+                height: mediaQuery.size.height * .57,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: Text(
+                  'Save your \ntime & less \nExpense',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontSize: 50,
+                        color: Colors.green.shade300,
+                      ),
                 ),
               ),
-              Container(
-                height: 90,
-                width: MediaQuery.of(context).size.width * .5,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      bottomLeft: Radius.circular(50),
-                    ),
-                    color: Theme.of(context).cardColor),
-                // color: Theme.of(context).cardColor,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(50),
-                    bottomLeft: Radius.circular(50),
-                  ),
-                  child: TextButton(
-                    clipBehavior: Clip.antiAlias,
-                    style: TextButton.styleFrom(),
-                    onPressed: () async {
-                      final prefs = await SharedPreferences.getInstance();
-                      prefs.setBool('showHome', true);
-                      Navigator.pushReplacementNamed(
-                          context, MainScreen.routeName);
-                    },
-                    child: Text(
-                      'Start Now',
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .secondary
-                              .withOpacity(.8)),
-                    ),
-                  ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Text(
+                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin elementum orci sed condimentum.',
+                      style: TextStyle(color: Colors.grey)),
                 ),
+              ),
+              const Spacer(),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Skip',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(color: Colors.grey),
+                      ),
+                    ),
+                  ),
+                  // const Spacer(),
+                  Container(
+                    height: mediaQuery.size.height * .1,
+                    width: MediaQuery.of(context).size.width * .5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        bottomLeft: Radius.circular(40),
+                      ),
+                      color: Theme.of(context).cardColor,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        bottomLeft: Radius.circular(40),
+                      ),
+                      child: TextButton(
+                        style: TextButton.styleFrom(),
+                        onPressed: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setBool('showHome', true);
+                          Navigator.pushReplacementNamed(
+                              context, MainScreen.routeName);
+                        },
+                        child: Text(
+                          'Start Now',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .secondary
+                                      .withOpacity(.8)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
-          )
+          ),
         ],
       ),
     );

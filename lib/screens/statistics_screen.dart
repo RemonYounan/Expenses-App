@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/widgets/all_transactions.dart';
 import 'package:personal_expenses/widgets/income_chart.dart';
-import 'package:personal_expenses/widgets/income_sources.dart';
-import 'package:personal_expenses/widgets/transaction_list.dart';
 
 class StatisticsScreen extends StatelessWidget {
   StatisticsScreen({Key? key}) : super(key: key);
@@ -79,7 +78,7 @@ class StatisticsScreen extends StatelessWidget {
                       // SizedBox(height: 200, child: const IncomeSources()),
                     ],
                   ),
-                  const TransacrionList(),
+                  const AllTransactions(),
                 ],
               ),
             ),

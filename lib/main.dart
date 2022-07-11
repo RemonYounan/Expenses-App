@@ -37,8 +37,9 @@ class MyApp extends StatelessWidget {
         title: 'Personal Expenses',
         themeMode: ThemeMode.system,
         theme: ThemeData(
-          cardColor: Color.fromARGB(255, 20, 42, 49),
+          cardColor: Color.fromARGB(255, 33, 21, 36),
           cardTheme: CardTheme(
+            color: Color.fromARGB(255, 33, 21, 36),
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             accentColor: Colors.amber,
           ),
-          primaryColor: const Color.fromRGBO(32, 58, 67, 1),
+          primaryColor: Color.fromARGB(255, 57, 39, 63),
         ),
         home: showHome ? MainScreen() : WelcomeScreen(),
         routes: {

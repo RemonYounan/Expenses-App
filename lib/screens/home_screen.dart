@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:personal_expenses/screens/notifications_screen.dart';
-import 'package:personal_expenses/screens/statistics_screen.dart';
+import 'package:personal_expenses/widgets/all_transactions.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
-import 'package:personal_expenses/widgets/transaction_list.dart';
+import 'package:personal_expenses/widgets/recent_transactions.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   static const routeName = '/home-screen';
-  NumberFormat numFormat = NumberFormat.decimalPattern('en_us');
+  final numFormat = NumberFormat.decimalPattern('en_us');
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +62,6 @@ class HomeScreen extends StatelessWidget {
         ),
         const CreditCardCarouse(),
         Card(
-          // margin: const EdgeInsets.all(15),
-          elevation: 30,
-          borderOnForeground: true,
-          color: Theme.of(context).cardColor,
           child: ListView(
             primary: false,
             shrinkWrap: true,
@@ -84,7 +80,12 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AllTransactions()));
+                      },
                       child: const Text(
                         'View all',
                         style: TextStyle(fontSize: 20),
@@ -93,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              TransacrionList(),
+              RecentTransactions(),
             ],
           ),
         ),

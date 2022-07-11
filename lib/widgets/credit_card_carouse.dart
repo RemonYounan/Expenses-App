@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:awesome_card/awesome_card.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
+import 'package:personal_expenses/screens/add_credit_screen.dart';
 import 'package:provider/provider.dart';
 
 class CreditCardCarouse extends StatelessWidget {
@@ -9,43 +10,49 @@ class CreditCardCarouse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    return CarouselSlider(
-      items: [
-        Builder(
-          builder: (ctx) {
-            return FutureBuilder(
-              future: Provider.of<CreditCards>(context).getCreditCards(),
-              builder: (context, snapshot) => Consumer<CreditCards>(
-                child: Center(child: Text('no credits added yet')),
-                builder: (context, value, ch) => value.creditCards.isEmpty
-                    ? ch!
-                    : CreditCard(
-                        cardNumber: value.creditCards[0].number
-                            .toString()
-                            .replaceRange(0, 12, '**** **** **** '),
-                        cardExpiry: value.creditCards[0].expiryDate,
-                        cardHolderName: value.creditCards[0].name,
-                        cvv: '${value.creditCards[0].cvv}',
-                        bankName: value.creditCards[0].type!,
-                        cardType: CardType.masterCard,
-                        frontBackground: CardBackgrounds.black,
-                        backBackground: CardBackgrounds.black,
-                        // width: mediaQuery.size.width * .9,
-                        // height: mediaQuery.size.width * .55,
-                      ),
-              ),
-            );
-          },
+    return FutureBuilder(
+      future: Provider.of<CreditCards>(context).getCreditCards(),
+      builder: (context, snapshot) => Consumer<CreditCards>(
+        child: SizedBox(
+          height: 150,
+          width: 150,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'add',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-      ],
-      options: CarouselOptions(
-        // viewportFraction: .76,
-        enlargeStrategy: CenterPageEnlargeStrategy.scale,
-        clipBehavior: Clip.antiAlias,
-        enlargeCenterPage: true,
-        // autoPlay: true,
-        // padEnds: false,
+        builder: (context, value, ch) => value.creditCards.isEmpty
+            ? ch!
+            : CarouselSlider(
+                items: [
+                  CreditCard(
+                    cardNumber: value.creditCards[0].number
+                        .toString()
+                        .replaceRange(0, 12, '**** **** **** '),
+                    cardExpiry: value.creditCards[0].expiryDate,
+                    cardHolderName: value.creditCards[0].name,
+                    cvv: '${value.creditCards[0].cvv}',
+                    bankName: value.creditCards[0].type!,
+                    cardType: CardType.masterCard,
+                    frontBackground: CardBackgrounds.black,
+                    backBackground: CardBackgrounds.black,
+                    // width: mediaQuery.size.width * .9,
+                    // height: mediaQuery.size.width * .55,
+                  ),
+                ],
+                options: CarouselOptions(),
+              ),
       ),
     );
   }
