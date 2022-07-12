@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:personal_expenses/screens/notifications_screen.dart';
 import 'package:personal_expenses/widgets/all_transactions.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
+import 'package:personal_expenses/widgets/custompainter.dart';
 import 'package:personal_expenses/widgets/recent_transactions.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,6 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     return ListView(
       children: [
         Padding(
@@ -61,38 +63,46 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const CreditCardCarouse(),
-        Card(
+        CustomPaint(
+          painter: RPSCustomPainter(context),
+          // size: Size(400, 800),
           child: ListView(
             primary: false,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             children: [
-              Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      'Recent transactions',
-                      style: TextStyle(fontSize: 24, color: Colors.white),
-                    ),
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AllTransactions(true)));
-                      },
-                      child: const Text(
-                        'View all',
-                        style: TextStyle(fontSize: 20),
+              // SizedBox(
+              //   height: 100,
+              // ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Recent transactions',
+                        style: TextStyle(fontSize: 24, color: Colors.white),
                       ),
                     ),
-                  ),
-                ],
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllTransactions(true)));
+                        },
+                        child: const Text(
+                          'View all',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               RecentTransactions(),
             ],

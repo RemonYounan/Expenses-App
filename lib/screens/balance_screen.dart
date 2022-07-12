@@ -4,7 +4,7 @@ import 'package:personal_expenses/others/categories_data.dart';
 import 'package:personal_expenses/screens/notifications_screen.dart';
 import 'package:personal_expenses/widgets/categori_grid_item.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
-import 'package:personal_expenses/widgets/custom_card.dart';
+import 'package:personal_expenses/widgets/custompainter.dart';
 
 class BalanceScreen extends StatelessWidget {
   const BalanceScreen({Key? key}) : super(key: key);
@@ -25,13 +25,7 @@ class BalanceScreen extends StatelessWidget {
               InkWell(
                 borderRadius: BorderRadius.circular(40),
                 radius: 50,
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CustomCard(),
-                      ));
-                },
+                onTap: () {},
                 child: Image.asset(
                   'assets/arrows.png',
                   color: Theme.of(context).colorScheme.secondary,
@@ -65,39 +59,23 @@ class BalanceScreen extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const CreditCardCarouse(),
-        Card(
-          color: Theme.of(context).cardColor,
-          clipBehavior: Clip.antiAlias,
+        CustomPaint(
+          painter: RPSCustomPainter(context),
           child: ListView(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               children: [
-                Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, top: 10),
-                      child: Text(
-                        'Categories',
-                        style: TextStyle(fontSize: 24, color: Colors.white),
-                      ),
-                    ),
-                    const Spacer(),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(right: 10),
-                    //   child: TextButton(
-                    //     onPressed: () {},
-                    //     child: const Text(
-                    //       'View all',
-                    //       style: TextStyle(fontSize: 20),
-                    //     ),
-                    //   ),
-                    // ),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.all(18),
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(fontSize: 24, color: Colors.white),
+                  ),
                 ),
                 GridView(
                   // primary: false,
                   shrinkWrap: true,
-                  // physics: NeverScrollableScrollPhysics(),
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 120,
                     crossAxisSpacing: 20,

@@ -50,18 +50,21 @@ class AllTransactions extends StatelessWidget {
                           ),
                         ),
                       ),
-                      builder: (ctx, transactions, ch) =>
-                          transactions.transactions.isEmpty
-                              ? ch!
-                              : ListView.builder(
-                                  clipBehavior: Clip.antiAlias,
-                                  shrinkWrap: true,
-                                  primary: false,
-                                  itemCount: transactions.transactions.length,
-                                  itemBuilder: (context, index) {
-                                    return TransactionItem(transactions, index);
-                                  },
-                                ),
+                      builder: (ctx, transactions, ch) => transactions
+                              .transactions.isEmpty
+                          ? ch!
+                          : ListView.builder(
+                              clipBehavior: Clip.antiAlias,
+                              shrinkWrap: true,
+                              primary: false,
+                              itemCount: transactions.transactions.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: TransactionItem(transactions, index),
+                                );
+                              },
+                            ),
                     ),
             ),
           ),
