@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:personal_expenses/widgets/all_transactions.dart';
 import 'package:personal_expenses/widgets/income_chart.dart';
 
@@ -6,6 +7,7 @@ class StatisticsScreen extends StatelessWidget {
   StatisticsScreen({Key? key}) : super(key: key);
 
   static const routeName = '/statistics-screen';
+  final numFormat = NumberFormat.decimalPattern('en_us');
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class StatisticsScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     children: [
                       Text(
-                        '\$20,998',
+                        '\$${numFormat.format(2500)}',
                         style: Theme.of(context)
                             .textTheme
                             .titleLarge!
@@ -78,7 +80,7 @@ class StatisticsScreen extends StatelessWidget {
                       // SizedBox(height: 200, child: const IncomeSources()),
                     ],
                   ),
-                  const AllTransactions(),
+                  AllTransactions(false),
                 ],
               ),
             ),

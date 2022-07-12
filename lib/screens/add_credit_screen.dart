@@ -43,32 +43,17 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: Text('Add crdit card'),
+        elevation: 0,
+      ),
       body: SafeArea(
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () => Navigator.pop(context),
-                        icon: Icon(Icons.arrow_back_rounded),
-                        color: Colors.white,
-                        iconSize: 25,
-                      ),
-                      Text(
-                        'Add Credit Card',
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontSize: 26,
-                            ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(

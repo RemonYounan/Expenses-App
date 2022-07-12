@@ -4,6 +4,7 @@ import 'package:personal_expenses/others/categories_data.dart';
 import 'package:personal_expenses/screens/notifications_screen.dart';
 import 'package:personal_expenses/widgets/categori_grid_item.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
+import 'package:personal_expenses/widgets/custom_card.dart';
 
 class BalanceScreen extends StatelessWidget {
   const BalanceScreen({Key? key}) : super(key: key);
@@ -21,13 +22,23 @@ class BalanceScreen extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.filter_list_rounded),
-                color: Theme.of(context).colorScheme.secondary,
-                iconSize: 28,
+              InkWell(
+                borderRadius: BorderRadius.circular(40),
+                radius: 50,
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CustomCard(),
+                      ));
+                },
+                child: Image.asset(
+                  'assets/arrows.png',
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
               IconButton(
+                splashRadius: 20,
                 onPressed: () {
                   Navigator.pushNamed(context, NotificationsScreen.routeName);
                 },

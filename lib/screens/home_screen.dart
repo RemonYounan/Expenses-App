@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const Text(
-          'Total balance',
+          'Total expenses',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 24,
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         Text(
-          '\$${numFormat.format(4000)}',
+          '\$${numFormat.format(1500)}',
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 22,
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AllTransactions()));
+                                builder: (context) => AllTransactions(true)));
                       },
                       child: const Text(
                         'View all',

@@ -18,7 +18,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         centerTitle: true,
-        iconTheme: const IconThemeData(color: Colors.white),
+        elevation: 0,
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text(
           'Notifications',
@@ -32,28 +32,32 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             margin: const EdgeInsets.all(14),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).cardColor,
             elevation: 30,
             borderOnForeground: true,
             child: Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(6),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Getting started',
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: _readed ? Colors.grey : Colors.white),
-                  ),
-                  Text(
-                    'This application is about calculating your expenses and income and shows how much you saved in the month and year.',
-                    style: TextStyle(
-                      color: _readed ? Colors.grey : Colors.white,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Getting started',
+                      textAlign: TextAlign.left,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: _readed ? Colors.grey : Colors.white),
                     ),
-                    softWrap: true,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'This application is about calculating your expenses and income and shows how much you saved in the month and year.',
+                      style: TextStyle(
+                        color: _readed ? Colors.grey : Colors.white,
+                      ),
+                      softWrap: true,
+                    ),
                   ),
                   !_readed
                       ? Row(

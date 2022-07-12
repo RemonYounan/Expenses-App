@@ -4,53 +4,68 @@ import 'package:provider/provider.dart';
 import '../providers/transactions.dart';
 
 class AllTransactions extends StatelessWidget {
-  const AllTransactions({Key? key}) : super(key: key);
-
+  AllTransactions(this.viewAll, {Key? key}) : super(key: key);
+  bool viewAll;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: FutureBuilder(
-        future:
-            Provider.of<Transactions>(context, listen: false).getTransactions(),
-        builder: (ctx, snapshot) =>
-            snapshot.connectionState == ConnectionState.waiting
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Consumer<Transactions>(
-                    child: SizedBox(
-                      height: 140,
-                      child: Center(
-                        child:
-                            // IconButton(
-                            //   icon: Icon(Icons.add),
-                            //   onPressed: () {
-                            //     Provider.of<Transactions>(context, listen: false)
-                            //         .deleteTable();
-                            //   },
-                            // )
-                            Text(
-                          'There is no transactions.',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium!
-                              .copyWith(fontSize: 22),
+    return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
+      appBar: viewAll
+          ? AppBar(
+              backgroundColor: Theme.of(context).primaryColor,
+              title: Text('All transactions'),
+              elevation: 0,
+            )
+          : null,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Card(
+            child: FutureBuilder(
+              future: Provider.of<Transactions>(context, listen: false)
+                  .getTransactions(),
+              builder: (ctx, snapshot) => snapshot.connectionState ==
+                      ConnectionState.waiting
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Consumer<Transactions>(
+                      child: SizedBox(
+                        height: 140,
+                        child: Center(
+                          child:
+                              // IconButton(
+                              //   icon: Icon(Icons.add),
+                              //   onPressed: () {
+                              //     Provider.of<Transactions>(context, listen: false)
+                              //         .deleteTable();
+                              //   },
+                              // )
+                              Text(
+                            'There is no transactions.',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium!
+                                .copyWith(fontSize: 22),
+                          ),
                         ),
                       ),
+                      builder: (ctx, transactions, ch) =>
+                          transactions.transactions.isEmpty
+                              ? ch!
+                              : ListView.builder(
+                                  clipBehavior: Clip.antiAlias,
+                                  shrinkWrap: true,
+                                  primary: false,
+                                  itemCount: transactions.transactions.length,
+                                  itemBuilder: (context, index) {
+                                    return TransactionItem(transactions, index);
+                                  },
+                                ),
                     ),
-                    builder: (ctx, transactions, ch) =>
-                        transactions.transactions.isEmpty
-                            ? ch!
-                            : ListView.builder(
-                                clipBehavior: Clip.antiAlias,
-                                shrinkWrap: true,
-                                primary: false,
-                                itemCount: transactions.transactions.length,
-                                itemBuilder: (context, index) {
-                                  return TransactionItem(transactions, index);
-                                },
-                              ),
-                  ),
+            ),
+          ),
+        ),
       ),
     );
   }
