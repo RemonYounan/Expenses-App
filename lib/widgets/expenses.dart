@@ -9,15 +9,14 @@ class Expenses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final expenses =
-        Provider.of<Transactions>(context, listen: false).getTotalExpenses();
+    final expenses = Provider.of<Transactions>(context).getTotalExpenses();
     return CustomPaint(
       painter: CardCustomPainter(context),
       size: Size(200, 100),
-      child: Container(
-        height: 150,
-        width: double.infinity,
-        child: Center(
+      child: Center(
+        child: Container(
+          height: 150,
+          width: double.infinity,
           child: Row(
             children: [
               Column(
@@ -25,9 +24,11 @@ class Expenses extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'Expenses this month',
-                    style: Theme.of(context).textTheme.titleLarge,
+                  Center(
+                    child: Text(
+                      'Expenses this month',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   ),
                   Text(
                     '\$$expenses',

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:personal_expenses/helpers/db_tx_helper.dart';
 import 'package:personal_expenses/models/transaction.dart';
@@ -15,6 +17,26 @@ class Transactions with ChangeNotifier {
       expenses += element.amount!;
     });
     return expenses;
+  }
+
+  double getCategoryExpense(String category) {
+    var categoryExpense = 0.0;
+    _transactions.forEach((element) {
+      if (element.category == category) {
+        categoryExpense += element.amount!;
+      }
+    });
+    return categoryExpense;
+  }
+
+  double getMaxCatExpense() {
+    final max = _transactions.isEmpty
+        ? 0.0
+        : _transactions
+            .map((e) => e.amount)
+            .toList()
+            .reduce((value, element) => value! > element! ? value : element);
+    return max!;
   }
 
   void AddTransaction(

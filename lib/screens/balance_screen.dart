@@ -77,11 +77,12 @@ class BalanceScreen extends StatelessWidget {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    mainAxisExtent: 140,
                     maxCrossAxisExtent: 120,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
                   ),
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(6),
                   children: CATEGORIES_DATA
                       .map(
                         (e) => CategoriGridItem(

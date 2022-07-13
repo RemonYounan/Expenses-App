@@ -42,7 +42,7 @@ dependencies:
   awesome_card: ^1.1.7
   shared_preferences: ^2.0.15
   smooth_page_indicator: ^1.0.0+2
-  percent_indicator: 
+  percent_indicator: 4.0.0
   
 
 

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/others/drop_down_menu.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
+import 'package:personal_expenses/screens/main_screen.dart';
 import 'package:personal_expenses/widgets/custom_form_filed.dart';
 import 'package:provider/provider.dart';
 
 class AddCreditScreen extends StatefulWidget {
-  AddCreditScreen({Key? key}) : super(key: key);
+  AddCreditScreen(this.first, {Key? key}) : super(key: key);
   static const routeName = '/add-credit-screen';
+  bool first;
 
   @override
   State<AddCreditScreen> createState() => _AddCreditScreenState();
@@ -35,7 +37,9 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
         _expiryDate,
         cvv,
       );
-      Navigator.pop(context);
+      widget.first
+          ? Navigator.pushReplacementNamed(context, MainScreen.routeName)
+          : Navigator.pop(context);
     }
   }
 

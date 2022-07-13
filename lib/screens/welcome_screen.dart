@@ -78,8 +78,11 @@ class WelcomeScreen extends StatelessWidget {
                         onPressed: () async {
                           final prefs = await SharedPreferences.getInstance();
                           prefs.setBool('showHome', true);
-                          Navigator.pushReplacementNamed(
-                              context, AddCreditScreen.routeName);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddCreditScreen(true),
+                              ));
                         },
                         child: Text(
                           'Start Now',

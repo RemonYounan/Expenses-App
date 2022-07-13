@@ -13,7 +13,7 @@ class AddTransaction extends StatefulWidget {
 class _AddTransactionState extends State<AddTransaction> {
   final _formKey = GlobalKey<FormState>();
   final icondropdown = '0';
-  String category = 'Other';
+  String category = 'Others';
   String? title;
   double? amount;
   var _pickedDate;
@@ -120,8 +120,8 @@ class _AddTransactionState extends State<AddTransaction> {
                           value: 'Electricity',
                         ),
                         DropdownMenuItem(
-                          child: Text('Other'),
-                          value: 'Other',
+                          child: Text('Others'),
+                          value: 'Others',
                         ),
                       ],
                       value: category,

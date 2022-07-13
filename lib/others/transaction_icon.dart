@@ -7,7 +7,7 @@ class TransactionIcon {
     'Health': Icons.health_and_safety_rounded,
     'Sports': Icons.directions_run_rounded,
     'Electricity': Icons.electrical_services_rounded,
-    'Other': Icons.attach_money_rounded,
+    'Others': Icons.attach_money_rounded,
   };
   static IconData getIcon(String category) {
     return icons[category]!;
