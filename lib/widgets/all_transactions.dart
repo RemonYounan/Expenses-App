@@ -19,7 +19,8 @@ class AllTransactions extends StatelessWidget {
           : null,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 8),
+          padding:
+              viewAll ? const EdgeInsets.only(top: 8) : const EdgeInsets.all(0),
           child: Card(
             child: FutureBuilder(
               future: Provider.of<Transactions>(context, listen: false)
@@ -33,15 +34,7 @@ class AllTransactions extends StatelessWidget {
                       child: SizedBox(
                         height: 140,
                         child: Center(
-                          child:
-                              // IconButton(
-                              //   icon: Icon(Icons.add),
-                              //   onPressed: () {
-                              //     Provider.of<Transactions>(context, listen: false)
-                              //         .deleteTable();
-                              //   },
-                              // )
-                              Text(
+                          child: Text(
                             'There is no transactions.',
                             style: Theme.of(context)
                                 .textTheme
@@ -60,7 +53,7 @@ class AllTransactions extends StatelessWidget {
                               itemCount: transactions.transactions.length,
                               itemBuilder: (context, index) {
                                 return Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(4),
                                   child: TransactionItem(transactions, index),
                                 );
                               },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/screens/add_credit_screen.dart';
 import 'package:personal_expenses/screens/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -78,7 +79,7 @@ class WelcomeScreen extends StatelessWidget {
                           final prefs = await SharedPreferences.getInstance();
                           prefs.setBool('showHome', true);
                           Navigator.pushReplacementNamed(
-                              context, MainScreen.routeName);
+                              context, AddCreditScreen.routeName);
                         },
                         child: Text(
                           'Start Now',

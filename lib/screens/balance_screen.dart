@@ -60,7 +60,7 @@ class BalanceScreen extends StatelessWidget {
         ),
         const CreditCardCarouse(),
         CustomPaint(
-          painter: RPSCustomPainter(context),
+          painter: CardCustomPainter(context),
           child: ListView(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),

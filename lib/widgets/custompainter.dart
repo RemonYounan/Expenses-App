@@ -1,43 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// class RPSCustomPainter extends CustomPainter {
-//   BuildContext context;
-//   RPSCustomPainter(this.context);
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     Paint paint0 = Paint()
-//       ..color = Theme.of(context).cardColor
-//       ..style = PaintingStyle.fill
-//       ..strokeWidth = 1.0;
-
-//     Path path0 = Path();
-//     path0.moveTo(0, size.height);
-//     path0.quadraticBezierTo(size.width * 0.0000500, size.height * 0.3145250,
-//         size.width * 0.0000500, size.height * 0.1272000);
-//     path0.quadraticBezierTo(size.width * -0.0009333, size.height * -0.0314750,
-//         size.width * 0.2095833, size.height * 0.0035500);
-//     path0.lineTo(size.width * 0.5002167, size.height * 0.0396500);
-//     path0.lineTo(size.width * 0.7919833, size.height * 0.0029250);
-//     path0.quadraticBezierTo(size.width * 1.0002167, size.height * -0.0321000,
-//         size.width, size.height * 0.1285500);
-//     path0.quadraticBezierTo(
-//         size.width, size.height * 0.3155500, size.width, size.height);
-//     path0.lineTo(0, size.height);
-//     path0.close();
-
-//     canvas.drawPath(path0, paint0);
-//   }
-
-//   @override
-//   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-//     return true;
-//   }
-// }
-
-class RPSCustomPainter extends CustomPainter {
+class CardCustomPainter extends CustomPainter {
   BuildContext context;
-  RPSCustomPainter(this.context);
+  CardCustomPainter(this.context);
 
   @override
   void paint(Canvas canvas, Size size) {

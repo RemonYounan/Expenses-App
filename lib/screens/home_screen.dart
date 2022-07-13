@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/screens/notifications_screen.dart';
 import 'package:personal_expenses/widgets/all_transactions.dart';
+import 'package:personal_expenses/widgets/card_shape.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
 import 'package:personal_expenses/widgets/custompainter.dart';
+import 'package:personal_expenses/widgets/expenses.dart';
 import 'package:personal_expenses/widgets/recent_transactions.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -43,7 +47,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const Text(
-          'Total expenses',
+          'Total balance',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 24,
@@ -53,7 +57,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         Text(
-          '\$${numFormat.format(1500)}',
+          '\$${numFormat.format(4000)}',
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 22,
@@ -63,17 +67,15 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const CreditCardCarouse(),
+        Expenses(),
         CustomPaint(
-          painter: RPSCustomPainter(context),
-          // size: Size(400, 800),
+          painter: CardCustomPainter(context),
+          size: Size(200, 100),
           child: ListView(
             primary: false,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             children: [
-              // SizedBox(
-              //   height: 100,
-              // ),
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
@@ -107,7 +109,7 @@ class HomeScreen extends StatelessWidget {
               RecentTransactions(),
             ],
           ),
-        ),
+        )
       ],
     );
   }

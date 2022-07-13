@@ -10,7 +10,7 @@ class DBTxHelper {
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-            'CREATE TABLE UserTransactions(id TEXT PRIMARY KEY, category TEXT, title TEXT, amount REAL, date TEXT)');
+            'CREATE TABLE UserTransactions(id TEXT PRIMARY KEY, category TEXT, title TEXT, amount REAL, date TEXT, expenses REAL)');
       },
     );
   }

@@ -9,6 +9,14 @@ class Transactions with ChangeNotifier {
     return _transactions;
   }
 
+  double getTotalExpenses() {
+    var expenses = 0.0;
+    _transactions.forEach((element) {
+      expenses += element.amount!;
+    });
+    return expenses;
+  }
+
   void AddTransaction(
       String category, String title, double amount, DateTime date) async {
     final idDateTime = DateTime.now().toString();
@@ -49,6 +57,7 @@ class Transactions with ChangeNotifier {
           );
         },
       ).toList();
+
       notifyListeners();
     } catch (err) {
       print('getTransaction error: $err');

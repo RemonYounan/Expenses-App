@@ -45,7 +45,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text('Add crdit card'),
+        title: Text('Add a crdit card'),
         elevation: 0,
       ),
       body: SafeArea(

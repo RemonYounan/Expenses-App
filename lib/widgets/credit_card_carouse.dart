@@ -28,36 +28,24 @@ class CreditCardCarouse extends StatelessWidget {
         ),
         builder: (context, value, ch) => value.creditCards.isEmpty
             ? ch!
-            : ListView(
-                shrinkWrap: true,
-                children: [
-                  CarouselSlider(
-                    items: [
-                      CreditCard(
-                        cardNumber: value.creditCards[0].number
-                            .toString()
-                            .replaceRange(0, 12, '**** **** **** '),
-                        cardExpiry: value.creditCards[0].expiryDate,
-                        cardHolderName: value.creditCards[0].name,
-                        cvv: '${value.creditCards[0].cvv}',
-                        bankName: value.creditCards[0].type!,
-                        cardType: CardType.masterCard,
-                        frontBackground: CardBackgrounds.black,
-                        backBackground: CardBackgrounds.black,
-                        width: 320,
-                        height: 190,
-                      ),
-                    ],
-                    options: CarouselOptions(),
+            : CarouselSlider(
+                items: [
+                  CreditCard(
+                    cardNumber: value.creditCards[0].number
+                        .toString()
+                        .replaceRange(0, 12, '**** **** **** '),
+                    cardExpiry: value.creditCards[0].expiryDate,
+                    cardHolderName: value.creditCards[0].name,
+                    cvv: '${value.creditCards[0].cvv}',
+                    bankName: value.creditCards[0].type!,
+                    cardType: CardType.masterCard,
+                    frontBackground: CardBackgrounds.black,
+                    backBackground: CardBackgrounds.black,
+                    width: 320,
+                    height: 190,
                   ),
-                  Center(
-                    child: SmoothPageIndicator(
-                      controller: controller,
-                      count: value.creditCards.length,
-                      // effect:,
-                    ),
-                  )
                 ],
+                options: CarouselOptions(),
               ),
       ),
     );

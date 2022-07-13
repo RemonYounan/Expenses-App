@@ -20,15 +20,7 @@ class RecentTransactions extends StatelessWidget {
                   child: SizedBox(
                     height: 140,
                     child: Center(
-                      child:
-                          // IconButton(
-                          //   icon: Icon(Icons.add),
-                          //   onPressed: () {
-                          //     Provider.of<Transactions>(context, listen: false)
-                          //         .deleteTable();
-                          //   },
-                          // )
-                          Text(
+                      child: Text(
                         'There is no transactions.',
                         style: Theme.of(context)
                             .textTheme
