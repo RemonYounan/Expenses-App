@@ -1,16 +1,17 @@
-import 'package:sqflite/sqflite.dart' as sql;
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart' as sql;
 
 class DBCreditHelper {
   static Future<sql.Database> database() async {
     final dbPath = await sql.getDatabasesPath();
-    var path = join(dbPath, 'credit_card.db');
+    final path = join(dbPath, 'credit_card.db');
     return sql.openDatabase(
       path,
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-            'CREATE TABLE CreditCards(id TEXT PRIMARY KEY, type TEXT, name TEXT, number INTEGER, pin INTEGER, expiryDate TEXT, cvv INTEGER)');
+          'CREATE TABLE CreditCards(id TEXT PRIMARY KEY, type TEXT, name TEXT, number INTEGER, pin INTEGER, expiryDate TEXT, cvv INTEGER)',
+        );
       },
     );
   }

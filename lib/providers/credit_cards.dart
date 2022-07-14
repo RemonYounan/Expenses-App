@@ -9,8 +9,14 @@ class CreditCards with ChangeNotifier {
     return _creditCards;
   }
 
-  void AddCreditCard(String? type, String? name, int? number, int? pin,
-      String? expiryDate, int? cvv) async {
+  Future<void> AddCreditCard(
+    String? type,
+    String? name,
+    int? number,
+    int? pin,
+    String? expiryDate,
+    int? cvv,
+  ) async {
     _creditCards.add(
       CreditCard(
           id: DateTime.now().toString(),
@@ -19,7 +25,7 @@ class CreditCards with ChangeNotifier {
           number: number,
           pin: pin,
           expiryDate: expiryDate,
-          cvv: cvv),
+          cvv: cvv,),
     );
     notifyListeners();
     await DBCreditHelper.insert('CreditCards', {
@@ -39,12 +45,12 @@ class CreditCards with ChangeNotifier {
         (item) {
           return CreditCard(
             id: item['id'].toString(),
-            type: item['type'],
-            name: item['name'],
-            number: item['number'],
-            pin: item['pin'],
-            expiryDate: item['expiryDate'],
-            cvv: item['cvv'],
+            type: item['type'].toString(),
+            name: item['name'].toString(),
+            number: int.parse(item['number'].toString()),
+            pin: int.parse(item['pin'].toString()),
+            expiryDate: item['expiryDate'].toString(),
+            cvv: int.parse(item['cvv'].toString()),
           );
         },
       ).toList();

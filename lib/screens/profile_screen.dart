@@ -4,7 +4,7 @@ import 'package:personal_expenses/widgets/credits_info.dart';
 import 'package:personal_expenses/widgets/profile_slider_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
-  ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               IconButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, AddCreditScreen.routeName),
-                icon: Icon(
+                icon: const Icon(
                   Icons.credit_card,
                 ),
                 color: Theme.of(context).colorScheme.secondary,

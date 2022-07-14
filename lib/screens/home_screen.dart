@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/screens/notifications_screen.dart';
 import 'package:personal_expenses/widgets/all_transactions.dart';
-import 'package:personal_expenses/widgets/card_shape.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
 import 'package:personal_expenses/widgets/custompainter.dart';
 import 'package:personal_expenses/widgets/expenses.dart';
 import 'package:personal_expenses/widgets/recent_transactions.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -67,34 +64,35 @@ class HomeScreen extends StatelessWidget {
             fontFamily: 'SourceSansPro',
           ),
         ),
-        Align(
+        const Align(
           heightFactor: .9,
           alignment: Alignment.topCenter,
-          child: const CreditCardCarouse(),
+          child: CreditCardCarouse(),
         ),
         Align(
           heightFactor: .75,
-          alignment: Alignment.center,
           child: Container(
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
               ],
             ),
-            child: Expenses(),
+            child: const Expenses(),
           ),
         ),
         Container(
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
-          ]),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
+            ],
+          ),
           child: CustomPaint(
             painter: CardCustomPainter(context),
             size: Size(size.width, size.width),
             child: ListView(
               primary: false,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Padding(
                   padding: const EdgeInsets.all(16),
@@ -113,10 +111,11 @@ class HomeScreen extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        AllTransactions(true)));
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AllTransactions(true),
+                              ),
+                            );
                           },
                           child: const Text(
                             'View all',
@@ -127,7 +126,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                RecentTransactions(),
+                const RecentTransactions(),
               ],
             ),
           ),

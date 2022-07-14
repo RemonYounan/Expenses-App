@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/widgets/transaction_item.dart';
 import 'package:provider/provider.dart';
-import '../providers/transactions.dart';
 
 class RecentTransactions extends StatelessWidget {
   const RecentTransactions({Key? key}) : super(key: key);

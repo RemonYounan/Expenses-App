@@ -20,7 +20,7 @@ class IncomeChart extends StatelessWidget {
               padding: const EdgeInsets.all(6),
               indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(16), // Creates border
-                  color: Colors.deepPurpleAccent),
+                  color: Colors.deepPurpleAccent,),
               tabs: const [
                 Text('Day'),
                 Text('Week'),
@@ -30,7 +30,7 @@ class IncomeChart extends StatelessWidget {
             ),
             Expanded(
               child: TabBarView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   Center(
                     child: Text(

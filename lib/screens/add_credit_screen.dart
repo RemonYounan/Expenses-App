@@ -19,8 +19,8 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
   final _formKey = GlobalKey<FormState>();
   String? name;
   int? number;
-  var exMonth = '1';
-  var exYear = '22';
+  String exMonth = '1';
+  String exYear = '22';
   int? pin;
   int? cvv;
 
@@ -49,7 +49,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text('Add a crdit card'),
+        title: const Text('Add a crdit card'),
         elevation: 0,
       ),
       body: SafeArea(
@@ -80,53 +80,53 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                       SizedBox(
                         width: 220,
                         child: DropdownButtonFormField(
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(fontSize: 16),
-                            value: type,
-                            hint: Text(
-                              'Selecte one',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(fontSize: 16),
+                          value: type,
+                          hint: const Text(
+                            'Selecte one',
+                          ),
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                color: Theme.of(context).primaryColor,
+                                width: 2,
+                              ),
                             ),
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                borderSide: BorderSide(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 2,
-                                ),
+                            iconColor: Theme.of(context).colorScheme.secondary,
+                          ),
+                          dropdownColor: Theme.of(context).cardColor,
+                          items: const [
+                            DropdownMenuItem(
+                              value: 'Select one',
+                              child: Text(
+                                'Selecte one',
                               ),
-                              iconColor:
-                                  Theme.of(context).colorScheme.secondary,
                             ),
-                            dropdownColor: Theme.of(context).cardColor,
-                            items: [
-                              DropdownMenuItem(
-                                value: 'Select one',
-                                child: Text(
-                                  'Selecte one',
-                                ),
+                            DropdownMenuItem(
+                              value: 'Master Card',
+                              child: Text(
+                                'Master Card',
                               ),
-                              DropdownMenuItem(
-                                value: 'Master Card',
-                                child: Text(
-                                  'Master Card',
-                                ),
+                            ),
+                            DropdownMenuItem(
+                              value: 'Visa',
+                              child: Text(
+                                'Visa',
                               ),
-                              DropdownMenuItem(
-                                value: 'Visa',
-                                child: Text(
-                                  'Visa',
-                                ),
-                              ),
-                            ],
-                            validator: (value) =>
-                                value == 'Select one' ? 'Select type' : null,
-                            onChanged: (String? value) {
-                              setState(() {
-                                type = value!;
-                              });
-                            }),
+                            ),
+                          ],
+                          validator: (value) =>
+                              value == 'Select one' ? 'Select type' : null,
+                          onChanged: (String? value) {
+                            setState(() {
+                              type = value!;
+                            });
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -166,8 +166,10 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.date_range,
-                            color: Theme.of(context).colorScheme.secondary),
+                        Icon(
+                          Icons.date_range,
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
                         SizedBox(
                           width: 140,
                           child: Padding(
@@ -195,7 +197,9 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                    fontSize: 22, fontWeight: FontWeight.bold),
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
                             value: exMonth,
                             items: monthDropdownItems,
                             onChanged: (String? value) {
@@ -216,8 +220,10 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.date_range,
-                            color: Theme.of(context).colorScheme.secondary),
+                        Icon(
+                          Icons.date_range,
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
                         SizedBox(
                           width: 140,
                           child: Padding(
@@ -249,7 +255,9 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                    fontSize: 22, fontWeight: FontWeight.bold),
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
                             value: exYear,
                             items: yearDropdownItems,
                             onChanged: (String? value) {
@@ -295,10 +303,11 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                   padding: const EdgeInsets.all(10),
                   child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                        // fixedSize: Size(40, 40),
-                        textStyle: Theme.of(context).textTheme.titleMedium),
+                      // fixedSize: Size(40, 40),
+                      textStyle: Theme.of(context).textTheme.titleMedium,
+                    ),
                     onPressed: _Submit,
-                    icon: Icon(Icons.add),
+                    icon: const Icon(Icons.add),
                     label: const Text('Add Credit'),
                   ),
                 ),

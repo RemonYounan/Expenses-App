@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class CategoriGridItem extends StatelessWidget {
   final String title;
   final IconData icon;
-  CategoriGridItem(this.title, this.icon, {Key? key}) : super(key: key);
+  const CategoriGridItem(this.title, this.icon, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CategoriGridItem extends StatelessWidget {
           ),
           child: ListView(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               Icon(
                 icon,
@@ -51,9 +51,9 @@ class CategoriGridItem extends StatelessWidget {
                 child: LinearPercentIndicator(
                   percent: max == 0 ? 0 : expense / max,
                   progressColor: Theme.of(context).colorScheme.primary,
-                  barRadius: Radius.circular(15),
+                  barRadius: const Radius.circular(15),
                   lineHeight: 6,
-                  center: null,
+                  // center: null,        // edited here
                   curve: Curves.easeIn,
                 ),
               ),

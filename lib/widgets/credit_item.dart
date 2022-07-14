@@ -3,7 +3,7 @@ import 'package:personal_expenses/models/credit_card.dart';
 import 'package:personal_expenses/widgets/credit_card_details.dart';
 
 class CreditItem extends StatefulWidget {
-  CreditItem(this.credit, this.index, {Key? key}) : super(key: key);
+  const CreditItem(this.credit, this.index, {Key? key}) : super(key: key);
   final CreditCard credit;
   final int index;
   @override
@@ -17,7 +17,7 @@ class _CreditItemState extends State<CreditItem> {
     return Card(
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: 60,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,8 +37,8 @@ class _CreditItemState extends State<CreditItem> {
                       _isExpanded = !_isExpanded;
                     }),
                     icon: _isExpanded
-                        ? Icon(Icons.expand_less)
-                        : Icon(Icons.expand_more_rounded),
+                        ? const Icon(Icons.expand_less)
+                        : const Icon(Icons.expand_more_rounded),
                     color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
@@ -48,7 +48,7 @@ class _CreditItemState extends State<CreditItem> {
           AnimatedContainer(
             curve: Curves.easeIn,
             height: _isExpanded ? 260 : 0,
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             child: CreditCardDetails(
               type: widget.credit.type!,
               name: widget.credit.name!,

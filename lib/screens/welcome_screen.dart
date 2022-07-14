@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/screens/add_credit_screen.dart';
-import 'package:personal_expenses/screens/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQuery = MediaQuery.of(context);
+    final MediaQueryData mediaQuery = MediaQuery.of(context);
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Stack(
@@ -33,12 +32,13 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                 ),
               ),
-              Center(
+              const Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 30),
+                  padding: EdgeInsets.only(left: 30),
                   child: Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin elementum orci sed condimentum.',
-                      style: TextStyle(color: Colors.grey)),
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin elementum orci sed condimentum.',
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ),
               ),
               const Spacer(),
@@ -62,14 +62,14 @@ class WelcomeScreen extends StatelessWidget {
                     height: mediaQuery.size.height * .1,
                     width: MediaQuery.of(context).size.width * .5,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(40),
                         bottomLeft: Radius.circular(40),
                       ),
                       color: Theme.of(context).cardColor,
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(40),
                         bottomLeft: Radius.circular(40),
                       ),
@@ -79,21 +79,21 @@ class WelcomeScreen extends StatelessWidget {
                           final prefs = await SharedPreferences.getInstance();
                           prefs.setBool('showHome', true);
                           Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AddCreditScreen(true),
-                              ));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddCreditScreen(true),
+                            ),
+                          );
                         },
                         child: Text(
                           'Start Now',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .secondary
-                                      .withOpacity(.8)),
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondary
+                                        .withOpacity(.8),
+                                  ),
                         ),
                       ),
                     ),

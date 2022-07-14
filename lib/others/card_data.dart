@@ -8,7 +8,7 @@ class CardInfo {
     'CVV',
   ];
 
-  String CardData(
+  String cardData(
     int i,
     String type,
     String name,

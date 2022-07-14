@@ -1,19 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:awesome_card/awesome_card.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
 import 'package:provider/provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CreditCardCarouse extends StatelessWidget {
   const CreditCardCarouse({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final controller = PageController(viewportFraction: 0.8, keepPage: true);
+    // final controller = PageController(viewportFraction: 0.8, keepPage: true);
     return FutureBuilder(
       future: Provider.of<CreditCards>(context).getCreditCards(),
       builder: (context, snapshot) => Consumer<CreditCards>(
-        child: SizedBox(
+        child: const SizedBox(
           height: 150,
           width: 150,
           child: Center(

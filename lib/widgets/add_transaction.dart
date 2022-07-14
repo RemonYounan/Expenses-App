@@ -16,13 +16,13 @@ class _AddTransactionState extends State<AddTransaction> {
   String category = 'Others';
   String? title;
   double? amount;
-  var _pickedDate;
+  DateTime? _pickedDate;
 
   void _submitData() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       Provider.of<Transactions>(context, listen: false)
-          .AddTransaction(category, title!, amount!, _pickedDate);
+          .addTransaction(category, title!, amount!, _pickedDate!);
       Navigator.of(context).pop();
     }
   }
@@ -53,7 +53,7 @@ class _AddTransactionState extends State<AddTransaction> {
           top: 8,
           left: 8,
           right: 8,
-          bottom: MediaQuery.of(context).viewInsets.bottom),
+          bottom: MediaQuery.of(context).viewInsets.bottom,),
       child: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -85,7 +85,7 @@ class _AddTransactionState extends State<AddTransaction> {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 40,
                   ),
                   SizedBox(
@@ -98,30 +98,30 @@ class _AddTransactionState extends State<AddTransaction> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      items: [
+                      items: const [
                         DropdownMenuItem(
-                          child: Text('Travel'),
                           value: 'Travel',
+                          child: Text('Travel'),
                         ),
                         DropdownMenuItem(
-                          child: Text('Food'),
                           value: 'Food',
+                          child: Text('Food'),
                         ),
                         DropdownMenuItem(
-                          child: Text('Health'),
                           value: 'Health',
+                          child: Text('Health'),
                         ),
                         DropdownMenuItem(
-                          child: Text('Sports'),
                           value: 'Sports',
+                          child: Text('Sports'),
                         ),
                         DropdownMenuItem(
-                          child: Text('Electricity'),
                           value: 'Electricity',
+                          child: Text('Electricity'),
                         ),
                         DropdownMenuItem(
-                          child: Text('Others'),
                           value: 'Others',
+                          child: Text('Others'),
                         ),
                       ],
                       value: category,
@@ -190,7 +190,7 @@ class _AddTransactionState extends State<AddTransaction> {
                     child: Text(
                       _pickedDate == null
                           ? 'No date choosen.'
-                          : 'Date: ${DateFormat.yMd().format(_pickedDate)}',
+                          : 'Date: ${DateFormat.yMd().format(_pickedDate!)}',
                       style: Theme.of(context).textTheme.titleMedium,
                       textAlign: TextAlign.center,
                     ),
@@ -203,7 +203,7 @@ class _AddTransactionState extends State<AddTransaction> {
                         'Choose date',
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: Theme.of(context).colorScheme.primary,
-                            fontSize: 18),
+                            fontSize: 18,),
                       ),
                     ),
                   ),

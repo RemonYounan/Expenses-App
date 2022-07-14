@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ProfileSlider extends StatefulWidget {
-  ProfileSlider({Key? key}) : super(key: key);
+  const ProfileSlider({Key? key}) : super(key: key);
 
   @override
   State<ProfileSlider> createState() => _ProfileSliderState();
@@ -59,21 +59,21 @@ class _ProfileSliderState extends State<ProfileSlider> {
           ),
           SliderTheme(
             data: SliderTheme.of(context).copyWith(
-              trackShape: RoundedRectSliderTrackShape(),
+              trackShape: const RoundedRectSliderTrackShape(),
               activeTrackColor: Theme.of(context).colorScheme.secondary,
               activeTickMarkColor: Theme.of(context).colorScheme.secondary,
               inactiveTrackColor: Theme.of(context).cardColor,
               inactiveTickMarkColor: Theme.of(context).cardColor,
               thumbColor: Theme.of(context).colorScheme.secondary,
-              thumbShape: RoundSliderThumbShape(),
+              thumbShape: const RoundSliderThumbShape(),
             ),
             child: Slider(
               value: _value,
-              divisions: (_cardBalance ~/ 100).toInt(),
+              divisions: _cardBalance ~/ 100,
               max: _cardBalance.toDouble(),
               onChanged: (value) {
                 setState(() {
-                  _value = value.toDouble();
+                  _value = value;
                 });
               },
             ),

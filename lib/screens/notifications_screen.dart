@@ -34,7 +34,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             color: Theme.of(context).cardColor,
             elevation: 30,
-            borderOnForeground: true,
             child: Padding(
               padding: const EdgeInsets.all(6),
               child: Column(
@@ -46,7 +45,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       'Getting started',
                       textAlign: TextAlign.left,
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: _readed ? Colors.grey : Colors.white),
+                            color: _readed ? Colors.grey : Colors.white,
+                          ),
                     ),
                   ),
                   Padding(
@@ -59,23 +59,24 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       softWrap: true,
                     ),
                   ),
-                  !_readed
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  _readed = !_readed;
-                                });
-                              },
-                              child: const Text(
-                                'Mark as read',
-                              ),
-                            ),
-                          ],
-                        )
-                      : Container(),
+                  if (!_readed)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _readed = !_readed;
+                            });
+                          },
+                          child: const Text(
+                            'Mark as read',
+                          ),
+                        ),
+                      ],
+                    )
+                  else
+                    Container(),
                 ],
               ),
             ),

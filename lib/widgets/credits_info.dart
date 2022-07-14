@@ -4,7 +4,7 @@ import 'package:personal_expenses/widgets/credit_item.dart';
 import 'package:provider/provider.dart';
 
 class CreditsInfo extends StatefulWidget {
-  CreditsInfo({Key? key}) : super(key: key);
+  const CreditsInfo({Key? key}) : super(key: key);
 
   @override
   State<CreditsInfo> createState() => _CreditsInfoState();
@@ -16,7 +16,7 @@ class _CreditsInfoState extends State<CreditsInfo> {
     return Card(
       child: ListView(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -52,7 +52,7 @@ class _CreditsInfoState extends State<CreditsInfo> {
                         : ListView.builder(
                             primary: false,
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: credits.creditCards.length,
                             itemBuilder: (_, i) =>
                                 CreditItem(credits.creditCards[i], i),

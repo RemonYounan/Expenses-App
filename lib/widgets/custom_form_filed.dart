@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
-  CustomFormField(
+  const CustomFormField(
     this.label,
     this.icon,
     this.kType,
@@ -24,7 +24,7 @@ class CustomFormField extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         decoration: InputDecoration(
-          errorStyle: TextStyle(fontSize: 14),
+          errorStyle: const TextStyle(fontSize: 14),
           labelStyle:
               Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 18),
           labelText: label,

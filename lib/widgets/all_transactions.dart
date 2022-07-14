@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/widgets/transaction_item.dart';
 import 'package:provider/provider.dart';
-import '../providers/transactions.dart';
 
 class AllTransactions extends StatelessWidget {
   AllTransactions(this.viewAll, {Key? key}) : super(key: key);
@@ -13,14 +13,13 @@ class AllTransactions extends StatelessWidget {
       appBar: viewAll
           ? AppBar(
               backgroundColor: Theme.of(context).primaryColor,
-              title: Text('All transactions'),
+              title: const Text('All transactions'),
               elevation: 0,
             )
           : null,
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-              viewAll ? const EdgeInsets.only(top: 8) : const EdgeInsets.all(0),
+          padding: viewAll ? const EdgeInsets.only(top: 8) : EdgeInsets.zero,
           child: Card(
             child: FutureBuilder(
               future: Provider.of<Transactions>(context, listen: false)

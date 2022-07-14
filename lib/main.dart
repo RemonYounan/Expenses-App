@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
+import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/screens/add_credit_screen.dart';
 import 'package:personal_expenses/screens/home_screen.dart';
-import 'package:personal_expenses/screens/welcome_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import './providers/transactions.dart';
 import 'package:personal_expenses/screens/main_screen.dart';
 import 'package:personal_expenses/screens/notifications_screen.dart';
 import 'package:personal_expenses/screens/statistics_screen.dart';
-import 'screens/statistics_screen.dart';
+import 'package:personal_expenses/screens/welcome_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   final showHome = prefs.getBool('showHome') ?? false;
@@ -35,11 +34,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Personal Expenses',
-        themeMode: ThemeMode.system,
         theme: ThemeData(
-          cardColor: Color.fromARGB(255, 33, 21, 36),
+          cardColor: const Color.fromARGB(255, 33, 21, 36),
           cardTheme: CardTheme(
-            color: Color.fromARGB(255, 33, 21, 36),
+            color: const Color.fromARGB(255, 33, 21, 36),
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -60,14 +58,13 @@ class MyApp extends StatelessWidget {
           ),
           fontFamily: 'SourceSansPro',
           colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: Colors.blue,
             accentColor: Colors.amber,
           ),
-          primaryColor: Color.fromARGB(255, 53, 36, 58),
+          primaryColor: const Color.fromARGB(255, 53, 36, 58),
         ),
-        home: showHome ? MainScreen() : WelcomeScreen(),
+        home: showHome ? const MainScreen() : WelcomeScreen(),
         routes: {
-          MainScreen.routeName: (context) => MainScreen(),
+          MainScreen.routeName: (context) => const MainScreen(),
           HomeScreen.routeName: (context) => HomeScreen(),
           StatisticsScreen.routeName: (context) => StatisticsScreen(),
           AddCreditScreen.routeName: (context) => AddCreditScreen(false),

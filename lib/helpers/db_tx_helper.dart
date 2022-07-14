@@ -1,16 +1,16 @@
-import 'package:sqflite/sqflite.dart' as sql;
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart' as sql;
 
 class DBTxHelper {
   static Future<sql.Database> database() async {
     final dbPath = await sql.getDatabasesPath();
-    var path = join(dbPath, 'transactions.db');
+    final path = join(dbPath, 'transactions.db');
     return sql.openDatabase(
       path,
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-            'CREATE TABLE UserTransactions(id TEXT PRIMARY KEY, category TEXT, title TEXT, amount REAL, date TEXT)');
+            'CREATE TABLE UserTransactions(id TEXT PRIMARY KEY, category TEXT, title TEXT, amount REAL, date TEXT)',);
       },
     );
   }

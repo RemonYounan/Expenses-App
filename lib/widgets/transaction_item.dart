@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:personal_expenses/others/transaction_icon.dart';
 import 'package:personal_expenses/providers/transactions.dart';
-import 'package:provider/provider.dart';
 
 class TransactionItem extends StatelessWidget {
   TransactionItem(
@@ -20,12 +19,12 @@ class TransactionItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       leading: CircleAvatar(
-        child: Icon(
-            TransactionIcon.getIcon(transactions.transactions[index].category!),
-            color: Colors.amber,
-            size: 30),
-        // backgroundColor: Colors.white,
         radius: 30,
+        child: Icon(
+          TransactionIcon.getIcon(transactions.transactions[index].category!),
+          color: Colors.amber,
+          size: 30,
+        ),
       ),
       title: Text(
         '${transactions.transactions[index].title}',
@@ -70,6 +69,7 @@ class TransactionItem extends StatelessWidget {
                 value: 1,
                 onTap: () =>
                     transactions.deleteTx(transactions.transactions[index].id!),
+                padding: const EdgeInsets.all(6),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -84,7 +84,6 @@ class TransactionItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.all(6),
               ),
             ],
           ),

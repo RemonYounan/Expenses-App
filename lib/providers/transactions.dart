@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:personal_expenses/helpers/db_tx_helper.dart';
 import 'package:personal_expenses/models/transaction.dart';
@@ -13,19 +11,19 @@ class Transactions with ChangeNotifier {
 
   double getTotalExpenses() {
     var expenses = 0.0;
-    _transactions.forEach((element) {
+    for (final element in _transactions) {
       expenses += element.amount!;
-    });
+    }
     return expenses;
   }
 
   double getCategoryExpense(String category) {
     var categoryExpense = 0.0;
-    _transactions.forEach((element) {
+    for (final element in _transactions) {
       if (element.category == category) {
         categoryExpense += element.amount!;
       }
-    });
+    }
     return categoryExpense;
   }
 
@@ -39,8 +37,12 @@ class Transactions with ChangeNotifier {
     return max!;
   }
 
-  void AddTransaction(
-      String category, String title, double amount, DateTime date) async {
+  Future<void> addTransaction(
+    String category,
+    String title,
+    double amount,
+    DateTime date,
+  ) async {
     final idDateTime = DateTime.now().toString();
     _transactions.add(
       UserTransaction(
@@ -72,9 +74,9 @@ class Transactions with ChangeNotifier {
         (item) {
           return UserTransaction(
             id: item['id'].toString(),
-            category: item['category'],
-            title: item['title'],
-            amount: item['amount'],
+            category: item['category'].toString(),
+            title: item['title'].toString(),
+            amount: double.parse(item['amount'].toString()),
             date: DateTime.parse(item['date'] as String),
           );
         },
@@ -86,13 +88,13 @@ class Transactions with ChangeNotifier {
     }
   }
 
-  void deleteTx(String id) async {
+  Future<void> deleteTx(String id) async {
     _transactions.removeWhere((element) => element.id == id);
     await DBTxHelper.deleteTx(id);
     notifyListeners();
   }
 
-  void deleteTable() async {
+  Future<void> deleteTable() async {
     await DBTxHelper.deleteTable();
   }
 }

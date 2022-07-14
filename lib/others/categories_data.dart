@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const CATEGORIES_DATA = [
+const List<Map<String,dynamic>> CATEGORIES_DATA = [
   {
     'title': 'Travel',
     'icon': Icons.flight,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/widgets/card_shape.dart';
 import 'package:provider/provider.dart';
-import 'package:personal_expenses/providers/transactions.dart';
 
 class Expenses extends StatelessWidget {
   const Expenses({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class Expenses extends StatelessWidget {
     return CustomPaint(
       painter: CardShape(context),
       size: Size(size.width, size.width),
-      child: Container(
+      child: SizedBox(
         height: size.height * .2,
         width: size.width,
         child: Row(
@@ -29,7 +29,7 @@ class Expenses extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -41,12 +41,11 @@ class Expenses extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               width: 90,
             ),
             CircularPercentIndicator(
               radius: 50.0,
-              lineWidth: 5.0,
               percent: expenses / 4000,
               center: Text(
                 '\$$expenses',

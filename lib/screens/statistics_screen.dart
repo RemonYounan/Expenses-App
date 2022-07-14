@@ -37,7 +37,7 @@ class StatisticsScreen extends StatelessWidget {
                     const TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
                 indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(20), // Creates border
-                    color: Colors.deepPurpleAccent),
+                    color: Colors.deepPurpleAccent,),
                 tabs: const [
                   Tab(
                     text: 'Income',
@@ -53,7 +53,7 @@ class StatisticsScreen extends StatelessWidget {
                 children: [
                   ListView(
                     primary: false,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     padding: const EdgeInsets.all(10),
                     children: [
@@ -76,7 +76,7 @@ class StatisticsScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      SizedBox(height: 200, child: const IncomeChart()),
+                      const SizedBox(height: 200, child: IncomeChart()),
                       // SizedBox(height: 200, child: const IncomeSources()),
                     ],
                   ),

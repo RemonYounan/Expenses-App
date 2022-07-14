@@ -11,7 +11,7 @@ class BalanceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NumberFormat numFormat = NumberFormat.decimalPattern('en_us');
+    final NumberFormat numFormat = NumberFormat.decimalPattern('en_us');
     return ListView(
       // primary: false,
       // shrinkWrap: true,
@@ -60,43 +60,45 @@ class BalanceScreen extends StatelessWidget {
         ),
         const CreditCardCarouse(),
         Container(
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
-          ]),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
+            ],
+          ),
           child: CustomPaint(
             painter: CardCustomPainter(context),
             child: ListView(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(18),
-                    child: Text(
-                      'Categories',
-                      style: TextStyle(fontSize: 24, color: Colors.white),
-                    ),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(18),
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
-                  GridView(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      mainAxisExtent: 130,
-                      maxCrossAxisExtent: 120,
-                      crossAxisSpacing: 14,
-                      mainAxisSpacing: 14,
-                    ),
-                    padding: const EdgeInsets.all(6),
-                    children: CATEGORIES_DATA
-                        .map(
-                          (e) => CategoriGridItem(
-                            e['title'] as String,
-                            e['icon'] as IconData,
-                          ),
-                        )
-                        .toList(),
+                ),
+                GridView(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    mainAxisExtent: 130,
+                    maxCrossAxisExtent: 120,
+                    crossAxisSpacing: 14,
+                    mainAxisSpacing: 14,
                   ),
-                ]),
+                  padding: const EdgeInsets.all(6),
+                  children: CATEGORIES_DATA
+                      .map(
+                        (e) => CategoriGridItem(
+                          e['title'] as String,
+                          e['icon'] as IconData,
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
+            ),
           ),
         ),
       ],
