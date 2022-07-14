@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             accentColor: Colors.amber,
           ),
-          primaryColor: Color.fromARGB(255, 57, 39, 63),
+          primaryColor: Color.fromARGB(255, 53, 36, 58),
         ),
         home: showHome ? MainScreen() : WelcomeScreen(),
         routes: {

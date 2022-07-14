@@ -53,12 +53,10 @@ class _MainScreenState extends State<MainScreen> {
           backgroundColor: Theme.of(context).primaryColor,
           activeColor: Theme.of(context).colorScheme.secondary,
           inactiveColor: Colors.white54,
-          borderColor: Theme.of(context).cardColor,
+          borderColor: Theme.of(context).primaryColor,
           backgroundGradient: LinearGradient(colors: [
             Theme.of(context).cardColor,
             Theme.of(context).cardColor,
-            // Theme.of(context).cardTheme.color!,
-            // Theme.of(context).cardTheme.color!,
           ]),
           // gapWidth: 50,
           notchSmoothness: NotchSmoothness.smoothEdge,

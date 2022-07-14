@@ -9,6 +9,7 @@ class CardCustomPainter extends CustomPainter {
     Paint paint0 = Paint()
       ..color = Theme.of(context).cardColor
       ..style = PaintingStyle.fill
+      ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 
     Path path0 = Path();

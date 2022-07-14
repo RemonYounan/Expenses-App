@@ -8,6 +8,8 @@ class RecentTransactions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return FutureBuilder(
       future:
           Provider.of<Transactions>(context, listen: false).getTransactions(),
@@ -18,7 +20,7 @@ class RecentTransactions extends StatelessWidget {
                 )
               : Consumer<Transactions>(
                   child: SizedBox(
-                    height: 140,
+                    height: size.height * .15,
                     child: Center(
                       child: Text(
                         'There is no transactions.',
@@ -33,7 +35,7 @@ class RecentTransactions extends StatelessWidget {
                       transactions.transactions.isEmpty
                           ? ch!
                           : SizedBox(
-                              height: 370,
+                              height: size.height * .4,
                               child: ListView.builder(
                                 clipBehavior: Clip.antiAlias,
                                 shrinkWrap: true,

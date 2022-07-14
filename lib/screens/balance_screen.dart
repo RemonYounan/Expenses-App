@@ -59,40 +59,47 @@ class BalanceScreen extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const CreditCardCarouse(),
-        CustomPaint(
-          painter: CardCustomPainter(context),
-          child: ListView(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(18),
-                  child: Text(
-                    'Categories',
-                    style: TextStyle(fontSize: 24, color: Colors.white),
+        Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
+          ]),
+          child: CustomPaint(
+            painter: CardCustomPainter(context),
+            child: ListView(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(18),
+                    child: Text(
+                      'Categories',
+                      style: TextStyle(fontSize: 24, color: Colors.white),
+                    ),
                   ),
-                ),
-                GridView(
-                  // primary: false,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    mainAxisExtent: 140,
-                    maxCrossAxisExtent: 120,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
+                  GridView(
+                    // primary: false,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      mainAxisExtent: 130,
+                      childAspectRatio: .8,
+                      maxCrossAxisExtent: 120,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                    ),
+                    padding: const EdgeInsets.all(6),
+                    children: CATEGORIES_DATA
+                        .map(
+                          (e) => CategoriGridItem(
+                            e['title'] as String,
+                            e['icon'] as IconData,
+                          ),
+                        )
+                        .toList(),
                   ),
-                  padding: const EdgeInsets.all(6),
-                  children: CATEGORIES_DATA
-                      .map(
-                        (e) => CategoriGridItem(
-                          e['title'] as String,
-                          e['icon'] as IconData,
-                        ),
-                      )
-                      .toList(),
-                ),
-              ]),
+                ]),
+          ),
         ),
       ],
     );

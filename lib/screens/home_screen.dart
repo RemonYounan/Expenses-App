@@ -17,7 +17,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
+    final size = MediaQuery.of(context).size;
+
     return ListView(
       children: [
         Padding(
@@ -46,13 +47,13 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        const Text(
+        Text(
           'Total balance',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(5, 117, 230, 1),
+            color: Theme.of(context).colorScheme.primary,
             fontFamily: 'SourceSansPro',
           ),
         ),
@@ -66,50 +67,71 @@ class HomeScreen extends StatelessWidget {
             fontFamily: 'SourceSansPro',
           ),
         ),
-        const CreditCardCarouse(),
-        Expenses(),
-        CustomPaint(
-          painter: CardCustomPainter(context),
-          size: Size(200, 100),
-          child: ListView(
-            primary: false,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Recent transactions',
-                        style: TextStyle(fontSize: 24, color: Colors.white),
-                      ),
-                    ),
-                    const Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AllTransactions(true)));
-                        },
-                        child: const Text(
-                          'View all',
-                          style: TextStyle(fontSize: 20),
+        Align(
+          heightFactor: .9,
+          alignment: Alignment.topCenter,
+          child: const CreditCardCarouse(),
+        ),
+        Align(
+          heightFactor: .75,
+          alignment: Alignment.center,
+          child: Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
+              ],
+            ),
+            child: Expenses(),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
+          ]),
+          child: CustomPaint(
+            painter: CardCustomPainter(context),
+            size: Size(size.width, size.width),
+            child: ListView(
+              primary: false,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          'Recent transactions',
+                          style: TextStyle(fontSize: 24, color: Colors.white),
                         ),
                       ),
-                    ),
-                  ],
+                      const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        AllTransactions(true)));
+                          },
+                          child: const Text(
+                            'View all',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              RecentTransactions(),
-            ],
+                RecentTransactions(),
+              ],
+            ),
           ),
-        )
+        ),
       ],
     );
   }
