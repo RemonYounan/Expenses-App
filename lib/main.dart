@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
 import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/screens/add_credit_screen.dart';
@@ -14,6 +15,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   final showHome = prefs.getBool('showHome') ?? false;
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
   runApp(MyApp(showHome));
 }
 
@@ -35,9 +41,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Personal Expenses',
         theme: ThemeData(
-          cardColor: const Color.fromARGB(255, 33, 21, 36),
+          cardColor: const Color.fromARGB(200, 14, 7, 17),
           cardTheme: CardTheme(
-            color: const Color.fromARGB(255, 33, 21, 36),
+            color: const Color.fromARGB(200, 14, 7, 17),
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -60,9 +66,11 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch(
             accentColor: Colors.amber,
           ),
-          primaryColor: const Color.fromARGB(255, 53, 36, 58),
+          primaryColor: const Color.fromARGB(255, 42, 28, 46),
         ),
-        home: showHome ? const MainScreen() : WelcomeScreen(),
+        home:
+            //  showHome ? const MainScreen() :
+            WelcomeScreen(),
         routes: {
           MainScreen.routeName: (context) => const MainScreen(),
           HomeScreen.routeName: (context) => HomeScreen(),

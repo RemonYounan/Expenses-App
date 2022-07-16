@@ -36,8 +36,9 @@ class StatisticsScreen extends StatelessWidget {
                 labelStyle:
                     const TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
                 indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20), // Creates border
-                    color: Colors.deepPurpleAccent,),
+                  borderRadius: BorderRadius.circular(20), // Creates border
+                  color: Colors.deepPurpleAccent,
+                ),
                 tabs: const [
                   Tab(
                     text: 'Income',

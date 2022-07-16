@@ -25,63 +25,65 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: ListView(
-        children: [
-          Card(
-            clipBehavior: Clip.antiAlias,
-            margin: const EdgeInsets.all(14),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            color: Theme.of(context).cardColor,
-            elevation: 30,
-            child: Padding(
-              padding: const EdgeInsets.all(6),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Getting started',
-                      textAlign: TextAlign.left,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            color: _readed ? Colors.grey : Colors.white,
-                          ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'This application is about calculating your expenses and income and shows how much you saved in the month and year.',
-                      style: TextStyle(
-                        color: _readed ? Colors.grey : Colors.white,
+      body: SafeArea(
+        child: ListView(
+          children: [
+            Card(
+              clipBehavior: Clip.antiAlias,
+              margin: const EdgeInsets.all(14),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              color: Theme.of(context).cardColor,
+              elevation: 30,
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Getting started',
+                        textAlign: TextAlign.left,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                              color: _readed ? Colors.grey : Colors.white,
+                            ),
                       ),
-                      softWrap: true,
                     ),
-                  ),
-                  if (!_readed)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              _readed = !_readed;
-                            });
-                          },
-                          child: const Text(
-                            'Mark as read',
-                          ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'This application is about calculating your expenses and income and shows how much you saved in the month and year.',
+                        style: TextStyle(
+                          color: _readed ? Colors.grey : Colors.white,
                         ),
-                      ],
-                    )
-                  else
-                    Container(),
-                ],
+                        softWrap: true,
+                      ),
+                    ),
+                    if (!_readed)
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                _readed = !_readed;
+                              });
+                            },
+                            child: const Text(
+                              'Mark as read',
+                            ),
+                          ),
+                        ],
+                      )
+                    else
+                      Container(),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -3,62 +3,68 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/widgets/card_shape.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class Expenses extends StatelessWidget {
   const Expenses({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final numFormat = NumberFormat.decimalPattern('en_us');
+
     final size = MediaQuery.of(context).size;
     final expenses = Provider.of<Transactions>(context).getTotalExpenses();
     return CustomPaint(
       painter: CardShape(context),
       size: Size(size.width, size.width),
-      child: SizedBox(
-        height: size.height * .2,
-        width: size.width,
-        child: Row(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Text(
-                    'Expenses this month',
-                    style: Theme.of(context).textTheme.titleLarge,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: SizedBox(
+          height: size.height * .2,
+          width: size.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      'Expense this month',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  '\$${(4000 - expenses).toInt()} saved',
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    '\$${numFormat.format(4000 - expenses)} saved',
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 18, color: Colors.grey),
+                  ),
+                ],
+              ),
+              CircularPercentIndicator(
+                radius: 50.0,
+                percent: expenses / 4000,
+                center: Text(
+                  '\$${numFormat.format(expenses)}',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
-                      .copyWith(fontSize: 18, color: Colors.grey),
+                      .copyWith(fontWeight: FontWeight.w900),
                 ),
-              ],
-            ),
-            const SizedBox(
-              width: 90,
-            ),
-            CircularPercentIndicator(
-              radius: 50.0,
-              percent: expenses / 4000,
-              center: Text(
-                '\$$expenses',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(fontWeight: FontWeight.w900),
-              ),
-              progressColor: Theme.of(context).colorScheme.primary,
-              backgroundColor: Theme.of(context).primaryColor,
-              circularStrokeCap: CircularStrokeCap.round,
-            )
-          ],
+                curve: Curves.easeInSine,
+                lineWidth: 12,
+                progressColor: const Color.fromARGB(255, 187, 6, 190),
+                backgroundColor: Theme.of(context).primaryColor,
+                circularStrokeCap: CircularStrokeCap.round,
+              )
+            ],
+          ),
         ),
       ),
     );

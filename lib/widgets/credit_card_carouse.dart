@@ -9,6 +9,9 @@ class CreditCardCarouse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final controller = PageController(viewportFraction: 0.8, keepPage: true);
+    final credits =
+        Provider.of<CreditCards>(context, listen: false).creditCards.isEmpty;
+
     return FutureBuilder(
       future: Provider.of<CreditCards>(context).getCreditCards(),
       builder: (context, snapshot) => Consumer<CreditCards>(

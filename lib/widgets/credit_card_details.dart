@@ -28,7 +28,7 @@ class CreditCardDetails extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(14),
               child: Text(
                 CardInfo.cardLabels[i],
                 style: Theme.of(context)
@@ -38,10 +38,17 @@ class CreditCardDetails extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(14),
               child: Text(
-                CardInfo()
-                    .cardData(i, type, name, number, pin, expiryDate, cvv),
+                CardInfo().cardData(
+                  i,
+                  type,
+                  name,
+                  number,
+                  pin,
+                  expiryDate,
+                  cvv,
+                ),
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge!

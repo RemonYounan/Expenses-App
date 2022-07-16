@@ -4,7 +4,7 @@ class CardInfo {
     'Cardholder name',
     'Card number',
     'PIN',
-    'Expiry date',
+    'Expiration date',
     'CVV',
   ];
 

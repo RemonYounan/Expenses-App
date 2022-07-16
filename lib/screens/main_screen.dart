@@ -43,7 +43,6 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Theme.of(context).primaryColor,
       body: _pages[_selectedIndex],
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        backgroundColor: Theme.of(context).primaryColor,
         activeColor: Theme.of(context).colorScheme.secondary,
         inactiveColor: Colors.white54,
         borderColor: Theme.of(context).primaryColor,
@@ -54,9 +53,8 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
         // gapWidth: 50,
-        notchSmoothness: NotchSmoothness.smoothEdge,
+        notchSmoothness: NotchSmoothness.verySmoothEdge,
         hideAnimationCurve: Curves.easeIn,
-        rightCornerRadius: 0,
         blurEffect: true,
         notchMargin: 10,
         gapLocation: GapLocation.end,
@@ -80,7 +78,28 @@ class _MainScreenState extends State<MainScreen> {
                 Navigator.pushNamed(context, AddCreditScreen.routeName);
               }
             : _addNewTransaction,
-        child: Icon(_selectedIndex == 3 ? Icons.credit_card : Icons.add),
+        // backgroundColor: const Color.fromARGB(255, 213, 50, 142),
+        child: Container(
+          height: 60,
+          width: 60,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 226, 28, 222),
+                Color.fromARGB(255, 213, 50, 142),
+                Color.fromARGB(255, 203, 44, 85),
+              ],
+            ),
+          ),
+          child: Icon(
+            _selectedIndex == 3 ? Icons.credit_card : Icons.add,
+            size: 45,
+            color: Colors.white,
+          ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );

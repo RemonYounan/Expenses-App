@@ -4,9 +4,11 @@ import 'package:personal_expenses/providers/transactions.dart';
 import 'package:provider/provider.dart';
 
 class CategoriGridItem extends StatelessWidget {
+  const CategoriGridItem(this.title, this.icon, this.color, {Key? key})
+      : super(key: key);
   final String title;
-  final IconData icon;
-  const CategoriGridItem(this.title, this.icon, {Key? key}) : super(key: key);
+  final Icon icon;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +20,30 @@ class CategoriGridItem extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: () {},
-        child: Card(
-          elevation: 20,
-          color: Theme.of(context).primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(26),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Theme.of(context).cardColor.withAlpha(150),
+                Theme.of(context).primaryColor,
+              ],
+            ),
           ),
           child: ListView(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              Icon(
-                icon,
-                color: Colors.blue,
-                size: 50,
-              ),
+              icon,
               Text(
                 title,
                 style: Theme.of(context).textTheme.titleLarge,
                 textAlign: TextAlign.center,
               ),
               Text(
-                '-$expense',
+                expense == 0 ? '\$0' : '-\$${expense.toInt()}',
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium!
@@ -50,7 +54,8 @@ class CategoriGridItem extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: LinearPercentIndicator(
                   percent: max == 0 ? 0 : expense / max,
-                  progressColor: Theme.of(context).colorScheme.primary,
+                  progressColor: color,
+                  backgroundColor: Theme.of(context).cardColor,
                   barRadius: const Radius.circular(15),
                   lineHeight: 6,
                   // center: null,        // edited here

@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 
 class CardShape extends CustomPainter {
   BuildContext context;
   CardShape(this.context);
   @override
   void paint(Canvas canvas, Size size) {
+    final screenHight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     final Paint paint0 = Paint()
-      ..color = Theme.of(context).cardColor
+      ..shader = ui.Gradient.linear(
+        Offset(screenWidth * .5, 0),
+        Offset(screenWidth * .5, screenHight * .3),
+        [
+          Theme.of(context).primaryColor,
+          Theme.of(context).cardColor,
+          // Colors.blue,
+          // Colors.red,
+        ],
+      )
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 

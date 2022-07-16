@@ -15,35 +15,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              'Profile',
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(fontSize: 28, fontWeight: FontWeight.w900),
-            ),
-          ),
-          Row(
-            children: [
-              ProfileSlider(),
-              IconButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, AddCreditScreen.routeName),
-                icon: const Icon(
-                  Icons.credit_card,
-                ),
-                color: Theme.of(context).colorScheme.secondary,
-                iconSize: 44,
+      body: SafeArea(
+        child: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Profile',
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(fontSize: 28, fontWeight: FontWeight.w900),
               ),
-            ],
-          ),
-          CreditsInfo(),
-        ],
+            ),
+            Row(
+              children: [
+                ProfileSlider(),
+                IconButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, AddCreditScreen.routeName),
+                  icon: const Icon(
+                    Icons.credit_card,
+                  ),
+                  color: Theme.of(context).colorScheme.secondary,
+                  iconSize: 44,
+                ),
+              ],
+            ),
+            CreditsInfo(),
+          ],
+        ),
       ),
     );
   }

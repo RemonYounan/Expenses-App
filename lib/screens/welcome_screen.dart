@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/screens/add_credit_screen.dart';
+import 'package:personal_expenses/screens/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -14,14 +15,13 @@ class WelcomeScreen extends StatelessWidget {
             child: Image.asset(
               'assets/screenshot_1.png',
               fit: BoxFit.cover,
+              isAntiAlias: true,
             ),
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: mediaQuery.size.height * .57,
-              ),
               Padding(
                 padding: const EdgeInsets.only(left: 30),
                 child: Text(
@@ -41,64 +41,68 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Skip',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(color: Colors.grey),
-                      ),
-                    ),
-                  ),
-                  // const Spacer(),
-                  Container(
-                    height: mediaQuery.size.height * .1,
-                    width: MediaQuery.of(context).size.width * .5,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        bottomLeft: Radius.circular(40),
-                      ),
-                      color: Theme.of(context).cardColor,
-                    ),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        bottomLeft: Radius.circular(40),
-                      ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Row(
+                  children: [
+                    Expanded(
                       child: TextButton(
-                        style: TextButton.styleFrom(),
-                        onPressed: () async {
-                          final prefs = await SharedPreferences.getInstance();
-                          prefs.setBool('showHome', true);
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AddCreditScreen(true),
-                            ),
-                          );
-                        },
+                        onPressed: () {},
                         child: Text(
-                          'Start Now',
-                          style:
-                              Theme.of(context).textTheme.titleLarge!.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .secondary
-                                        .withOpacity(.8),
-                                  ),
+                          'Skip',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(color: Colors.grey),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    // const Spacer(),
+                    Container(
+                      height: mediaQuery.size.height * .095,
+                      width: MediaQuery.of(context).size.width * .5,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          bottomLeft: Radius.circular(40),
+                        ),
+                        color: Theme.of(context).cardColor,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          bottomLeft: Radius.circular(40),
+                        ),
+                        child: TextButton(
+                          style: TextButton.styleFrom(),
+                          onPressed: () async {
+                            final prefs = await SharedPreferences.getInstance();
+                            prefs.setBool('showHome', true);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainScreen(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Start Now',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .secondary
+                                      .withOpacity(.8),
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

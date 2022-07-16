@@ -11,52 +11,18 @@ class CreditItem extends StatefulWidget {
 }
 
 class _CreditItemState extends State<CreditItem> {
-  var _isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: [
-          SizedBox(
-            height: 60,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(4),
-                  child: Text(
-                    'Credit ${widget.index + 1} :',
-                    style: Theme.of(context).textTheme.titleLarge,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                    onPressed: () => setState(() {
-                      _isExpanded = !_isExpanded;
-                    }),
-                    icon: _isExpanded
-                        ? const Icon(Icons.expand_less)
-                        : const Icon(Icons.expand_more_rounded),
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          AnimatedContainer(
-            curve: Curves.easeIn,
-            height: _isExpanded ? 260 : 0,
-            duration: const Duration(milliseconds: 300),
-            child: CreditCardDetails(
-              type: widget.credit.type!,
-              name: widget.credit.name!,
-              number: widget.credit.number!,
-              pin: widget.credit.pin!,
-              expiryDate: widget.credit.expiryDate!,
-              cvv: widget.credit.cvv!,
-            ),
+          CreditCardDetails(
+            type: widget.credit.type!,
+            name: widget.credit.name!,
+            number: widget.credit.number!,
+            pin: widget.credit.pin!,
+            expiryDate: widget.credit.expiryDate!,
+            cvv: widget.credit.cvv!,
           ),
         ],
       ),

@@ -46,25 +46,26 @@ class TransactionItem extends StatelessWidget {
               Icons.more_vert_rounded,
               color: Theme.of(context).colorScheme.secondary,
             ),
+            color: Theme.of(context).primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
             itemBuilder: (context) => [
-              PopupMenuItem(
-                onTap: () => print('edit pressed from onTap'),
-                value: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
-                      Icons.edit,
-                      color: Colors.white,
-                      size: 28,
-                    ),
-                    Expanded(child: Text('Edit')),
-                  ],
-                ),
-              ),
+              // PopupMenuItem(
+              //   onTap: () => print('edit pressed from onTap'),
+              //   value: 0,
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: const [
+              //       Icon(
+              //         Icons.edit,
+              //         color: Colors.white,
+              //         size: 28,
+              //       ),
+              //       Expanded(child: Text('Edit')),
+              //     ],
+              //   ),
+              // ),
               PopupMenuItem(
                 value: 1,
                 onTap: () =>
