@@ -68,9 +68,7 @@ class MyApp extends StatelessWidget {
           ),
           primaryColor: const Color.fromARGB(255, 42, 28, 46),
         ),
-        home:
-            //  showHome ? const MainScreen() :
-            WelcomeScreen(),
+        home: showHome ? const MainScreen() : WelcomeScreen(),
         routes: {
           MainScreen.routeName: (context) => const MainScreen(),
           HomeScreen.routeName: (context) => HomeScreen(),

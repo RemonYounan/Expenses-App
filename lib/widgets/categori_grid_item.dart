@@ -12,10 +12,10 @@ class CategoriGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final expense = Provider.of<Transactions>(context, listen: false)
+    final expense = Provider.of<Transactions>(context)
         .getCategoryExpense(title);
     final max =
-        Provider.of<Transactions>(context, listen: false).getMaxCatExpense();
+        Provider.of<Transactions>(context).getMaxCatExpense();
     return GridTile(
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
