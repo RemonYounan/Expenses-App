@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:personal_expenses/others/card_data.dart';
 
 class CreditCardDetails extends StatelessWidget {
   CreditCardDetails({
@@ -19,6 +18,32 @@ class CreditCardDetails extends StatelessWidget {
   int cvv;
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> cardData = [
+      {
+        'title': 'Card Type',
+        'value': type,
+      },
+      {
+        'title': 'Cardholder name',
+        'value': name,
+      },
+      {
+        'title': 'Card number',
+        'value': number,
+      },
+      {
+        'title': 'PIN',
+        'value': pin,
+      },
+      {
+        'title': 'Expiration date',
+        'value': expiryDate,
+      },
+      {
+        'title': 'CVV',
+        'value': cvv,
+      },
+    ];
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -30,7 +55,7 @@ class CreditCardDetails extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(14),
               child: Text(
-                CardInfo.cardLabels[i],
+                cardData[i]['title'] as String,
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge!
@@ -39,21 +64,29 @@ class CreditCardDetails extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(14),
-              child: Text(
-                CardInfo().cardData(
-                  i,
-                  type,
-                  name,
-                  number,
-                  pin,
-                  expiryDate,
-                  cvv,
-                ),
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(fontSize: 18, color: Colors.grey),
-              ),
+              child: cardData[i]['value'] == 'Master Card'
+                  ? Row(
+                      children: [
+                        Text(
+                          cardData[i]['value'] as String,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .copyWith(fontSize: 18, color: Colors.grey),
+                        ),
+                        Image.asset(
+                          'assets/master_card.png',
+                          scale: 1.5,
+                        )
+                      ],
+                    )
+                  : Text(
+                      cardData[i]['value'].toString(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(fontSize: 18, color: Colors.grey),
+                    ),
             ),
           ],
         );
