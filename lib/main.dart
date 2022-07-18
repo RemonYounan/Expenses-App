@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:personal_expenses/models/notification.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
 import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/screens/add_credit_screen.dart';
@@ -20,11 +21,13 @@ Future<void> main() async {
       statusBarColor: Colors.transparent,
     ),
   );
-  runApp(MyApp(showHome));
+  runApp(MyApp(
+    showHome: showHome,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp(this.showHome, {Key? key}) : super(key: key);
+  MyApp({required this.showHome, Key? key}) : super(key: key);
   bool showHome;
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => CreditCards(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Notifications(),
         ),
       ],
       child: MaterialApp(
@@ -50,10 +56,6 @@ class MyApp extends StatelessWidget {
             ),
           ),
           textTheme: const TextTheme(
-            headlineMedium: TextStyle(
-              color: Colors.white,
-              fontSize: 28,
-            ),
             titleLarge: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

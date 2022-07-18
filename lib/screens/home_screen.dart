@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:personal_expenses/providers/credit_cards.dart';
-import 'package:personal_expenses/screens/notifications_screen.dart';
 import 'package:personal_expenses/widgets/all_transactions.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
-import 'package:personal_expenses/widgets/recent_tx_painter.dart';
 import 'package:personal_expenses/widgets/expenses.dart';
+import 'package:personal_expenses/widgets/home_bar.dart';
 import 'package:personal_expenses/widgets/recent_transactions.dart';
-import 'package:provider/provider.dart';
+import 'package:personal_expenses/widgets/recent_tx_painter.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -20,51 +18,23 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: ListTile(
-              leading: const CircleAvatar(
-                radius: 30,
-                child: Icon(Icons.account_circle),
-              ),
-              title: const Text(
-                'Welcome [Name]',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontFamily: 'SourceSansPro',
-                ),
-              ),
-              trailing: IconButton(
-                iconSize: 35,
-                color: Colors.amber,
-                onPressed: () {
-                  Navigator.pushNamed(context, NotificationsScreen.routeName);
-                },
-                icon: const Icon(Icons.notifications_sharp),
-              ),
-            ),
+          const Padding(
+            padding: EdgeInsets.only(top: 8),
+            child: HomeBar(),
           ),
           Text(
             'Total balance',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary,
-              fontFamily: 'SourceSansPro',
-            ),
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontSize: 22,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
           ),
           Text(
             '\$${numFormat.format(4000)}',
             textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-              fontFamily: 'SourceSansPro',
-            ),
+            style:
+                Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 28),
           ),
           const Align(
             heightFactor: .9,
@@ -77,7 +47,9 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.black.withAlpha(50), blurRadius: 10.0),
+                    color: Colors.black.withAlpha(50),
+                    blurRadius: 10.0,
+                  ),
                 ],
               ),
               child: const Expenses(),
@@ -119,7 +91,8 @@ class HomeScreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => AllTransactions(true),
+                                    builder: (context) =>
+                                        AllTransactions(viewAll: true),
                                   ),
                                 );
                               },

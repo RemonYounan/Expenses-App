@@ -299,18 +299,22 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                   },
                   (value) => cvv = int.parse(value!),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      // fixedSize: Size(40, 40),
-                      textStyle: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    onPressed: _Submit,
-                    icon: const Icon(Icons.add),
-                    label: const Text('Add Credit'),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    // fixedSize: Size(40, 40),
+                    textStyle: Theme.of(context).textTheme.titleMedium,
                   ),
+                  onPressed: _Submit,
+                  icon: const Icon(Icons.add),
+                  label: const Text('Add Credit'),
                 ),
+                if (widget.first)
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, MainScreen.routeName);
+                    },
+                    child: const Text('Skip'),
+                  ),
               ],
             ),
           ),

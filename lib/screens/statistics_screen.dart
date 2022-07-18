@@ -25,8 +25,8 @@ class StatisticsScreen extends StatelessWidget {
               'Statistics',
               style: Theme.of(context)
                   .textTheme
-                  .headline4!
-                  .copyWith(fontWeight: FontWeight.bold),
+                  .titleLarge!
+                  .copyWith(fontWeight: FontWeight.bold, fontSize: 28),
               textAlign: TextAlign.center,
             ),
             ClipRRect(
@@ -81,7 +81,7 @@ class StatisticsScreen extends StatelessWidget {
                       // SizedBox(height: 200, child: const IncomeSources()),
                     ],
                   ),
-                  AllTransactions(false),
+                  AllTransactions(viewAll: false),
                 ],
               ),
             ),

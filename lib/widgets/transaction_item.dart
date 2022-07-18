@@ -32,6 +32,7 @@ class TransactionItem extends StatelessWidget {
       ),
       subtitle: Text(
         DateFormat.yMEd().format(transactions.transactions[index].date!),
+        // '${DateTime.now().difference(transactions.transactions[index].date!).inHours} hours ago',
         style: const TextStyle(color: Colors.grey),
       ),
       trailing: Row(
@@ -39,7 +40,11 @@ class TransactionItem extends StatelessWidget {
         children: [
           Text(
             '\$${transactions.transactions[index].amount!.toStringAsFixed(2)}',
-            style: const TextStyle(color: Colors.amber, fontSize: 20),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: Colors.lightGreen,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
           ),
           PopupMenuButton(
             icon: Icon(

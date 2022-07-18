@@ -26,7 +26,7 @@ class RecentTransactions extends StatelessWidget {
                         'There is no transactions.',
                         style: Theme.of(context)
                             .textTheme
-                            .headlineMedium!
+                            .titleMedium!
                             .copyWith(fontSize: 22),
                       ),
                     ),

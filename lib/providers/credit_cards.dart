@@ -3,6 +3,7 @@ import 'package:personal_expenses/helpers/db_credit_helper.dart';
 import 'package:personal_expenses/models/credit_card.dart';
 
 class CreditCards with ChangeNotifier {
+  String name = '';
   List<CreditCard> _creditCards = [];
 
   List<CreditCard> get creditCards {
@@ -19,13 +20,14 @@ class CreditCards with ChangeNotifier {
   ) async {
     _creditCards.add(
       CreditCard(
-          id: DateTime.now().toString(),
-          type: type,
-          name: name,
-          number: number,
-          pin: pin,
-          expiryDate: expiryDate,
-          cvv: cvv,),
+        id: DateTime.now().toString(),
+        type: type,
+        name: name,
+        number: number,
+        pin: pin,
+        expiryDate: expiryDate,
+        cvv: cvv,
+      ),
     );
     notifyListeners();
     await DBCreditHelper.insert('CreditCards', {
@@ -58,5 +60,15 @@ class CreditCards with ChangeNotifier {
     } catch (err) {
       print('getCreditCards error: $err');
     }
+  }
+
+  Future<String> getName() async {
+    try {
+      final dataList = await DBCreditHelper.getData('CreditCards');
+      name = dataList[0]['name'].toString().split(' ').first;
+    } catch (err) {
+      print('getName: $err');
+    }
+    return name;
   }
 }

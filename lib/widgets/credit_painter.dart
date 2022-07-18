@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 
 class CreditPainter extends CustomPainter {
   BuildContext context;
@@ -7,9 +6,6 @@ class CreditPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final screenHight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
     final Paint paint0 = Paint()
       ..color = Theme.of(context).cardColor
       ..style = PaintingStyle.fill

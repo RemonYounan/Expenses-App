@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/screens/add_credit_screen.dart';
-import 'package:personal_expenses/screens/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -82,7 +81,7 @@ class WelcomeScreen extends StatelessWidget {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MainScreen(),
+                                builder: (context) => AddCreditScreen(true),
                               ),
                             );
                           },

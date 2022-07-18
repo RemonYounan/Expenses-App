@@ -12,7 +12,6 @@ class AddTransaction extends StatefulWidget {
 
 class _AddTransactionState extends State<AddTransaction> {
   final _formKey = GlobalKey<FormState>();
-  final icondropdown = '0';
   String category = 'Others';
   String? title;
   double? amount;
@@ -50,10 +49,11 @@ class _AddTransactionState extends State<AddTransaction> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: 8,
-          left: 8,
-          right: 8,
-          bottom: MediaQuery.of(context).viewInsets.bottom,),
+        top: 8,
+        left: 8,
+        right: 8,
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: Form(
         key: _formKey,
         child: SingleChildScrollView(
@@ -202,8 +202,9 @@ class _AddTransactionState extends State<AddTransaction> {
                       child: Text(
                         'Choose date',
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontSize: 18,),
+                              color: Theme.of(context).colorScheme.primary,
+                              fontSize: 18,
+                            ),
                       ),
                     ),
                   ),

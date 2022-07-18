@@ -4,7 +4,10 @@ import 'package:personal_expenses/widgets/transaction_item.dart';
 import 'package:provider/provider.dart';
 
 class AllTransactions extends StatelessWidget {
-  AllTransactions(this.viewAll, {Key? key}) : super(key: key);
+  AllTransactions({
+    required this.viewAll,
+    Key? key,
+  }) : super(key: key);
   bool viewAll;
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,7 @@ class AllTransactions extends StatelessWidget {
                             'There is no transactions.',
                             style: Theme.of(context)
                                 .textTheme
-                                .headlineMedium!
+                                .titleMedium!
                                 .copyWith(fontSize: 22),
                           ),
                         ),

@@ -35,6 +35,7 @@ dependencies:
   flutter:
     sdk: flutter
   # flutter_native_splash: ^2.2.4
+  flutter_native_splash: ^2.1.6
   font_awesome_flutter: ^10.1.0
   intl: ^0.17.0
   percent_indicator: 4.0.0
@@ -51,13 +52,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^1.8.2
-
+flutter_native_splash:
+  color: "#35253a"
+  image: assets/digital-wallet.png
 flutter_icons:
   android: true
   ios: true
-  image_path: "dev_assets/icon.png"
+  image_path: "dev_assets/digital-wallet.png"
   adaptice_icon_background: "#191919"
-  adaptive_icon_forground: "dev_assets/icon.png"
+  adaptive_icon_forground: "dev_assets/digital-wallet.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -79,11 +82,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/welcome.svg
-    - assets/welcome.png
     - assets/screenshot.png
     - assets/screenshot_1.png
     - assets/arrows.png
+    - assets/master_card.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

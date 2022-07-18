@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/models/notification.dart';
+import 'package:provider/provider.dart';
 
 class NotificationsScreen extends StatefulWidget {
-  const NotificationsScreen({Key? key}) : super(key: key);
-
   static const routeName = '/notifications-screen';
+  const NotificationsScreen({Key? key}) : super(key: key);
 
   @override
   State<NotificationsScreen> createState() => _NotificationsScreenState();
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
-  var _readed = false;
   @override
   Widget build(BuildContext context) {
-    // final notification = Provider.of<Notifications>(context); // can't get provider
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
@@ -26,13 +25,15 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         ),
       ),
       body: SafeArea(
-        child: ListView(
-          children: [
-            Card(
+        child: Consumer<Notifications>(
+          builder: (_, notifications, ch) => ListView.builder(
+            itemCount: notifications.notifications.length,
+            itemBuilder: (_, i) => Card(
               clipBehavior: Clip.antiAlias,
               margin: const EdgeInsets.all(14),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
+                borderRadius: BorderRadius.circular(20),
+              ),
               color: Theme.of(context).cardColor,
               elevation: 30,
               child: Padding(
@@ -43,31 +44,37 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Getting started',
+                        notifications.notifications[i].title,
                         textAlign: TextAlign.left,
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              color: _readed ? Colors.grey : Colors.white,
+                              color: notifications.notifications[i].readed
+                                  ? Colors.grey
+                                  : Colors.white,
                             ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'This application is about calculating your expenses and income and shows how much you saved in the month and year.',
+                        notifications.notifications[i].body,
                         style: TextStyle(
-                          color: _readed ? Colors.grey : Colors.white,
+                          color: notifications.notifications[i].readed
+                              ? Colors.grey
+                              : Colors.white,
                         ),
                         softWrap: true,
                       ),
                     ),
-                    if (!_readed)
+                    if (!notifications.notifications[i].readed)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
                             onPressed: () {
                               setState(() {
-                                _readed = !_readed;
+                                notifications.markAsReaded(
+                                  notifications.notifications[i].id,
+                                );
                               });
                             },
                             child: const Text(
@@ -76,13 +83,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           ),
                         ],
                       )
-                    else
-                      Container(),
                   ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

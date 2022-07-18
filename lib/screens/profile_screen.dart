@@ -31,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             Row(
               children: [
-                ProfileSlider(),
+                const ProfileSlider(),
                 IconButton(
                   onPressed: () =>
                       Navigator.pushNamed(context, AddCreditScreen.routeName),
@@ -43,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            CreditsInfo(),
+            const CreditsInfo(),
           ],
         ),
       ),
