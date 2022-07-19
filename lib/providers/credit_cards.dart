@@ -65,7 +65,9 @@ class CreditCards with ChangeNotifier {
   Future<String> getName() async {
     try {
       final dataList = await DBCreditHelper.getData('CreditCards');
-      name = dataList[0]['name'].toString().split(' ').first;
+      if (dataList.isNotEmpty) {
+        name = dataList[0]['name'].toString().split(' ').first;
+      }
     } catch (err) {
       print('getName: $err');
     }
