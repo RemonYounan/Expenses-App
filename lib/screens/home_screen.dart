@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                 Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 28),
           ),
           const Align(
-            heightFactor: .9,
+            heightFactor: .75,
             alignment: Alignment.topCenter,
             child: CreditCardCarouse(),
           ),

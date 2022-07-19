@@ -23,8 +23,8 @@ class CategoriGridItem extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Theme.of(context).cardColor.withAlpha(150),
-              Theme.of(context).primaryColor,
+              Theme.of(context).cardColor,
+              Theme.of(context).primaryColor.withAlpha(200),
             ],
           ),
         ),
@@ -35,7 +35,10 @@ class CategoriGridItem extends StatelessWidget {
             icon,
             Text(
               title,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Colors.white.withAlpha(220),
+                    fontWeight: FontWeight.w200,
+                  ),
               textAlign: TextAlign.center,
             ),
             Text(
@@ -51,7 +54,8 @@ class CategoriGridItem extends StatelessWidget {
               child: LinearPercentIndicator(
                 percent: max == 0 ? 0 : expense / max,
                 progressColor: color,
-                backgroundColor: Theme.of(context).cardColor,
+
+                backgroundColor: Theme.of(context).primaryColor,
                 barRadius: const Radius.circular(15),
                 lineHeight: 6,
                 // center: null,        // edited here

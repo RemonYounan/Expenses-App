@@ -47,9 +47,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Personal Expenses',
         theme: ThemeData(
-          cardColor: const Color.fromARGB(200, 14, 7, 17),
+          cardColor: const Color.fromARGB(255, 14, 7, 17),
           cardTheme: CardTheme(
-            color: const Color.fromARGB(200, 14, 7, 17),
+            color: const Color.fromARGB(255, 14, 7, 17),
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),

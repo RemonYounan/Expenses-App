@@ -31,7 +31,7 @@ class HomeBar extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, NotificationsScreen.routeName);
               },
-              icon: const Icon(Icons.notifications_sharp),
+              icon: const Icon(Icons.notifications),
             ),
           );
         });

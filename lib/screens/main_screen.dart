@@ -47,8 +47,11 @@ class _MainScreenState extends State<MainScreen> {
         inactiveColor: Colors.white54,
         borderColor: Theme.of(context).primaryColor,
         backgroundGradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
           colors: [
             Theme.of(context).cardColor,
+            // Colors.black,
             Theme.of(context).cardColor,
           ],
         ),
@@ -66,10 +69,10 @@ class _MainScreenState extends State<MainScreen> {
         activeIndex: _selectedIndex,
         iconSize: 30,
         icons: const [
-          Icons.home_filled,
+          Icons.home_outlined,
           Icons.account_balance_wallet_outlined,
-          Icons.stacked_bar_chart,
-          Icons.person
+          Icons.stacked_bar_chart_rounded,
+          Icons.person_outline_rounded,
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -14,9 +14,6 @@ class BalanceScreen extends StatelessWidget {
     final NumberFormat numFormat = NumberFormat.decimalPattern('en_us');
     return SafeArea(
       child: ListView(
-        // primary: false,
-        // shrinkWrap: true,
-        // physics: NeverScrollableScrollPhysics(),
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 4),
@@ -24,14 +21,15 @@ class BalanceScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 InkWell(
-                  borderRadius: BorderRadius.circular(40),
-                  radius: 50,
-                  onTap: () {},
-                  child: Image.asset(
-                    'assets/arrows.png',
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                ),
+                    borderRadius: BorderRadius.circular(40),
+                    onTap: () {},
+                    child: ImageIcon(
+                      const AssetImage(
+                        'assets/arrows.png',
+                      ),
+                      size: 28,
+                      color: Theme.of(context).colorScheme.secondary,
+                    )),
                 IconButton(
                   splashRadius: 20,
                   onPressed: () {
@@ -59,7 +57,7 @@ class BalanceScreen extends StatelessWidget {
                 ),
             textAlign: TextAlign.center,
           ),
-          const CreditCardCarouse(),
+          CreditCardCarouse(),
           Container(
             decoration: BoxDecoration(
               boxShadow: [

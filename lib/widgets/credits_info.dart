@@ -52,7 +52,7 @@ class _CreditsInfoState extends State<CreditsInfo> {
                             'There is no credit cards.',
                             style: Theme.of(context)
                                 .textTheme
-                                .headlineMedium!
+                                .titleMedium!
                                 .copyWith(fontSize: 22),
                           ),
                         ),
@@ -60,7 +60,6 @@ class _CreditsInfoState extends State<CreditsInfo> {
                       builder: (ctx, credits, ch) => credits.creditCards.isEmpty
                           ? ch!
                           : ListView.builder(
-                              primary: false,
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               itemCount: credits.creditCards.length,
