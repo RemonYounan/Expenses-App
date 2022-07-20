@@ -18,7 +18,6 @@ class _CreditCardCarouseState extends State<CreditCardCarouse> {
   Widget build(BuildContext context) {
     final screenHight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: FutureBuilder(
@@ -67,33 +66,34 @@ class _CreditCardCarouseState extends State<CreditCardCarouse> {
                           },
                           viewportFraction: .76,
                           enlargeCenterPage: true,
-                          height: 220,
                         ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: credits.map((credit) {
-                          final index = credits.indexOf(credit);
-                          return Container(
-                            width: 14,
-                            height: 8,
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 10.0,
-                              horizontal: 8.0,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(100),
-                                topRight: Radius.circular(100),
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
+                        children: credits.map(
+                          (credit) {
+                            final index = credits.indexOf(credit);
+                            return Container(
+                              width: 14,
+                              height: 8,
+                              margin: const EdgeInsets.symmetric(
+                                vertical: 10.0,
+                                horizontal: 8.0,
                               ),
-                              color: activePage == index
-                                  ? const Color.fromARGB(255, 162, 60, 210)
-                                  : const Color.fromARGB(200, 79, 38, 96),
-                            ),
-                          );
-                        }).toList(),
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(60),
+                                  topRight: Radius.circular(60),
+                                  bottomLeft: Radius.circular(15),
+                                  bottomRight: Radius.circular(15),
+                                ),
+                                color: activePage == index
+                                    ? const Color.fromARGB(255, 162, 60, 210)
+                                    : const Color.fromARGB(255, 79, 38, 96),
+                              ),
+                            );
+                          },
+                        ).toList(),
                       )
                     ],
                   ),

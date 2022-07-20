@@ -63,54 +63,58 @@ class HomeScreen extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 6),
-              child: CustomPaint(
-                painter: RecentTxPainter(context),
-                size: Size(size.width, size.width),
-                child: ListView(
-                  primary: false,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Text(
-                              'Recent transactions',
-                              style:
-                                  TextStyle(fontSize: 24, color: Colors.white),
-                            ),
-                          ),
-                          const Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        AllTransactions(viewAll: true),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'View all',
+              child: Stack(
+                children: [
+                  CustomPaint(
+                    painter: RecentTxPainter(context),
+                    size: Size(size.width, 450),
+                  ),
+                  ListView(
+                    primary: false,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                'Recent transactions',
                                 style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 18,
+                                    fontSize: 24, color: Colors.white),
+                              ),
+                            ),
+                            const Spacer(),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          AllTransactions(viewAll: true),
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  'View all',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 18,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    const RecentTransactions(),
-                  ],
-                ),
+                      const RecentTransactions(),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

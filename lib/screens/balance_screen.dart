@@ -11,6 +11,7 @@ class BalanceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final NumberFormat numFormat = NumberFormat.decimalPattern('en_us');
     return SafeArea(
       child: ListView(
@@ -57,52 +58,57 @@ class BalanceScreen extends StatelessWidget {
                 ),
             textAlign: TextAlign.center,
           ),
-          CreditCardCarouse(),
+          const CreditCardCarouse(),
           Container(
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(color: Colors.black.withAlpha(50), blurRadius: 10.0),
               ],
             ),
-            child: CustomPaint(
-              painter: CategoryPainter(context),
-              child: ListView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(18),
-                    child: Text(
-                      'Categories',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontSize: 26),
+            child: Stack(
+              children: [
+                CustomPaint(
+                  painter: CategoryPainter(context),
+                  size: Size(size.width, 360),
+                ),
+                ListView(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(18),
+                      child: Text(
+                        'Categories',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(fontSize: 26),
+                      ),
                     ),
-                  ),
-                  GridView(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      mainAxisExtent: 130,
-                      maxCrossAxisExtent: 120,
-                      crossAxisSpacing: 14,
-                      mainAxisSpacing: 14,
+                    GridView(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        mainAxisExtent: 130,
+                        maxCrossAxisExtent: 120,
+                        crossAxisSpacing: 14,
+                        mainAxisSpacing: 14,
+                      ),
+                      padding: const EdgeInsets.all(6),
+                      children: CATEGORIES_DATA
+                          .map(
+                            (e) => CategoriGridItem(
+                              e['title'] as String,
+                              e['icon'] as Icon,
+                              e['color'] as Color,
+                            ),
+                          )
+                          .toList(),
                     ),
-                    padding: const EdgeInsets.all(6),
-                    children: CATEGORIES_DATA
-                        .map(
-                          (e) => CategoriGridItem(
-                            e['title'] as String,
-                            e['icon'] as Icon,
-                            e['color'] as Color,
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

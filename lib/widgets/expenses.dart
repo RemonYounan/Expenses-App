@@ -13,19 +13,21 @@ class Expenses extends StatelessWidget {
     final numFormat = NumberFormat.decimalPattern('en_us');
     final size = MediaQuery.of(context).size;
     final expenses = Provider.of<Transactions>(context).getTotalExpenses();
-    return CustomPaint(
-      painter: CardShape(context),
-      size: Size(size.width, size.width),
-      child: SizedBox(
-        height: size.height * .2,
-        width: size.width,
-        child: Row(
+    return Stack(
+      children: [
+        CustomPaint(
+          painter: CardShape(context),
+          size: Size(size.width, 130),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
               width: size.width * .05,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Expense this month',
@@ -36,38 +38,44 @@ class Expenses extends StatelessWidget {
                 ),
                 Text(
                   '\$${numFormat.format(4000 - expenses)} saved',
+                  textAlign: TextAlign.start,
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
-                      .copyWith(fontSize: 18, color: Colors.grey),
+                      .copyWith(fontSize: 16, color: Colors.grey),
                 ),
               ],
             ),
             SizedBox(
               width: size.width * .2,
             ),
-            CircularPercentIndicator(
-              radius: 50.0,
-              percent: expenses / 4000,
-              center: Text(
-                '\$${numFormat.format(expenses)}',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(fontWeight: FontWeight.w900),
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: CircularPercentIndicator(
+                radius: 50.0,
+                percent: expenses / 4000,
+                center: Text(
+                  '\$${numFormat.format(expenses)}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(fontWeight: FontWeight.w900),
+                ),
+                curve: Curves.easeInSine,
+                lineWidth: 12,
+                progressColor: const Color.fromARGB(255, 187, 6, 190),
+                // progressColor:
+                // Theme.of(context).colorScheme.primary.withOpacity(.6),
+                backgroundColor: Theme.of(context).primaryColor,
+                circularStrokeCap: CircularStrokeCap.round,
               ),
-              curve: Curves.easeInSine,
-              lineWidth: 12,
-              progressColor: const Color.fromARGB(255, 187, 6, 190),
-              backgroundColor: Theme.of(context).primaryColor,
-              circularStrokeCap: CircularStrokeCap.round,
             ),
             SizedBox(
               width: size.width * .05,
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

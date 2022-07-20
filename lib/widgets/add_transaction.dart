@@ -66,9 +66,8 @@ class _AddTransactionState extends State<AddTransaction> {
                   softWrap: true,
                   style: Theme.of(context)
                       .textTheme
-                      .titleMedium!
-                      .copyWith(fontSize: 28),
-                  textAlign: TextAlign.center,
+                      .titleLarge!
+                      .copyWith(fontSize: 26),
                 ),
               ),
               Row(
@@ -145,11 +144,12 @@ class _AddTransactionState extends State<AddTransaction> {
                     ),
                     labelText: 'Title',
                     labelStyle: Theme.of(context).textTheme.titleMedium,
+                    errorStyle: const TextStyle(fontSize: 14),
                   ),
                   textInputAction: TextInputAction.next,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Enter Title';
+                      return 'Enter a valid title';
                     }
                     return null;
                   },
@@ -167,6 +167,7 @@ class _AddTransactionState extends State<AddTransaction> {
                     ),
                     labelText: 'Amount',
                     labelStyle: Theme.of(context).textTheme.titleMedium,
+                    errorStyle: const TextStyle(fontSize: 14),
                   ),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
@@ -192,7 +193,7 @@ class _AddTransactionState extends State<AddTransaction> {
                     flex: 2,
                     child: Text(
                       _pickedDate == null
-                          ? 'No date choosen.'
+                          ? 'No date choosen'
                           : 'Date: ${DateFormat.yMd().format(_pickedDate!)}',
                       style: Theme.of(context).textTheme.titleMedium,
                       textAlign: TextAlign.center,
@@ -224,6 +225,9 @@ class _AddTransactionState extends State<AddTransaction> {
                   'Add Transaction',
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              )
             ],
           ),
         ),

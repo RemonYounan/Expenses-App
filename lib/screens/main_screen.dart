@@ -45,7 +45,6 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: AnimatedBottomNavigationBar(
         activeColor: Theme.of(context).colorScheme.secondary,
         inactiveColor: Colors.white54,
-        borderColor: Theme.of(context).primaryColor,
         backgroundGradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -55,8 +54,7 @@ class _MainScreenState extends State<MainScreen> {
             Theme.of(context).cardColor,
           ],
         ),
-        // gapWidth: 50,
-        notchSmoothness: NotchSmoothness.verySmoothEdge,
+        notchSmoothness: NotchSmoothness.smoothEdge,
         hideAnimationCurve: Curves.easeIn,
         blurEffect: true,
         notchMargin: 10,
@@ -88,8 +86,8 @@ class _MainScreenState extends State<MainScreen> {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
                 Color.fromARGB(255, 226, 28, 222),
                 Color.fromARGB(255, 213, 50, 142),
