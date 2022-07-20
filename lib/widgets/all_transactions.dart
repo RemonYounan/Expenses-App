@@ -52,6 +52,7 @@ class AllTransactions extends StatelessWidget {
                               clipBehavior: Clip.antiAlias,
                               shrinkWrap: true,
                               primary: false,
+                              reverse: true,
                               itemCount: transactions.transactions.length,
                               itemBuilder: (context, index) {
                                 return Padding(

@@ -37,7 +37,7 @@ class Expenses extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  '\$${numFormat.format(4000 - expenses)} saved',
+                  '\$${numFormat.format((4000 - expenses).round())} saved',
                   textAlign: TextAlign.start,
                   style: Theme.of(context)
                       .textTheme
@@ -55,7 +55,7 @@ class Expenses extends StatelessWidget {
                 radius: 50.0,
                 percent: expenses / 4000,
                 center: Text(
-                  '\$${numFormat.format(expenses)}',
+                  '\$${numFormat.format(expenses.round())}',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!

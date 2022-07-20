@@ -10,7 +10,8 @@ class DBTxHelper {
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-            'CREATE TABLE UserTransactions(id TEXT PRIMARY KEY, category TEXT, title TEXT, amount REAL, date TEXT)',);
+          'CREATE TABLE UserTransactions(id TEXT PRIMARY KEY, category TEXT, title TEXT, amount REAL, date TEXT)',
+        );
       },
     );
   }
@@ -34,7 +35,7 @@ class DBTxHelper {
 
   static Future<List<Map<String, dynamic>>> getData(String table) async {
     final db = await DBTxHelper.database();
-    return db.query(table);
+    return db.query(table, orderBy: 'date');
   }
 
   static Future<void> deleteTx(String id) async {

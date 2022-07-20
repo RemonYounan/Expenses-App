@@ -34,19 +34,17 @@ class RecentTransactions extends StatelessWidget {
                   builder: (ctx, transactions, ch) =>
                       transactions.transactions.isEmpty
                           ? ch!
-                          : SizedBox(
-                              height: size.height * .4,
-                              child: ListView.builder(
-                                clipBehavior: Clip.antiAlias,
-                                shrinkWrap: true,
-                                primary: false,
-                                itemCount: transactions.transactions.length >= 5
-                                    ? 5
-                                    : transactions.transactions.length,
-                                itemBuilder: (context, index) {
-                                  return TransactionItem(transactions, index);
-                                },
-                              ),
+                          : ListView.builder(
+                              clipBehavior: Clip.antiAlias,
+                              shrinkWrap: true,
+                              reverse: true,
+                              primary: false,
+                              itemCount: transactions.transactions.length >= 5
+                                  ? 5
+                                  : transactions.transactions.length,
+                              itemBuilder: (context, index) {
+                                return TransactionItem(transactions, index);
+                              },
                             ),
                 ),
     );

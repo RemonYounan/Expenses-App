@@ -12,8 +12,8 @@ class CategoriGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final expense =
-        Provider.of<Transactions>(context).getCategoryExpense(title);
+    final expense = Provider.of<Transactions>(context, listen: false)
+        .getCategoryExpense(title);
     final max = Provider.of<Transactions>(context).getMaxCatExpense();
     return GridTile(
       child: Container(
@@ -52,7 +52,7 @@ class CategoriGridItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 4),
               child: LinearPercentIndicator(
-                percent: max == 0 ? 0 : expense / max,
+                percent: max == 0 ? 0 : (expense / max),
                 progressColor: color,
 
                 backgroundColor: Theme.of(context).primaryColor,

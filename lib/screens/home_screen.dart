@@ -70,7 +70,6 @@ class HomeScreen extends StatelessWidget {
                     size: Size(size.width, 450),
                   ),
                   ListView(
-                    primary: false,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
