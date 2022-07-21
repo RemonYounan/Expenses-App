@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/widgets/chart.dart';
 
 class IncomeChart extends StatelessWidget {
   const IncomeChart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    final size = MediaQuery.of(context).size;
+    return Container(
+      height: 300,
+      width: size.width,
       color: Theme.of(context).cardColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      elevation: 10,
-      margin: const EdgeInsets.all(8),
       child: DefaultTabController(
         length: 4,
         child: Column(
@@ -19,8 +18,9 @@ class IncomeChart extends StatelessWidget {
             TabBar(
               padding: const EdgeInsets.all(6),
               indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16), // Creates border
-                  color: Colors.deepPurpleAccent,),
+                borderRadius: BorderRadius.circular(16), // Creates border
+                color: Colors.deepPurpleAccent,
+              ),
               tabs: const [
                 Text('Day'),
                 Text('Week'),
@@ -32,12 +32,7 @@ class IncomeChart extends StatelessWidget {
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  Center(
-                    child: Text(
-                      'Chart',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                  ),
+                  TxChart(),
                   Center(
                     child: Text(
                       'Chart',

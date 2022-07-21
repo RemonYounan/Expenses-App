@@ -67,32 +67,45 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
                     .copyWith(fontSize: 18),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: e['value'] == 'Master Card'
-                  ? Row(
-                      children: [
-                        Text(
-                          e['value'] as String,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(fontSize: 18, color: Colors.grey),
-                        ),
-                        Image.asset(
-                          'assets/master_card.png',
-                          scale: 1.5,
-                        )
-                      ],
-                    )
-                  : Text(
-                      e['value'].toString(),
+            if (e['value'] == 'Master Card')
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  children: [
+                    Text(
+                      e['value'] as String,
                       style: Theme.of(context)
                           .textTheme
                           .titleLarge!
                           .copyWith(fontSize: 18, color: Colors.grey),
                     ),
-            ),
+                    Image.asset(
+                      'assets/master_card.png',
+                      scale: 1.5,
+                    )
+                  ],
+                ),
+              ),
+            if (e['value'] == 'Visa')
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Image.asset(
+                  'assets/visa.png',
+                  scale: 1.5,
+                  color: Colors.grey,
+                ),
+              ),
+            if (e['value'] != 'Master Card' && e['value'] != 'Visa')
+              Padding(
+                padding: const EdgeInsets.all(12),
+                child: Text(
+                  '${e['value']}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(fontSize: 18, color: Colors.grey),
+                ),
+              ),
           ],
         );
       }).toList(),

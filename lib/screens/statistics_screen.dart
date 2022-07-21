@@ -56,7 +56,6 @@ class StatisticsScreen extends StatelessWidget {
                     primary: false,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    padding: const EdgeInsets.all(10),
                     children: [
                       Text(
                         '\$${numFormat.format(2500)}',
@@ -77,7 +76,7 @@ class StatisticsScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      const SizedBox(height: 200, child: IncomeChart()),
+                      IncomeChart(),
                       // SizedBox(height: 200, child: const IncomeSources()),
                     ],
                   ),
