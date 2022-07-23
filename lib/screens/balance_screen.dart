@@ -58,7 +58,7 @@ class BalanceScreen extends StatelessWidget {
                 ),
             textAlign: TextAlign.center,
           ),
-          const CreditCardCarouse(),
+          const CreditCardCarouse(showIndex: true),
           Container(
             decoration: BoxDecoration(
               boxShadow: [

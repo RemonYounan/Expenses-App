@@ -36,13 +36,9 @@ class HomeScreen extends StatelessWidget {
             style:
                 Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 28),
           ),
-          const Align(
-            heightFactor: .75,
-            alignment: Alignment.topCenter,
-            child: CreditCardCarouse(),
-          ),
+          const CreditCardCarouse(showIndex: false),
           Align(
-            heightFactor: .75,
+            heightFactor: .55,
             child: Container(
               decoration: BoxDecoration(
                 boxShadow: [

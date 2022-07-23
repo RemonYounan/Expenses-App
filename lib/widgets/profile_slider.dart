@@ -15,8 +15,10 @@ class _ProfileSliderState extends State<ProfileSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return SizedBox(
-      width: 280,
+      width: size.width * .6,
       child: Column(
         children: [
           Padding(

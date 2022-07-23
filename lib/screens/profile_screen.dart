@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:personal_expenses/screens/add_credit_screen.dart';
+import 'package:personal_expenses/widgets/credit_card.dart';
+import 'package:personal_expenses/widgets/credit_card_carouse.dart';
 import 'package:personal_expenses/widgets/credits_info.dart';
-import 'package:personal_expenses/widgets/profile_slider_widget.dart';
+import 'package:personal_expenses/widgets/profile_slider.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
         child: ListView(
+          shrinkWrap: true,
           children: [
             Padding(
               padding: const EdgeInsets.all(10),
@@ -29,19 +27,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     .copyWith(fontSize: 28, fontWeight: FontWeight.w900),
               ),
             ),
-            Row(
-              children: [
-                const ProfileSlider(),
-                IconButton(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, AddCreditScreen.routeName),
-                  icon: const Icon(
-                    Icons.credit_card,
+            Align(
+              heightFactor: .7,
+              child: Row(
+                children: [
+                  const ProfileSlider(),
+                  Expanded(
+                    child: Stack(
+                      fit: StackFit.passthrough,
+                      children: [
+                        RotatedBox(
+                          quarterTurns: -45,
+                          child: SizedBox(
+                            height: size.height * .5,
+                            width: size.width,
+                            child: const CreditCardCarouse(
+                              showIndex: false,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                            left: -10,
+                            top: 20,
+                            child: IconButton(
+                              iconSize: 60,
+                              splashRadius: 20,
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.add_circle,
+                                color: Colors.white,
+                              ),
+                            )),
+                      ],
+                    ),
                   ),
-                  color: Theme.of(context).colorScheme.secondary,
-                  iconSize: 44,
-                ),
-              ],
+                ],
+              ),
             ),
             const CreditsInfo(),
           ],
