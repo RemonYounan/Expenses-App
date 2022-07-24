@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
+import 'package:flutter/material.dart';
 
 class RecentTxPainter extends CustomPainter {
   BuildContext context;
@@ -13,7 +13,7 @@ class RecentTxPainter extends CustomPainter {
     final Paint paint0 = Paint()
       ..shader = ui.Gradient.linear(
         Offset(screenWidth * .5, 0),
-        Offset(screenWidth * .5, screenHight * .6),
+        Offset(screenWidth * .5, screenHight * .45),
         [
           Theme.of(context).primaryColor,
           Theme.of(context).cardColor,

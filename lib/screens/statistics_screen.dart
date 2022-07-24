@@ -13,15 +13,14 @@ class StatisticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        backgroundColor: Theme.of(context).primaryColor,
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .04,
-            ),
-            Text(
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Theme.of(context).primaryColor,
+          appBar: AppBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            centerTitle: true,
+            elevation: 0,
+            title: Text(
               'Statistics',
               style: Theme.of(context)
                   .textTheme
@@ -29,17 +28,22 @@ class StatisticsScreen extends StatelessWidget {
                   .copyWith(fontWeight: FontWeight.bold, fontSize: 28),
               textAlign: TextAlign.center,
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: TabBar(
-                padding: const EdgeInsets.all(15),
-                labelStyle:
-                    const TextStyle(fontSize: 24, fontStyle: FontStyle.italic),
+          ),
+          body: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TabBar(
+                splashBorderRadius: BorderRadius.circular(15),
+                unselectedLabelColor: Colors.grey,
+                padding: const EdgeInsets.all(8),
+                labelStyle: const TextStyle(
+                  fontSize: 24,
+                ),
                 indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50), // Creates border
+                  borderRadius: BorderRadius.circular(15), // Creates border
                   color: Colors.deepPurpleAccent,
                 ),
-                tabs: const [
+                tabs: [
                   Tab(
                     text: 'Income',
                   ),
@@ -48,43 +52,43 @@ class StatisticsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            Expanded(
-              child: TabBarView(
-                children: [
-                  ListView(
-                    primary: false,
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    children: [
-                      Text(
-                        '\$${numFormat.format(2500)}',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(fontSize: 28),
-                        textAlign: TextAlign.center,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'This month total income',
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    ListView(
+                      primary: false,
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      children: [
+                        Text(
+                          '\$${numFormat.format(2500)}',
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
-                              .copyWith(fontSize: 24, color: Colors.grey),
+                              .copyWith(fontSize: 28),
                           textAlign: TextAlign.center,
                         ),
-                      ),
-                      IncomeChart(),
-                      // SizedBox(height: 200, child: const IncomeSources()),
-                    ],
-                  ),
-                  AllTransactions(viewAll: false),
-                ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'This month total income',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(fontSize: 24, color: Colors.grey),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        IncomeChart(),
+                        // SizedBox(height: 200, child: const IncomeSources()),
+                      ],
+                    ),
+                    AllTransactions(viewAll: false),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

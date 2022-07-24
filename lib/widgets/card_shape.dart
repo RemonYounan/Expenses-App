@@ -12,7 +12,7 @@ class CardShape extends CustomPainter {
     final Paint paint0 = Paint()
       ..shader = ui.Gradient.linear(
         Offset(screenWidth * .5, 0),
-        Offset(screenWidth * .5, screenHight * .3),
+        Offset(screenWidth * .5, screenHight * .25),
         [
           Theme.of(context).primaryColor,
           Theme.of(context).cardColor,

@@ -17,10 +17,9 @@ class ProfileScreen extends StatelessWidget {
           shrinkWrap: true,
           children: [
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(left: 15),
               child: Text(
                 'Profile',
-                textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium!

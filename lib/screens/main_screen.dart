@@ -46,17 +46,13 @@ class _MainScreenState extends State<MainScreen> {
         activeColor: Theme.of(context).colorScheme.secondary,
         inactiveColor: Colors.white54,
         backgroundGradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
           colors: [
             Theme.of(context).cardColor,
-            // Colors.black,
             Theme.of(context).cardColor,
           ],
         ),
         notchSmoothness: NotchSmoothness.smoothEdge,
-        hideAnimationCurve: Curves.easeIn,
-        blurEffect: true,
+        hideAnimationCurve: Curves.fastLinearToSlowEaseIn,
         notchMargin: 10,
         gapLocation: GapLocation.end,
         onTap: (index) {

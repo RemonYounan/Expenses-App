@@ -34,7 +34,7 @@ class Expenses extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 6,
                 ),
                 Text(
                   '\$${numFormat.format((4000 - expenses).round())} saved',
@@ -66,7 +66,7 @@ class Expenses extends StatelessWidget {
                 progressColor: const Color.fromARGB(255, 187, 6, 190),
                 // progressColor:
                 // Theme.of(context).colorScheme.primary.withOpacity(.6),
-                backgroundColor: Theme.of(context).primaryColor,
+                backgroundColor: Theme.of(context).cardColor.withAlpha(150),
                 circularStrokeCap: CircularStrokeCap.round,
               ),
             ),

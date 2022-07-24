@@ -12,12 +12,9 @@ class HomeBar extends StatelessWidget {
         future: Provider.of<CreditCards>(context, listen: false).getName(),
         builder: (context, snapshot) {
           final name = Provider.of<CreditCards>(context, listen: false).name;
-          return ListTile(
-            leading: const Icon(
-              Icons.account_circle_rounded,
-              color: Colors.white,
-              size: 50,
-            ),
+          return AppBar(
+            backgroundColor: Theme.of(context).primaryColor,
+            elevation: 0,
             title: Text(
               'Hello, $name',
               style: Theme.of(context)
@@ -25,14 +22,22 @@ class HomeBar extends StatelessWidget {
                   .titleLarge!
                   .copyWith(fontSize: 24),
             ),
-            trailing: IconButton(
-              iconSize: 35,
-              color: Colors.amber,
-              onPressed: () {
-                Navigator.pushNamed(context, NotificationsScreen.routeName);
-              },
-              icon: const Icon(Icons.notifications),
+            leadingWidth: 70,
+            leading: const Icon(
+              Icons.account_circle_rounded,
+              color: Colors.white,
+              size: 50,
             ),
+            actions: [
+              IconButton(
+                iconSize: 35,
+                color: Colors.amber,
+                onPressed: () {
+                  Navigator.pushNamed(context, NotificationsScreen.routeName);
+                },
+                icon: const Icon(Icons.notifications),
+              ),
+            ],
           );
         });
   }
