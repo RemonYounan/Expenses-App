@@ -41,7 +41,7 @@ class AllTransactions extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium!
-                                .copyWith(fontSize: 22),
+                                .copyWith(fontSize: 18),
                           ),
                         ),
                       ),

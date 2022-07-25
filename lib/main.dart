@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
           MainScreen.routeName: (context) => const MainScreen(),
           HomeScreen.routeName: (context) => HomeScreen(),
           StatisticsScreen.routeName: (context) => StatisticsScreen(),
-          AddCreditScreen.routeName: (context) => AddCreditScreen(false),
+          AddCreditScreen.routeName: (context) => AddCreditScreen(first: false),
           NotificationsScreen.routeName: (context) =>
               const NotificationsScreen(),
         },

@@ -48,7 +48,7 @@ class _CreditItemState extends State<CreditItem> {
         AnimatedContainer(
           duration: const Duration(milliseconds: 400),
           curve: Curves.easeOut,
-          height: _expand ? size.height * .35 + 10 : 0,
+          height: _expand ? size.height * .4 : 0,
           child: CreditCardDetails(
             type: widget.credits.creditCards[widget.i].type!,
             name: widget.credits.creditCards[widget.i].name!,

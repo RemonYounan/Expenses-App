@@ -47,6 +47,7 @@ class _AddTransactionState extends State<AddTransaction> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.only(
         top: 8,
@@ -64,10 +65,10 @@ class _AddTransactionState extends State<AddTransaction> {
                 child: Text(
                   'Add New Transaction',
                   softWrap: true,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(fontSize: 26),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
               ),
               Row(
@@ -84,20 +85,26 @@ class _AddTransactionState extends State<AddTransaction> {
                     child: Text(
                       'Category :',
                       textAlign: TextAlign.start,
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.w400,
+                          ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 40,
+                  SizedBox(
+                    width: size.width * .2,
                   ),
                   SizedBox(
-                    width: 160,
+                    width: size.width * .4,
                     child: DropdownButtonFormField(
                       dropdownColor: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(15),
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.w400,
+                          ),
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.all(8),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(15),
                         ),
                       ),
                       items: const [
@@ -143,7 +150,10 @@ class _AddTransactionState extends State<AddTransaction> {
                       color: Theme.of(context).colorScheme.secondary,
                     ),
                     labelText: 'Title',
-                    labelStyle: Theme.of(context).textTheme.titleMedium,
+                    labelStyle:
+                        Theme.of(context).textTheme.titleMedium!.copyWith(
+                              fontWeight: FontWeight.w400,
+                            ),
                     errorStyle: const TextStyle(fontSize: 14),
                   ),
                   textInputAction: TextInputAction.next,
@@ -166,7 +176,10 @@ class _AddTransactionState extends State<AddTransaction> {
                       color: Theme.of(context).colorScheme.secondary,
                     ),
                     labelText: 'Amount',
-                    labelStyle: Theme.of(context).textTheme.titleMedium,
+                    labelStyle:
+                        Theme.of(context).textTheme.titleMedium!.copyWith(
+                              fontWeight: FontWeight.w400,
+                            ),
                     errorStyle: const TextStyle(fontSize: 14),
                   ),
                   keyboardType: TextInputType.number,
@@ -195,7 +208,9 @@ class _AddTransactionState extends State<AddTransaction> {
                       _pickedDate == null
                           ? 'No date choosen'
                           : 'Date: ${DateFormat.yMd().format(_pickedDate!)}',
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.w400,
+                          ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -207,7 +222,7 @@ class _AddTransactionState extends State<AddTransaction> {
                         'Choose date',
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
                               color: Theme.of(context).colorScheme.primary,
-                              fontSize: 18,
+                              fontSize: 16,
                             ),
                       ),
                     ),
@@ -221,8 +236,11 @@ class _AddTransactionState extends State<AddTransaction> {
                   ),
                 ),
                 onPressed: _submitData,
-                child: const Text(
+                child: Text(
                   'Add Transaction',
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
               ),
               const SizedBox(

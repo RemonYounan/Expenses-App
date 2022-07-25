@@ -6,7 +6,7 @@ import 'package:personal_expenses/widgets/custom_form_filed.dart';
 import 'package:provider/provider.dart';
 
 class AddCreditScreen extends StatefulWidget {
-  AddCreditScreen(this.first, {Key? key}) : super(key: key);
+  AddCreditScreen({required this.first, Key? key}) : super(key: key);
   static const routeName = '/add-credit-screen';
   bool first;
 
@@ -45,6 +45,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
@@ -70,16 +71,14 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           'Credit type :',
-                          style:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(
-                                    fontSize: 19,
-                                  ),
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ),
                       const Spacer(),
                       SizedBox(
-                        width: 220,
+                        width: size.width * .55,
                         child: DropdownButtonFormField(
+                          borderRadius: BorderRadius.circular(15),
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium!
@@ -132,32 +131,32 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                   ),
                 ),
                 CustomFormField(
-                  'User Name',
-                  Icons.text_fields_rounded,
-                  TextInputType.name,
-                  TextInputAction.next,
-                  false,
-                  (value) {
+                  label: 'User Name',
+                  icon: Icons.text_fields_rounded,
+                  kType: TextInputType.name,
+                  inputAction: TextInputAction.next,
+                  obscure: false,
+                  validator: (value) {
                     if (value!.isEmpty) {
                       return 'Enter a valid username';
                     }
                     return null;
                   },
-                  (value) => name = value,
+                  onSaved: (value) => name = value,
                 ),
                 CustomFormField(
-                  'Credit Number',
-                  Icons.numbers,
-                  TextInputType.number,
-                  TextInputAction.next,
-                  false,
-                  (value) {
+                  label: 'Credit Number',
+                  icon: Icons.numbers,
+                  kType: TextInputType.number,
+                  inputAction: TextInputAction.next,
+                  obscure: false,
+                  validator: (value) {
                     if (value!.length != 16 || value.isEmpty) {
                       return 'Enter a valid credit number';
                     }
                     return null;
                   },
-                  (value) => number = int.parse(value!),
+                  onSaved: (value) => number = int.parse(value!),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10),
@@ -171,7 +170,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                         SizedBox(
-                          width: 140,
+                          width: size.width * .4,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
@@ -179,14 +178,18 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
-                                  .copyWith(fontSize: 18),
+                                  .copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: 140,
+                          width: size.width * .4,
                           child: DropdownButtonFormField(
                             dropdownColor: Theme.of(context).cardColor,
+                            borderRadius: BorderRadius.circular(15),
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(12),
                               border: OutlineInputBorder(
@@ -197,8 +200,8 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
                                 ),
                             value: exMonth,
                             items: monthDropdownItems,
@@ -225,7 +228,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                         SizedBox(
-                          width: 140,
+                          width: size.width * .4,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 12),
                             child: Text(
@@ -233,14 +236,18 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
-                                  .copyWith(fontSize: 18),
+                                  .copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: 140,
+                          width: size.width * .4,
                           child: DropdownButtonFormField(
                             dropdownColor: Theme.of(context).cardColor,
+                            borderRadius: BorderRadius.circular(15),
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(12),
                               border: OutlineInputBorder(
@@ -255,8 +262,8 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
                                 ),
                             value: exYear,
                             items: yearDropdownItems,
@@ -272,41 +279,43 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                   ),
                 ),
                 CustomFormField(
-                  'PIN',
-                  Icons.password_rounded,
-                  TextInputType.number,
-                  TextInputAction.next,
-                  true,
-                  (value) {
+                  label: 'PIN',
+                  icon: Icons.password_rounded,
+                  kType: TextInputType.number,
+                  inputAction: TextInputAction.next,
+                  obscure: true,
+                  validator: (value) {
                     if (value!.length != 4) {
                       return 'Enter a valid PIN';
                     }
                     return null;
                   },
-                  (value) => pin = int.parse(value!),
+                  onSaved: (value) => pin = int.parse(value!),
                 ),
                 CustomFormField(
-                  'CVV',
-                  Icons.password_rounded,
-                  TextInputType.number,
-                  TextInputAction.done,
-                  true,
-                  (value) {
+                  label: 'CVV',
+                  icon: Icons.password_rounded,
+                  kType: TextInputType.number,
+                  inputAction: TextInputAction.done,
+                  obscure: true,
+                  validator: (value) {
                     if (value!.length != 3) {
                       return 'Enter a valid CVV';
                     }
                     return null;
                   },
-                  (value) => cvv = int.parse(value!),
+                  onSaved: (value) => cvv = int.parse(value!),
                 ),
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
-                    // fixedSize: Size(40, 40),
                     textStyle: Theme.of(context).textTheme.titleMedium,
                   ),
                   onPressed: _Submit,
                   icon: const Icon(Icons.add),
                   label: const Text('Add Credit'),
+                ),
+                SizedBox(
+                  height: size.height * .05,
                 ),
                 if (widget.first)
                   TextButton(

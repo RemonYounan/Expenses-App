@@ -81,7 +81,7 @@ class WelcomeScreen extends StatelessWidget {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AddCreditScreen(true),
+                                builder: (context) => AddCreditScreen(first: true),
                               ),
                             );
                           },
