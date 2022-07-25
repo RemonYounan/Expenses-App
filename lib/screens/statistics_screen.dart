@@ -11,6 +11,7 @@ class StatisticsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 2,
       child: SafeArea(
@@ -25,7 +26,7 @@ class StatisticsScreen extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
-                  .copyWith(fontWeight: FontWeight.bold, fontSize: 28),
+                  .copyWith(fontSize: 24),
               textAlign: TextAlign.center,
             ),
           ),
@@ -52,6 +53,9 @@ class StatisticsScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(
+                height: size.height * .03,
+              ),
               Expanded(
                 child: TabBarView(
                   children: [
@@ -74,8 +78,12 @@ class StatisticsScreen extends StatelessWidget {
                             'This month total income',
                             style: Theme.of(context)
                                 .textTheme
-                                .titleLarge!
-                                .copyWith(fontSize: 24, color: Colors.grey),
+                                .titleMedium!
+                                .copyWith(
+                                  fontSize: 24,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w600,
+                                ),
                             textAlign: TextAlign.center,
                           ),
                         ),

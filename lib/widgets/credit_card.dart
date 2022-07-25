@@ -44,8 +44,7 @@ class CreditCard extends StatelessWidget {
                   Text(
                     creditNumbers,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          color: Colors.black87,
-                          fontWeight: FontWeight.w600,
+                          color: Colors.black.withAlpha(170),
                         ),
                   ),
                   Expanded(
@@ -57,11 +56,11 @@ class CreditCard extends StatelessWidget {
                           size: 18,
                         ),
                         Text(
-                          'Active Card',
+                          'Active card',
                           style:
-                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                              Theme.of(context).textTheme.titleSmall!.copyWith(
                                     color: Colors.black45,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w500,
                                   ),
                         )
                       ],

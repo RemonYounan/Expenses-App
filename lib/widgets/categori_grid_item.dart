@@ -12,6 +12,7 @@ class CategoriGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final expense = Provider.of<Transactions>(context, listen: false)
         .getCategoryExpense(title);
     final max = Provider.of<Transactions>(context).getMaxCatExpense();
@@ -33,28 +34,35 @@ class CategoriGridItem extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           children: [
             icon,
+            SizedBox(
+              height: size.height * .01,
+            ),
             Text(
               title,
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    color: Colors.white.withAlpha(220),
-                    fontWeight: FontWeight.w200,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontSize: 18,
+                    color: Colors.white.withAlpha(230),
+                    fontWeight: FontWeight.w500,
                   ),
               textAlign: TextAlign.center,
             ),
+            SizedBox(
+              height: size.height * .01,
+            ),
             Text(
               expense == 0 ? '\$0' : '-\$${expense.toInt()}',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: Colors.grey, fontSize: 18),
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Colors.grey,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
               textAlign: TextAlign.center,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
+              padding: const EdgeInsets.symmetric(vertical: 6),
               child: LinearPercentIndicator(
                 percent: max == 0 ? 0 : (expense / max),
                 progressColor: color,
-
                 backgroundColor: Theme.of(context).primaryColor,
                 barRadius: const Radius.circular(15),
                 lineHeight: 6,

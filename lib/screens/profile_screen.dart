@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/screens/add_credit_screen.dart';
 import 'package:personal_expenses/widgets/credit_card.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
 import 'package:personal_expenses/widgets/credits_info.dart';
@@ -17,13 +18,12 @@ class ProfileScreen extends StatelessWidget {
           shrinkWrap: true,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 15),
+              padding: const EdgeInsets.all(12),
               child: Text(
                 'Profile',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .copyWith(fontSize: 28, fontWeight: FontWeight.w900),
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontSize: 24,
+                    ),
               ),
             ),
             Align(
@@ -51,7 +51,12 @@ class ProfileScreen extends StatelessWidget {
                             child: IconButton(
                               iconSize: 60,
                               splashRadius: 20,
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  AddCreditScreen.routeName,
+                                );
+                              },
                               icon: const Icon(
                                 Icons.add_circle,
                                 color: Colors.white,

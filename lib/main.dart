@@ -59,12 +59,20 @@ class MyApp extends StatelessWidget {
             titleLarge: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
+              fontSize: 20,
             ),
             titleMedium: TextStyle(
               color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+            ),
+            titleSmall: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
             ),
           ),
-          fontFamily: 'SourceSansPro',
+          fontFamily: 'Objectivity',
           colorScheme: ColorScheme.fromSwatch(
             accentColor: Colors.amber,
           ),

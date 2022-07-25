@@ -46,17 +46,23 @@ class BalanceScreen extends StatelessWidget {
             Text(
               'Total balance',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 32,
+                    fontSize: 22,
                     color: Theme.of(context).colorScheme.primary,
                   ),
               textAlign: TextAlign.center,
             ),
+            SizedBox(
+              height: size.height * .02,
+            ),
             Text(
               '\$${numFormat.format(4000)}',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 32,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontSize: 28,
                   ),
               textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: size.height * .01,
             ),
             const CreditCardCarouse(showIndex: true),
             Container(
@@ -83,7 +89,7 @@ class BalanceScreen extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
-                              .copyWith(fontSize: 26),
+                              .copyWith(fontSize: 24),
                         ),
                       ),
                       GridView(

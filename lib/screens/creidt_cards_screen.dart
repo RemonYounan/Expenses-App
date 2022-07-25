@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/providers/credit_cards.dart';
-import 'package:personal_expenses/widgets/credit_card_details.dart';
 import 'package:personal_expenses/widgets/credit_item.dart';
 import 'package:provider/provider.dart';
 
-class CreditCardsScreen extends StatefulWidget {
+class CreditCardsScreen extends StatelessWidget {
   const CreditCardsScreen({Key? key}) : super(key: key);
 
-  @override
-  State<CreditCardsScreen> createState() => _CreditCardsScreenState();
-}
-
-class _CreditCardsScreenState extends State<CreditCardsScreen> {
-  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(

@@ -15,6 +15,10 @@ class TransactionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 6,
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
@@ -28,12 +32,16 @@ class TransactionItem extends StatelessWidget {
       ),
       title: Text(
         '${transactions.transactions[index].title}',
-        style: const TextStyle(color: Colors.white, fontSize: 20),
+        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              fontSize: 18,
+            ),
       ),
       subtitle: Text(
         DateFormat.yMEd().format(transactions.transactions[index].date!),
         // '${DateTime.now().difference(transactions.transactions[index].date!).inHours} hours ago',
-        style: const TextStyle(color: Colors.grey),
+        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+              color: Colors.grey.withAlpha(180),
+            ),
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
@@ -42,35 +50,20 @@ class TransactionItem extends StatelessWidget {
             '\$${transactions.transactions[index].amount!.toStringAsFixed(2)}',
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
                   color: Colors.lightGreen,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
                 ),
           ),
           PopupMenuButton(
             icon: Icon(
               Icons.more_vert_rounded,
               color: Theme.of(context).colorScheme.secondary,
+              size: 25,
             ),
             color: Theme.of(context).primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
             itemBuilder: (context) => [
-              // PopupMenuItem(
-              //   onTap: () => print('edit pressed from onTap'),
-              //   value: 0,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: const [
-              //       Icon(
-              //         Icons.edit,
-              //         color: Colors.white,
-              //         size: 28,
-              //       ),
-              //       Expanded(child: Text('Edit')),
-              //     ],
-              //   ),
-              // ),
               PopupMenuItem(
                 value: 1,
                 onTap: () =>

@@ -24,11 +24,13 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.only(top: 8),
               child: HomeBar(),
             ),
+            SizedBox(
+              height: size.height * .02,
+            ),
             Text(
               'Total balance',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 22,
                     color: Theme.of(context).colorScheme.primary,
                   ),
             ),
@@ -38,7 +40,10 @@ class HomeScreen extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
-                  .copyWith(fontSize: 28),
+                  .copyWith(fontSize: 24, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(
+              height: size.height * .04,
             ),
             const CreditCardCarouse(
               showIndex: false,
@@ -74,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       CustomPaint(
                         painter: RecentTxPainter(context),
-                        size: Size(size.width, 450),
+                        size: Size(size.width, size.height * .65),
                       ),
                       ListView(
                         shrinkWrap: true,
@@ -84,14 +89,16 @@ class HomeScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(16),
                             child: Row(
                               children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(left: 10),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
                                   child: Text(
                                     'Recent transactions',
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                    ),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(
+                                          fontSize: 20,
+                                        ),
                                   ),
                                 ),
                                 const Spacer(),
@@ -107,12 +114,15 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       );
                                     },
-                                    child: const Text(
-                                      'View all',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 18,
-                                      ),
+                                    child: Text(
+                                      'View All',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium!
+                                          .copyWith(
+                                              fontSize: 16,
+                                              color: Colors.grey,
+                                              fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                 ),

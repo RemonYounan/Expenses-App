@@ -17,10 +17,7 @@ class HomeBar extends StatelessWidget {
             elevation: 0,
             title: Text(
               'Hello, $name',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 24),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             leadingWidth: 70,
             leading: const Icon(

@@ -19,68 +19,73 @@ class _ProfileSliderState extends State<ProfileSlider> {
 
     return SizedBox(
       width: size.width * .6,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
               'Card balance',
               textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(fontSize: 22, color: Colors.grey),
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    fontSize: 22,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
             ),
-          ),
-          Text(
-            '\$${numFormat.format(_cardBalance)}',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Text(
+                '\$${numFormat.format(_cardBalance)}',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontSize: 24,
+                    ),
+              ),
+            ),
+            Text(
               'Monthly limit',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     fontSize: 22,
                     color: Colors.grey,
+                    fontWeight: FontWeight.w500,
                   ),
             ),
-          ),
-          Text(
-            '\$${numFormat.format(_value)}',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          SliderTheme(
-            data: SliderTheme.of(context).copyWith(
-              trackShape: const RoundedRectSliderTrackShape(),
-              activeTrackColor: Theme.of(context).colorScheme.secondary,
-              activeTickMarkColor: Theme.of(context).colorScheme.secondary,
-              inactiveTrackColor: Theme.of(context).cardColor,
-              inactiveTickMarkColor: Theme.of(context).cardColor,
-              thumbColor: Theme.of(context).colorScheme.secondary,
-              thumbShape: const RoundSliderThumbShape(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Text(
+                '\$${numFormat.format(_value)}',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
             ),
-            child: Slider(
-              value: _value,
-              divisions: _cardBalance ~/ 100,
-              max: _cardBalance.toDouble(),
-              onChanged: (value) {
-                setState(() {
-                  _value = value;
-                });
-              },
+            SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                trackShape: const RoundedRectSliderTrackShape(),
+                activeTrackColor: Theme.of(context).colorScheme.secondary,
+                activeTickMarkColor: Theme.of(context).colorScheme.secondary,
+                inactiveTrackColor: Theme.of(context).cardColor,
+                inactiveTickMarkColor: Theme.of(context).cardColor,
+                thumbColor: Theme.of(context).colorScheme.secondary,
+                thumbShape: const RoundSliderThumbShape(),
+              ),
+              child: Slider(
+                value: _value,
+                divisions: _cardBalance ~/ 100,
+                max: _cardBalance.toDouble(),
+                onChanged: (value) {
+                  setState(() {
+                    _value = value;
+                  });
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

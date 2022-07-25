@@ -76,8 +76,8 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
                       e['value'] as String,
                       style: Theme.of(context)
                           .textTheme
-                          .titleLarge!
-                          .copyWith(fontSize: 18, color: Colors.grey),
+                          .titleMedium!
+                          .copyWith(color: Colors.grey),
                     ),
                     Image.asset(
                       'assets/master_card.png',
@@ -102,8 +102,8 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
                   '${e['value']}',
                   style: Theme.of(context)
                       .textTheme
-                      .titleLarge!
-                      .copyWith(fontSize: 18, color: Colors.grey),
+                      .titleMedium!
+                      .copyWith(color: Colors.grey),
                 ),
               ),
           ],

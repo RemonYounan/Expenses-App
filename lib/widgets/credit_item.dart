@@ -15,6 +15,7 @@ class _CreditItemState extends State<CreditItem> {
   var _expand = false;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Column(
       children: [
         Padding(
@@ -24,7 +25,10 @@ class _CreditItemState extends State<CreditItem> {
             children: [
               Text(
                 'Credit ${widget.i + 1}:',
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(fontSize: 18),
               ),
               IconButton(
                 splashRadius: 15,
@@ -42,8 +46,9 @@ class _CreditItemState extends State<CreditItem> {
           ),
         ),
         AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          height: _expand ? 300 : 0,
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeOut,
+          height: _expand ? size.height * .35 + 10 : 0,
           child: CreditCardDetails(
             type: widget.credits.creditCards[widget.i].type!,
             name: widget.credits.creditCards[widget.i].name!,

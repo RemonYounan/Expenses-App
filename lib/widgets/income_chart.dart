@@ -32,7 +32,13 @@ class IncomeChart extends StatelessWidget {
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  TxChart(),
+                  // TxChart(),
+                  Center(
+                    child: Text(
+                      'Chart',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  ),
                   Center(
                     child: Text(
                       'Chart',
