@@ -20,10 +20,9 @@ class HomeBar extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             leadingWidth: 70,
-            leading: const Icon(
-              Icons.account_circle_rounded,
-              color: Colors.white,
-              size: 50,
+            leading: Image.asset(
+              'assets/profile.png',
+              // fit: BoxFit.fill,
             ),
             actions: [
               IconButton(

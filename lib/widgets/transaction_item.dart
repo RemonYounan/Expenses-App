@@ -22,14 +22,8 @@ class TransactionItem extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
-      leading: CircleAvatar(
-        radius: 30,
-        child: Icon(
+      leading:
           TransactionIcon.getIcon(transactions.transactions[index].category!),
-          color: Colors.amber,
-          size: 30,
-        ),
-      ),
       title: Text(
         '${transactions.transactions[index].title}',
         style: Theme.of(context).textTheme.titleMedium!.copyWith(

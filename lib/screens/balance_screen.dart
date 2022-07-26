@@ -107,7 +107,7 @@ class BalanceScreen extends StatelessWidget {
                             .map(
                               (e) => CategoriGridItem(
                                 e['title'] as String,
-                                e['icon'] as Icon,
+                                e['icon'] as Image,
                                 e['color'] as Color,
                               ),
                             )

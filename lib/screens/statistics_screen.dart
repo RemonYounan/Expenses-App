@@ -44,7 +44,7 @@ class StatisticsScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15), // Creates border
                   color: Colors.deepPurpleAccent,
                 ),
-                tabs: [
+                tabs: const [
                   Tab(
                     text: 'Income',
                   ),
@@ -80,14 +80,17 @@ class StatisticsScreen extends StatelessWidget {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                  fontSize: 24,
+                                  fontSize: 22,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w600,
                                 ),
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        IncomeChart(),
+                        SizedBox(
+                          height: size.height * .03,
+                        ),
+                        const IncomeChart(),
                         // SizedBox(height: 200, child: const IncomeSources()),
                       ],
                     ),

@@ -1,15 +1,36 @@
 import 'package:flutter/material.dart';
 
 class TransactionIcon {
-  static Map<String, IconData> icons = {
-    'Travel': Icons.flight,
-    'Food': Icons.food_bank_outlined,
-    'Health': Icons.health_and_safety_rounded,
-    'Sports': Icons.directions_run_rounded,
-    'Electricity': Icons.electrical_services_rounded,
-    'Others': Icons.attach_money_rounded,
+  static Map<String, Image> icons = {
+    'Travel': Image.asset(
+      'assets/flight.png',
+      color: Colors.blue,
+      height: 40,
+    ),
+    'Food': Image.asset(
+      'assets/food.png',
+      height: 40,
+    ),
+    'Health': Image.asset(
+      'assets/health.png',
+      height: 40,
+    ),
+    'Sports': Image.asset(
+      'assets/sports.png',
+      height: 40,
+    ),
+    'Electricity': Image.asset(
+      'assets/plug.png',
+      height: 40,
+      color: Colors.white60,
+    ),
+    'Others': Image.asset(
+      'assets/coffee.png',
+      height: 40,
+      color: Colors.blue,
+    ),
   };
-  static IconData getIcon(String category) {
+  static Image getIcon(String category) {
     return icons[category]!;
   }
 }

@@ -1,58 +1,55 @@
 import 'package:flutter/material.dart';
 
-const List<Map<String, dynamic>> CATEGORIES_DATA = [
+List<Map<String, dynamic>> CATEGORIES_DATA = [
   {
     'title': 'Travel',
-    'icon': Icon(
-      Icons.flight,
+    'icon': Image.asset(
+      'assets/flight.png',
       color: Colors.blue,
-      size: 50,
+      height: 45,
     ),
-    'color' : Colors.amber,
+    'color': Colors.amber,
   },
   {
     'title': 'Food',
-    'icon': Icon(
-      Icons.fastfood_rounded,
-      color: Colors.amber,
-      size: 50,
+    'icon': Image.asset(
+      'assets/food.png',
+      height: 45,
     ),
-    'color' : Colors.redAccent,
+    'color': Colors.redAccent,
   },
   {
     'title': 'Health',
-    'icon': Icon(
-      Icons.health_and_safety_rounded,
-      color: Colors.red,
-      size: 50,
+    'icon': Image.asset(
+      'assets/health.png',
+      height: 45,
     ),
-    'color' : Colors.blueAccent,
+    'color': Colors.blueAccent,
   },
   {
     'title': 'Sports',
-    'icon': Icon(
-      Icons.directions_run_rounded,
-      color: Colors.blueAccent,
-      size: 50,
+    'icon': Image.asset(
+      'assets/sports.png',
+      height: 45,
     ),
-    'color' : Colors.blue,
+    'color': Colors.blue,
   },
   {
     'title': 'Electricity',
-    'icon': Icon(
-      Icons.electrical_services,
-      color: Colors.white70,
-      size: 50,
+    'icon': Image.asset(
+      'assets/plug.png',
+      height: 45,
+      color: Colors.white60,
     ),
-    'color' : Colors.amber,
+    'color': Colors.amber,
   },
   {
     'title': 'Others',
-    'icon': Icon(
-      Icons.coffee_rounded,
+    'icon': Image.asset(
+      'assets/coffee.png',
+      height: 45,
       color: Colors.blue,
-      size: 50,
     ),
-    'color' : Colors.orange,
+    'color': Colors.orange,
   },
 ];

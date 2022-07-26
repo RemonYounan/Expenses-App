@@ -76,7 +76,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                       ),
                       const Spacer(),
                       SizedBox(
-                        width: size.width * .55,
+                        width: size.width * .5,
                         child: DropdownButtonFormField(
                           borderRadius: BorderRadius.circular(15),
                           style: Theme.of(context)

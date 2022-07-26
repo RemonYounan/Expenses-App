@@ -7,7 +7,7 @@ class CategoriGridItem extends StatelessWidget {
   const CategoriGridItem(this.title, this.icon, this.color, {Key? key})
       : super(key: key);
   final String title;
-  final Icon icon;
+  final Image icon;
   final Color color;
 
   @override

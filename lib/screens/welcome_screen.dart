@@ -26,17 +26,19 @@ class WelcomeScreen extends StatelessWidget {
                 child: Text(
                   'Save your \ntime & less \nExpense',
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontSize: 50,
+                        fontSize: 45,
                         color: Colors.green.shade300,
                       ),
                 ),
               ),
-              const Center(
+              Center(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 30),
+                  padding: const EdgeInsets.only(left: 30),
                   child: Text(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin elementum orci sed condimentum.',
-                    style: TextStyle(color: Colors.grey),
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Colors.grey,
+                        ),
                   ),
                 ),
               ),
@@ -52,7 +54,7 @@ class WelcomeScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
                               .textTheme
-                              .titleLarge!
+                              .titleMedium!
                               .copyWith(color: Colors.grey),
                         ),
                       ),
@@ -81,7 +83,8 @@ class WelcomeScreen extends StatelessWidget {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AddCreditScreen(first: true),
+                                builder: (context) =>
+                                    AddCreditScreen(first: true),
                               ),
                             );
                           },
@@ -89,7 +92,7 @@ class WelcomeScreen extends StatelessWidget {
                             'Start Now',
                             style: Theme.of(context)
                                 .textTheme
-                                .titleLarge!
+                                .titleMedium!
                                 .copyWith(
                                   color: Theme.of(context)
                                       .colorScheme
