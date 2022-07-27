@@ -25,10 +25,7 @@ class _CreditItemState extends State<CreditItem> {
             children: [
               Text(
                 'Credit ${widget.i + 1}:',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium!
-                    .copyWith(fontSize: 18),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               IconButton(
                 splashRadius: 15,

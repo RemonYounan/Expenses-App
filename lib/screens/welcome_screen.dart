@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
                   'Save your \ntime & less \nExpense',
                   style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         fontSize: 45,
-                        color: Colors.green.shade300,
+                        color: const Color.fromARGB(255, 228, 194, 134),
                       ),
                 ),
               ),
@@ -52,10 +52,11 @@ class WelcomeScreen extends StatelessWidget {
                         child: Text(
                           'Skip',
                           textAlign: TextAlign.center,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(color: Colors.grey),
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    color: Colors.grey.withOpacity(.6),
+                                    fontWeight: FontWeight.w500,
+                                  ),
                         ),
                       ),
                     ),
@@ -92,7 +93,7 @@ class WelcomeScreen extends StatelessWidget {
                             'Start Now',
                             style: Theme.of(context)
                                 .textTheme
-                                .titleMedium!
+                                .titleLarge!
                                 .copyWith(
                                   color: Theme.of(context)
                                       .colorScheme

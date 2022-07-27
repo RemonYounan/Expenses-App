@@ -25,10 +25,7 @@ class CustomFormField extends StatelessWidget {
       child: TextFormField(
         decoration: InputDecoration(
           errorStyle: const TextStyle(fontSize: 14),
-          labelStyle: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(fontSize: 18, fontWeight: FontWeight.w500),
+          labelStyle: Theme.of(context).textTheme.titleMedium,
           labelText: label,
           icon: Icon(
             icon,

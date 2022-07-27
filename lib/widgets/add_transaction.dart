@@ -65,8 +65,7 @@ class _AddTransactionState extends State<AddTransaction> {
                 child: Text(
                   'Add New Transaction',
                   softWrap: true,
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontSize: 24,
+                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                         fontWeight: FontWeight.w500,
                       ),
                 ),

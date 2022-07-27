@@ -47,7 +47,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                         notifications.notifications[i].title,
                         textAlign: TextAlign.left,
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                              fontSize: 18,
                               color: notifications.notifications[i].readed
                                   ? Colors.grey
                                   : Colors.white,
@@ -55,16 +54,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(6),
                       child: Text(
                         notifications.notifications[i].body,
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                              fontSize: 14,
                               color: notifications.notifications[i].readed
                                   ? Colors.grey
-                                  : Colors.white,
+                                  : Colors.white70,
                             ),
-                        softWrap: true,
                       ),
                     ),
                     if (!notifications.notifications[i].readed)

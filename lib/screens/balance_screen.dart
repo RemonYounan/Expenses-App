@@ -45,8 +45,7 @@ class BalanceScreen extends StatelessWidget {
             ),
             Text(
               'Total balance',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontSize: 22,
+              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                   ),
               textAlign: TextAlign.center,
@@ -56,8 +55,8 @@ class BalanceScreen extends StatelessWidget {
             ),
             Text(
               '\$${numFormat.format(4000)}',
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    fontSize: 28,
+              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    fontSize: 26,
                   ),
               textAlign: TextAlign.center,
             ),
@@ -83,13 +82,13 @@ class BalanceScreen extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(18),
+                        padding: const EdgeInsets.all(20),
                         child: Text(
                           'Categories',
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
-                              .copyWith(fontSize: 24),
+                              .copyWith(fontSize: 22),
                         ),
                       ),
                       GridView(

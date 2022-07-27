@@ -38,10 +38,7 @@ class AllTransactions extends StatelessWidget {
                         child: Center(
                           child: Text(
                             'There is no transactions.',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(fontSize: 18),
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ),
                       ),

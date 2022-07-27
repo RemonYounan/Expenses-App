@@ -61,10 +61,9 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
               padding: const EdgeInsets.all(12),
               child: Text(
                 e['title'] as String,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(fontSize: 18),
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
             ),
             if (e['value'] == 'Master Card')
@@ -74,10 +73,10 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
                   children: [
                     Text(
                       e['value'] as String,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(color: Colors.grey),
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey,
+                          ),
                     ),
                     Image.asset(
                       'assets/master_card.png',
@@ -100,10 +99,10 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
                 padding: const EdgeInsets.all(12),
                 child: Text(
                   '${e['value']}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(color: Colors.grey),
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
                 ),
               ),
           ],

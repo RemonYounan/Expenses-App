@@ -23,10 +23,7 @@ class StatisticsScreen extends StatelessWidget {
             elevation: 0,
             title: Text(
               'Statistics',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 24),
+              style: Theme.of(context).textTheme.headlineLarge,
               textAlign: TextAlign.center,
             ),
           ),
@@ -37,9 +34,7 @@ class StatisticsScreen extends StatelessWidget {
                 splashBorderRadius: BorderRadius.circular(15),
                 unselectedLabelColor: Colors.grey,
                 padding: const EdgeInsets.all(8),
-                labelStyle: const TextStyle(
-                  fontSize: 24,
-                ),
+                labelStyle: Theme.of(context).textTheme.titleLarge,
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(15), // Creates border
                   color: Colors.deepPurpleAccent,
@@ -68,8 +63,8 @@ class StatisticsScreen extends StatelessWidget {
                           '\$${numFormat.format(2500)}',
                           style: Theme.of(context)
                               .textTheme
-                              .titleLarge!
-                              .copyWith(fontSize: 28),
+                              .headlineLarge!
+                              .copyWith(fontSize: 26),
                           textAlign: TextAlign.center,
                         ),
                         Padding(
@@ -80,7 +75,7 @@ class StatisticsScreen extends StatelessWidget {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                  fontSize: 22,
+                                  fontSize: 20,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.w600,
                                 ),

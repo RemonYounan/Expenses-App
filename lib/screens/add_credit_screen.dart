@@ -79,10 +79,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                         width: size.width * .5,
                         child: DropdownButtonFormField(
                           borderRadius: BorderRadius.circular(15),
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(fontSize: 16),
+                          style: Theme.of(context).textTheme.titleMedium,
                           value: type,
                           hint: const Text(
                             'Selecte one',
@@ -175,13 +172,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
                               'Expiry Month',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
                         ),
@@ -200,8 +191,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w500,
                                 ),
                             value: exMonth,
                             items: monthDropdownItems,
@@ -233,13 +223,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                             padding: const EdgeInsets.symmetric(horizontal: 12),
                             child: Text(
                               'Expiry Year',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
                         ),
@@ -262,7 +246,6 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                  fontSize: 20,
                                   fontWeight: FontWeight.w500,
                                 ),
                             value: exYear,
@@ -306,6 +289,9 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                   },
                   onSaved: (value) => cvv = int.parse(value!),
                 ),
+                SizedBox(
+                  height: size.height * .02,
+                ),
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     textStyle: Theme.of(context).textTheme.titleMedium,
@@ -315,7 +301,7 @@ class _AddCreditScreenState extends State<AddCreditScreen> {
                   label: const Text('Add Credit'),
                 ),
                 SizedBox(
-                  height: size.height * .05,
+                  height: size.height * .01,
                 ),
                 if (widget.first)
                   TextButton(

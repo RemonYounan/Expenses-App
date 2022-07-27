@@ -36,6 +36,7 @@ class TransactionItem extends StatelessWidget {
       title: Text(
         '${transactions.transactions[index].title}',
         style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              fontWeight: FontWeight.w500,
               fontSize: 18,
             ),
       ),
@@ -50,9 +51,10 @@ class TransactionItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            '\$${transactions.transactions[index].amount!.toStringAsFixed(2)}',
+            '-\$${transactions.transactions[index].amount!.toStringAsFixed(2)}',
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  color: Colors.lightGreen,
+                  color: Colors.redAccent,
+                  fontWeight: FontWeight.w500,
                   fontSize: 18,
                 ),
           ),

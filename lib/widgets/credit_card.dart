@@ -44,6 +44,7 @@ class CreditCard extends StatelessWidget {
                   Text(
                     creditNumbers,
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.w500,
                           color: Colors.black.withAlpha(170),
                         ),
                   ),

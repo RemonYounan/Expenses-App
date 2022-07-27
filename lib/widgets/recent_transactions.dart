@@ -13,40 +13,40 @@ class RecentTransactions extends StatelessWidget {
     return FutureBuilder(
       future:
           Provider.of<Transactions>(context, listen: false).getTransactions(),
-      builder: (ctx, snapshot) => snapshot.connectionState ==
-              ConnectionState.waiting
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : Consumer<Transactions>(
-              child: SizedBox(
-                height: size.height * .15,
-                child: Center(
-                  child: Text(
-                    'There is no transactions.',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(fontSize: 18, fontWeight: FontWeight.w500),
+      builder: (ctx, snapshot) =>
+          snapshot.connectionState == ConnectionState.waiting
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Consumer<Transactions>(
+                  child: SizedBox(
+                    height: size.height * .15,
+                    child: Center(
+                      child: Text(
+                        'There is no transactions.',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(fontWeight: FontWeight.w400),
+                      ),
+                    ),
                   ),
+                  builder: (ctx, transactions, ch) =>
+                      transactions.transactions.isEmpty
+                          ? ch!
+                          : ListView.builder(
+                              clipBehavior: Clip.antiAlias,
+                              shrinkWrap: true,
+                              reverse: true,
+                              primary: false,
+                              itemCount: transactions.transactions.length >= 5
+                                  ? 5
+                                  : transactions.transactions.length,
+                              itemBuilder: (context, index) {
+                                return TransactionItem(transactions, index);
+                              },
+                            ),
                 ),
-              ),
-              builder: (ctx, transactions, ch) =>
-                  transactions.transactions.isEmpty
-                      ? ch!
-                      : ListView.builder(
-                          clipBehavior: Clip.antiAlias,
-                          shrinkWrap: true,
-                          reverse: true,
-                          primary: false,
-                          itemCount: transactions.transactions.length >= 5
-                              ? 5
-                              : transactions.transactions.length,
-                          itemBuilder: (context, index) {
-                            return TransactionItem(transactions, index);
-                          },
-                        ),
-            ),
     );
   }
 }

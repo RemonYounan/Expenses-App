@@ -34,17 +34,21 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Total balance',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    fontWeight: FontWeight.w500,
                     color: Theme.of(context).colorScheme.primary,
                   ),
+            ),
+            SizedBox(
+              height: size.height * .015,
             ),
             Text(
               '\$${numFormat.format(4000)}',
               textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 24, fontWeight: FontWeight.w600),
+                  .headlineMedium!
+                  .copyWith(fontSize: 24),
             ),
             SizedBox(
               height: size.height * .04,
@@ -118,9 +122,10 @@ class HomeScreen extends StatelessWidget {
                                     'Recent transactions',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .titleMedium!
+                                        .headlineLarge!
                                         .copyWith(
                                           fontSize: 20,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                   ),
                                 ),
@@ -143,9 +148,9 @@ class HomeScreen extends StatelessWidget {
                                           .textTheme
                                           .titleMedium!
                                           .copyWith(
-                                              fontSize: 16,
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.w500),
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                     ),
                                   ),
                                 ),

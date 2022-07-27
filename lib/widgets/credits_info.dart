@@ -22,7 +22,7 @@ class _CreditsInfoState extends State<CreditsInfo> {
         children: [
           CustomPaint(
             painter: CreditPainter(context),
-            size: Size(size.width, 420),
+            size: Size(size.width, size.height * .5),
           ),
           ListView(
             shrinkWrap: true,
@@ -36,10 +36,7 @@ class _CreditsInfoState extends State<CreditsInfo> {
                 ),
                 child: Text(
                   'Card Informations',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(fontSize: 22),
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
               FutureBuilder(

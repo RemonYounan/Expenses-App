@@ -43,7 +43,8 @@ class Expenses extends StatelessWidget {
                   Text(
                     '\$${numFormat.format((4000 - expenses).round())} saved',
                     textAlign: TextAlign.start,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          fontWeight: FontWeight.w500,
                           color: Colors.grey.withAlpha(180),
                         ),
                   ),

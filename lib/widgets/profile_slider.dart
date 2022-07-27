@@ -20,47 +20,55 @@ class _ProfileSliderState extends State<ProfileSlider> {
     return SizedBox(
       width: size.width * .6,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.all(6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Card balance',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    fontSize: 22,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                  ),
-            ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Text(
-                '\$${numFormat.format(_cardBalance)}',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontSize: 24,
-                    ),
-              ),
-            ),
-            Text(
-              'Monthly limit',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    fontSize: 22,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Card balance',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontSize: 20,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                        ),
                   ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Text(
-                '\$${numFormat.format(_value)}',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Text(
+                      '\$${numFormat.format(_cardBalance)}',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontSize: 22,
+                          ),
                     ),
+                  ),
+                  Text(
+                    'Monthly limit',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontSize: 20,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Text(
+                      '\$${numFormat.format(_value)}',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ),
+                ],
               ),
             ),
             SliderTheme(
