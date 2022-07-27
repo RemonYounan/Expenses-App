@@ -1,11 +1,15 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:personal_expenses/providers/transactions.dart';
 import 'package:personal_expenses/widgets/all_transactions.dart';
 import 'package:personal_expenses/widgets/credit_card_carouse.dart';
 import 'package:personal_expenses/widgets/expenses.dart';
 import 'package:personal_expenses/widgets/home_bar.dart';
 import 'package:personal_expenses/widgets/recent_transactions.dart';
 import 'package:personal_expenses/widgets/recent_tx_painter.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -77,9 +81,28 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 6),
                   child: Stack(
                     children: [
-                      CustomPaint(
-                        painter: RecentTxPainter(context),
-                        size: Size(size.width, size.height * .65),
+                      Consumer<Transactions>(
+                        builder: (ctx, tx, _) {
+                          final length = tx.transactions.length;
+                          return length == 0
+                              ? CustomPaint(
+                                  painter: RecentTxPainter(context),
+                                  size: Size(
+                                    size.width,
+                                    size.height * .4,
+                                  ),
+                                )
+                              : CustomPaint(
+                                  painter: RecentTxPainter(context),
+                                  size: Size(
+                                    size.width,
+                                    min(
+                                      length * size.height * .2 + 40,
+                                      size.height * .7,
+                                    ),
+                                  ),
+                                );
+                        },
                       ),
                       ListView(
                         shrinkWrap: true,

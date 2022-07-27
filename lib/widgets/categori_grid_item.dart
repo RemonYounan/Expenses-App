@@ -15,7 +15,7 @@ class CategoriGridItem extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final expense = Provider.of<Transactions>(context, listen: false)
         .getCategoryExpense(title);
-    final max = Provider.of<Transactions>(context).getMaxCatExpense();
+    final max = Provider.of<Transactions>(context).getTotalExpenses();
     return GridTile(
       child: Container(
         decoration: BoxDecoration(

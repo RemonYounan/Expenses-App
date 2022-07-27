@@ -16,14 +16,23 @@ class TransactionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 6,
+        horizontal: 14,
+        vertical: 2,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
-      leading:
-          TransactionIcon.getIcon(transactions.transactions[index].category!),
+      leading: CircleAvatar(
+        backgroundColor: Theme.of(context)
+            .colorScheme
+            .secondary
+            .withOpacity(.7)
+            .withAlpha(150),
+        radius: 30,
+        child: TransactionIcon.getIcon(
+          transactions.transactions[index].category!,
+        ),
+      ),
       title: Text(
         '${transactions.transactions[index].title}',
         style: Theme.of(context).textTheme.titleMedium!.copyWith(

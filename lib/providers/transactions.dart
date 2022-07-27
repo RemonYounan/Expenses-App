@@ -27,15 +27,7 @@ class Transactions with ChangeNotifier {
     return categoryExpense;
   }
 
-  double getMaxCatExpense() {
-    final max = _transactions.isEmpty
-        ? 0.0
-        : _transactions
-            .map((e) => e.amount)
-            .toList()
-            .reduce((value, element) => value! > element! ? value : element);
-    return max!;
-  }
+  
 
   Future<void> addTransaction(
     String category,
