@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:personal_expenses/helpers/db_tx_helper.dart';
 import 'package:personal_expenses/models/transaction.dart';
+import 'package:intl/intl.dart';
 
 class Transactions with ChangeNotifier {
   List<UserTransaction> _transactions = [];
@@ -27,7 +28,112 @@ class Transactions with ChangeNotifier {
     return categoryExpense;
   }
 
-  
+  List<UserTransaction> get recentDaysTx {
+    return _transactions.where((tx) {
+      return tx.date!.isAfter(
+        DateTime.now().subtract(
+          const Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
+
+  List<Map<String, dynamic>> get recentDaysTxValues {
+    return List.generate(7, (index) {
+      final weekDay = DateTime.now().subtract(
+        Duration(days: index),
+      );
+      var totalSum = 0.0;
+      for (var i = 0; i < recentDaysTx.length; i++) {
+        if (recentDaysTx[i].date!.day == weekDay.day &&
+            recentDaysTx[i].date!.month == weekDay.month &&
+            recentDaysTx[i].date!.year == weekDay.year) {
+          totalSum += recentDaysTx[i].amount!;
+        }
+      }
+      return {
+        'day': DateFormat.E().format(weekDay).substring(0, 1),
+        'amount': totalSum,
+      };
+    }).toList();
+  }
+
+  double get totalDaysSpending {
+    return recentDaysTxValues.fold(0.0, (previousValue, element) {
+      return previousValue + (element['amount'] as double);
+    });
+  }
+
+  List<UserTransaction> get recentWeeksTx {
+    return _transactions.where((tx) {
+      return tx.date!.isAfter(
+        DateTime.now().subtract(
+          const Duration(days: 21),
+        ),
+      );
+    }).toList();
+  }
+
+  List<Map<String, dynamic>> get recentWeeksTxValues {
+    return List.generate(3, (index) {
+      final week = DateTime.now().subtract(
+        Duration(days: index * 7),
+      );
+      String? weekname;
+      var totalSum = 0.0;
+      for (var i = 0; i < recentWeeksTx.length; i++) {
+        if (recentWeeksTx[i].date!.isBefore(week) &&
+            recentWeeksTx[i]
+                .date!
+                .isAfter(week.subtract(const Duration(days: 7)))) {
+          totalSum += recentWeeksTx[i].amount!;
+        }
+      }
+      if (index == 0) {
+        weekname = 'This Week';
+      } else if (index == 1) {
+        weekname = 'Last Week';
+      } else if (index == 2) {
+        weekname = 'Week before';
+      }
+      return {
+        'week': weekname,
+        'amount': totalSum,
+      };
+    }).reversed.toList();
+  }
+
+  double get totalWeeksSpending {
+    return recentWeeksTxValues.fold(0.0, (previousValue, element) {
+      return previousValue + (element['amount'] as double);
+    });
+  }
+
+  List<Map<String, dynamic>> get recentMonthsTxValues {
+    final monthsDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    return List.generate(12, (index) {
+      final month = DateTime.now().subtract(
+        Duration(days: index * monthsDays[DateTime.now().month]),
+      );
+      var totalSum = 0.0;
+      for (var i = 0; i < _transactions.length; i++) {
+        if (_transactions[i].date!.month == month.month) {
+          totalSum += _transactions[i].amount!;
+        }
+      }
+
+      return {
+        'month': DateFormat.MMMM().format(month),
+        'amount': totalSum,
+      };
+    }).toList();
+  }
+
+  double get totalMonthsSpending {
+    return recentMonthsTxValues.fold(0.0, (previousValue, element) {
+      return previousValue + (element['amount'] as double);
+    });
+  }
 
   Future<void> addTransaction(
     String category,

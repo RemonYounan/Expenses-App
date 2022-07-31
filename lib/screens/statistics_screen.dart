@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:personal_expenses/widgets/all_transactions.dart';
-import 'package:personal_expenses/widgets/income_chart.dart';
+import 'package:personal_expenses/widgets/chart.dart';
 
 class StatisticsScreen extends StatelessWidget {
   StatisticsScreen({Key? key}) : super(key: key);
@@ -57,7 +57,6 @@ class StatisticsScreen extends StatelessWidget {
                     ListView(
                       primary: false,
                       physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
                       children: [
                         Text(
                           '\$${numFormat.format(2500)}',
@@ -85,8 +84,7 @@ class StatisticsScreen extends StatelessWidget {
                         SizedBox(
                           height: size.height * .03,
                         ),
-                        const IncomeChart(),
-                        // SizedBox(height: 200, child: const IncomeSources()),
+                        const Chart(),
                       ],
                     ),
                     AllTransactions(viewAll: false),

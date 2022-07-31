@@ -1,32 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:mrx_charts/mrx_charts.dart';
+import 'package:personal_expenses/widgets/days_chart.dart';
+import 'package:personal_expenses/widgets/months_chart.dart';
+import 'package:personal_expenses/widgets/weeks_chart.dart';
 
-class TxChart extends StatelessWidget {
-  const TxChart({Key? key}) : super(key: key);
+class Chart extends StatelessWidget {
+  const Chart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Chart(
-      layers: [
-        ChartAxisLayer(
-          labelX: (value) => value.toInt().toString(),
-          labelY: (value) => value.toInt().toString(),
-          settings: ChartAxisSettings(
-            x: ChartAxisSettingsAxis(
-              frequency: 7,
-              min: 0,
-              max: 7,
-              textStyle: Theme.of(context).textTheme.titleMedium!,
+    final size = MediaQuery.of(context).size;
+    return SizedBox(
+      height: size.height * .5,
+      width: size.width,
+      child: DefaultTabController(
+        length: 3,
+        child: Column(
+          children: [
+            TabBar(
+              padding: const EdgeInsets.all(6),
+              splashBorderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(40),
+              ),
+              indicator: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.grey.withOpacity(.4),
+                  ],
+                ),
+              ),
+              labelPadding: const EdgeInsets.all(6),
+              tabs: const [
+                Text('Day'),
+                Text('Week'),
+                Text('Month'),
+              ],
             ),
-            y: ChartAxisSettingsAxis(
-              frequency: 7,
-              min: 0,
-              max: 7,
-              textStyle: Theme.of(context).textTheme.titleMedium!,
+            const Expanded(
+              child: TabBarView(
+                // physics: NeverScrollableScrollPhysics(),
+                children: [
+                  DaysChart(),
+                  WeeksChart(),
+                  MonthsChart(),
+                ],
+              ),
             ),
-          ),
-        )
-      ],
+          ],
+        ),
+      ),
     );
   }
 }
