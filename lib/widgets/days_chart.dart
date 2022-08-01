@@ -10,19 +10,23 @@ class DaysChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Transactions>(
       builder: (ctx, tx, _) {
-        return ListView(
-          reverse: true,
-          scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.all(10),
-          children: tx.recentDaysTxValues.map((data) {
-            return ChartBar(
-              data['day'] as String,
-              data['amount'] as double,
-              tx.totalDaysSpending == 0
-                  ? 0.0
-                  : (data['amount'] as double) / tx.totalDaysSpending,
-            );
-          }).toList(),
+        return SingleChildScrollView(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: tx.recentDaysTxValues
+                .map((data) {
+                  return ChartBar(
+                    data['day'] as String,
+                    data['amount'] as double,
+                    tx.totalDaysSpending == 0
+                        ? 0.0
+                        : (data['amount'] as double) / tx.totalDaysSpending,
+                  );
+                })
+                .toList()
+                .reversed
+                .toList(),
+          ),
         );
       },
     );

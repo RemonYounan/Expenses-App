@@ -37,7 +37,6 @@ class RecentTransactions extends StatelessWidget {
                           : ListView.builder(
                               clipBehavior: Clip.antiAlias,
                               shrinkWrap: true,
-                              reverse: true,
                               primary: false,
                               itemCount: transactions.transactions.length >= 5
                                   ? 5

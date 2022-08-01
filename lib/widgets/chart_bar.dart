@@ -12,20 +12,18 @@ class ChartBar extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return SizedBox(
       height: size.height * .4,
-      width: size.width * .2,
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
             SizedBox(
-              height: size.height * .025,
+              height: size.height * 0.025,
               child: FittedBox(
                 child: Text(
                   lable,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(fontWeight: FontWeight.w500),
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
               ),
             ),

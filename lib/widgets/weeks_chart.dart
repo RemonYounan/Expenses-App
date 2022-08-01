@@ -8,17 +8,22 @@ class WeeksChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Consumer<Transactions>(
       builder: (ctx, tx, _) {
         return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: tx.recentWeeksTxValues.map((data) {
-            return ChartBar(
-              data['week'] as String,
-              data['amount'] as double,
-              tx.totalWeeksSpending == 0
-                  ? 0.0
-                  : (data['amount'] as double) / tx.totalWeeksSpending,
+            return SizedBox(
+              width: size.width * .25,
+              child: ChartBar(
+                data['week'] as String,
+                data['amount'] as double,
+                tx.totalWeeksSpending == 0
+                    ? 0.0
+                    : (data['amount'] as double) / tx.totalWeeksSpending,
+              ),
             );
           }).toList(),
         );

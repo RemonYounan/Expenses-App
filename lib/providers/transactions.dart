@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:personal_expenses/helpers/db_tx_helper.dart';
 import 'package:personal_expenses/models/transaction.dart';
-import 'package:intl/intl.dart';
 
 class Transactions with ChangeNotifier {
   List<UserTransaction> _transactions = [];
@@ -52,7 +52,7 @@ class Transactions with ChangeNotifier {
         }
       }
       return {
-        'day': DateFormat.E().format(weekDay).substring(0, 1),
+        'day': DateFormat.E().format(weekDay).substring(0, 3),
         'amount': totalSum,
       };
     }).toList();
@@ -117,7 +117,8 @@ class Transactions with ChangeNotifier {
       );
       var totalSum = 0.0;
       for (var i = 0; i < _transactions.length; i++) {
-        if (_transactions[i].date!.month == month.month) {
+        if (_transactions[i].date!.month == month.month &&
+            _transactions[i].date!.year == month.year) {
           totalSum += _transactions[i].amount!;
         }
       }
@@ -168,7 +169,7 @@ class Transactions with ChangeNotifier {
   Future<void> getTransactions() async {
     try {
       final dataList = await DBTxHelper.getData('UserTransactions');
-      _transactions = dataList.map(
+      final unsrotedTransactions = dataList.map(
         (item) {
           return UserTransaction(
             id: item['id'].toString(),
@@ -179,6 +180,7 @@ class Transactions with ChangeNotifier {
           );
         },
       ).toList();
+      _transactions = unsrotedTransactions.reversed.toList();
 
       notifyListeners();
     } catch (err) {

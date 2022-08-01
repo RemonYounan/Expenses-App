@@ -45,7 +45,6 @@ class Chart extends StatelessWidget {
             ),
             const Expanded(
               child: TabBarView(
-                // physics: NeverScrollableScrollPhysics(),
                 children: [
                   DaysChart(),
                   WeeksChart(),
