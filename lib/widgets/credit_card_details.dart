@@ -79,7 +79,7 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
                           ),
                     ),
                     Image.asset(
-                      'assets/master_card.png',
+                      'assets/images/master_card.png',
                       scale: 1.5,
                     )
                   ],
@@ -89,7 +89,7 @@ class _CreditCardDetailsState extends State<CreditCardDetails> {
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Image.asset(
-                  'assets/visa.png',
+                  'assets/images/visa.png',
                   scale: 1.5,
                   color: Colors.grey,
                 ),

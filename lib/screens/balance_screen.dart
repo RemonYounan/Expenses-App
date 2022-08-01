@@ -26,7 +26,7 @@ class BalanceScreen extends StatelessWidget {
                   onTap: () {},
                   child: const ImageIcon(
                     AssetImage(
-                      'assets/arrows.png',
+                      'assets/images/arrows.png',
                     ),
                     size: 30,
                     color: Color.fromARGB(255, 230, 58, 170),

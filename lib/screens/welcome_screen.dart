@@ -12,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/welcome_screen.png',
+              'assets/images/welcome_screen.png',
               fit: BoxFit.cover,
               isAntiAlias: true,
             ),

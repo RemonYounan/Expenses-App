@@ -4,7 +4,7 @@ List<Map<String, dynamic>> CATEGORIES_DATA = [
   {
     'title': 'Travel',
     'icon': Image.asset(
-      'assets/flight.png',
+      'assets/images/flight.png',
       color: Colors.blue,
       height: 45,
     ),
@@ -13,7 +13,7 @@ List<Map<String, dynamic>> CATEGORIES_DATA = [
   {
     'title': 'Food',
     'icon': Image.asset(
-      'assets/food.png',
+      'assets/images/food.png',
       height: 45,
     ),
     'color': Colors.redAccent,
@@ -21,7 +21,7 @@ List<Map<String, dynamic>> CATEGORIES_DATA = [
   {
     'title': 'Health',
     'icon': Image.asset(
-      'assets/health.png',
+      'assets/images/health.png',
       height: 45,
     ),
     'color': Colors.blueAccent,
@@ -29,7 +29,7 @@ List<Map<String, dynamic>> CATEGORIES_DATA = [
   {
     'title': 'Sports',
     'icon': Image.asset(
-      'assets/sports.png',
+      'assets/images/sports.png',
       height: 45,
     ),
     'color': Colors.blue,
@@ -37,7 +37,7 @@ List<Map<String, dynamic>> CATEGORIES_DATA = [
   {
     'title': 'Electricity',
     'icon': Image.asset(
-      'assets/plug.png',
+      'assets/images/plug.png',
       height: 45,
       color: Colors.white60,
     ),
@@ -46,7 +46,7 @@ List<Map<String, dynamic>> CATEGORIES_DATA = [
   {
     'title': 'Others',
     'icon': Image.asset(
-      'assets/coffee.png',
+      'assets/images/coffee.png',
       height: 45,
       color: Colors.blue,
     ),

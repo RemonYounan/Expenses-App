@@ -3,29 +3,29 @@ import 'package:flutter/material.dart';
 class TransactionIcon {
   static Map<String, Image> icons = {
     'Travel': Image.asset(
-      'assets/flight.png',
+      'assets/images/flight.png',
       color: Colors.blue,
       height: 40,
     ),
     'Food': Image.asset(
-      'assets/food.png',
+      'assets/images/food.png',
       height: 40,
     ),
     'Health': Image.asset(
-      'assets/health.png',
+      'assets/images/health.png',
       height: 40,
     ),
     'Sports': Image.asset(
-      'assets/sports.png',
+      'assets/images/sports.png',
       height: 40,
     ),
     'Electricity': Image.asset(
-      'assets/plug.png',
+      'assets/images/plug.png',
       height: 40,
       color: Colors.white60,
     ),
     'Others': Image.asset(
-      'assets/coffee.png',
+      'assets/images/coffee.png',
       height: 40,
       color: Colors.blue,
     ),

@@ -21,7 +21,7 @@ class HomeBar extends StatelessWidget {
             ),
             leadingWidth: 70,
             leading: Image.asset(
-              'assets/profile.png',
+              'assets/images/profile.png',
               // fit: BoxFit.fill,
             ),
             actions: [

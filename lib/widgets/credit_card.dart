@@ -34,7 +34,7 @@ class CreditCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'assets/chip.png',
+                    'assets/images/chip.png',
                     alignment: Alignment.topLeft,
                     scale: 1.7,
                   ),
@@ -73,8 +73,8 @@ class CreditCard extends StatelessWidget {
             const Spacer(),
             Image.asset(
               creditType == 'Master Card'
-                  ? 'assets/master_card.png'
-                  : 'assets/visa.png',
+                  ? 'assets/images/master_card.png'
+                  : 'assets/images/visa.png',
               alignment: Alignment.topLeft,
               fit: BoxFit.cover,
               scale: 1.2,
