@@ -9,7 +9,6 @@ class WeeksChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Consumer<Transactions>(
       builder: (ctx, tx, _) {
         return Row(
